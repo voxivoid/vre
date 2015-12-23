@@ -1,10 +1,35 @@
 <div id="navbar">
     <ul class="nav nav-pills">
 	    <li class="active"><a href="#">Home</a></li>
-	    <li class=""><a href="#">Explore</a></li>
-	    <li class=""><a href="#">Analytics</a></li>
-	    <li class=""><a href="#">Social</a></li>
+	    <li class="dropdown" id="navbar-explore" aria-haspopup="true" aria-expanded="true"><a href="#">Explore</a>
+			<ul class="dropdown-menu" aria-labelledby="navbar-explore">
+			    <li><a href="#">Workflows</a></li>
+			    <li><a href="#">Databases</a></li>
+			</ul>
+	    </li>
+	    
+		<li class="dropdown" id="navbar-explore" aria-haspopup="true" aria-expanded="true"><a href="#">Analytics</a>
+			<ul class="dropdown-menu" aria-labelledby="navbar-explore">
+				<li><a href="#">External tools</a></li>
+				<li><a href="#">Local services</a></li>
+				<li><a href="#">Tutorials</a></li>
+				<li><a href="#">REST API</a></li>
+			</ul>
+	    </li>
+		<li class="dropdown" id="navbar-explore" aria-haspopup="true" aria-expanded="true"><a href="#">Social</a>
+			<ul class="dropdown-menu" aria-labelledby="navbar-explore">
+				<li><a href="#">Facebook</a></li>
+            	<li><a href="#">myExperiment</a></li>
+                <li><a href="#">BitBucket</a></li>
+			</ul>
+	    </li>
 	    <li class=""><a href="#">Sign In</a></li>
 	    <li class=""><a href="#">About</a></li>	    
     </ul>
 </div>
+
+<style>
+	ul.nav li.dropdown:hover > ul.dropdown-menu {
+	    display: block;    
+	}
+</style>
