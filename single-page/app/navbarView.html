@@ -1,23 +1,23 @@
 <div id="navbar">
     <ul class="nav nav-pills">
 	    <li class="active"><a href="#">Home</a></li>
-	    <li class="dropdown" id="navbar-explore" aria-haspopup="true" aria-expanded="true"><a href="#">Explore</a>
-			<ul class="dropdown-menu" aria-labelledby="navbar-explore">
+	    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Explore <span class="caret"/></a>
+			<ul class="dropdown-menu">
 			    <li><a href="#">Workflows</a></li>
 			    <li><a href="#">Databases</a></li>
 			</ul>
 	    </li>
 	    
-		<li class="dropdown" id="navbar-explore" aria-haspopup="true" aria-expanded="true"><a href="#">Analytics</a>
-			<ul class="dropdown-menu" aria-labelledby="navbar-explore">
+		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Analytics <span class="caret"/></a>
+			<ul class="dropdown-menu">
 				<li><a href="#">External tools</a></li>
 				<li><a href="#">Local services</a></li>
 				<li><a href="#">Tutorials</a></li>
 				<li><a href="#">REST API</a></li>
 			</ul>
 	    </li>
-		<li class="dropdown" id="navbar-explore" aria-haspopup="true" aria-expanded="true"><a href="#">Social</a>
-			<ul class="dropdown-menu" aria-labelledby="navbar-explore">
+		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Social <span class="caret"/></a>
+			<ul class="dropdown-menu">
 				<li><a href="#">Facebook</a></li>
             	<li><a href="#">myExperiment</a></li>
                 <li><a href="#">BitBucket</a></li>
@@ -30,6 +30,16 @@
 
 <style>
 	ul.nav li.dropdown:hover > ul.dropdown-menu {
-	    display: block;    
+	    display: block;
+	    margin-top: 0;
+	}
+
+	ul.nav li.dropdown > ul.dropdown-menu {
+	    margin-top: 0;
+	}
+
+	#navbar{
+		padding-top: 10px;
+		padding-bottom: 10px;
 	}
 </style>
