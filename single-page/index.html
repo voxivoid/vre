@@ -16,16 +16,19 @@
     <body>
         <h1 class="row center-xs">Oil & Gas Virtual Research Environment</h1>
 		<navbar class="row center-xs"></navbar>
-		<carousel></carousel>
-		<quicktools></quicktools>
+        <div ng-view></div>
 
         <script type="text/javascript" src="assets/js/jquery.min.js"></script>
         <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="assets/js/angular.min.js"></script>
+        <script type="text/javascript" src="assets/js/angular-route.min.js"></script>
 
-		<script type="text/javascript" src="app/navbarDirective.js"></script>
-		<script type="text/javascript" src="app/carouselDirective.js"></script>
-        <script type="text/javascript" src="app/quicktoolsDirective.js"></script>
+		<script type="text/javascript" src="app/components/navbarDirective.js"></script>
+        
+        <script type="text/javascript" src="app/components/carouselDirective.js"></script>
+        <script type="text/javascript" src="app/components/quicktoolsDirective.js"></script>  
+        <script type="text/javascript" src="app/routes/homeController.js"></script>
+
         <script type="text/javascript" src="app/app.js"></script>
 
 
