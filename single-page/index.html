@@ -7,29 +7,38 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+				<!-- STYLE -->
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.theme.min.css">
         <link rel="stylesheet" type="text/css" href="assets/css/flexboxgrid.min.css">
-
         <link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">
     </head>
     <body>
-        <h1 class="row center-xs">Oil & Gas Virtual Research Environment</h1>
-		<navbar class="row center-xs"></navbar>
-        <div ng-view></div>
-        <footer></footer>
+				
+				<h1 class="row center-xs">Oil & Gas Virtual Research Environment</h1>
+				
+				<navbar class="row center-xs"></navbar>
+				
+				<div ng-view></div>
+				
+				<footer></footer>
 
+				<!-- SCRIPTS -->
         <script type="text/javascript" src="assets/js/jquery.min.js"></script>
         <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="assets/js/angular.min.js"></script>
         <script type="text/javascript" src="assets/js/angular-route.min.js"></script>
 
-		<script type="text/javascript" src="app/components/navbarDirective.js"></script>
+				<!-- DIRECTIVES -->
+				<script type="text/javascript" src="app/components/navbarDirective.js"></script>
         <script type="text/javascript" src="app/components/footerDirective.js"></script>
-        
-        <script type="text/javascript" src="app/components/carouselDirective.js"></script>
+				<script type="text/javascript" src="app/components/carouselDirective.js"></script>
         <script type="text/javascript" src="app/components/quicktoolsDirective.js"></script>  
-        <script type="text/javascript" src="app/routes/homeController.js"></script>
+				<script type="text/javascript" src="app/components/authDirective.js"></script>
+
+				<!-- CONTROLLERS -->
+				<script type="text/javascript" src="app/routes/homeController.js"></script>
+				<script type="text/javascript" src="app/routes/signinController.js"></script>
 
         <script type="text/javascript" src="app/app.js"></script>
     </body>
