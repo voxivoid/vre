@@ -1,4 +1,4 @@
-angular.module("signin", ["ngRoute"]);
+angular.module("signin", ["ngRoute", "auth"]);
 
 angular.module("signin").config(["$routeProvider", function ($routeProvider) {
 	$routeProvider
