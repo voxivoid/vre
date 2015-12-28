@@ -1,47 +1,73 @@
 <!doctype html>
 <html class="no-js" lang="" ng-app="vre">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Oil and gas VRE</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Oil and gas VRE</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-				<!-- STYLE -->
-        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.theme.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/flexboxgrid.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">
-    </head>
-    <body>
-				
-				<h1 class="row center-xs">Oil & Gas Virtual Research Environment</h1>
-				
-				<navbar class="row center-xs"></navbar>
-				
-				<div ng-view></div>
-				
-				<footer></footer>
+    <!-- STYLE -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.theme.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/flexboxgrid.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">
+</head>
 
-				<!-- SCRIPTS -->
-        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-        <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="assets/js/angular.min.js"></script>
-        <script type="text/javascript" src="assets/js/angular-route.min.js"></script>
+<div class="page-wrap">
+    <h1 class="row center-xs">Oil & Gas Virtual Research Environment</h1>
+    <navbar class="row center-xs"></navbar>
+    <div ng-view></div>
+</div>
+<footer></footer>
 
-				<!-- DIRECTIVES -->
-				<script type="text/javascript" src="app/components/navbarDirective.js"></script>
-        <script type="text/javascript" src="app/components/footerDirective.js"></script>
-				<script type="text/javascript" src="app/components/carouselDirective.js"></script>
-        <script type="text/javascript" src="app/components/quicktoolsDirective.js"></script>  
-				<script type="text/javascript" src="app/components/authDirective.js"></script>
-				<script type="text/javascript" src="app/components/pipelinesDirective.js"></script>
 
-				<!-- CONTROLLERS -->
-				<script type="text/javascript" src="app/routes/homeController.js"></script>
-				<script type="text/javascript" src="app/routes/signinController.js"></script>
-				<script type="text/javascript" src="app/routes/workflowsController.js"></script>
+<!-- SCRIPTS -->
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/angular.min.js"></script>
+<script type="text/javascript" src="assets/js/angular-route.min.js"></script>
 
-        <script type="text/javascript" src="app/app.js"></script>
-    </body>
+<script type="text/javascript" src="app/components/navbarDirective.js"></script>
+<script type="text/javascript" src="app/components/footerDirective.js"></script>
+
+<!-- HOME -->
+<script type="text/javascript" src="app/components/carouselDirective.js"></script>
+<script type="text/javascript" src="app/components/quicktoolsDirective.js"></script>
+<script type="text/javascript" src="app/routes/homeController.js"></script>
+
+<!-- SIGNIN -->
+<script type="text/javascript" src="app/components/authDirective.js"></script>
+<script type="text/javascript" src="app/routes/signinController.js"></script>
+
+<!-- WORKFLOWS -->
+<script type="text/javascript" src="app/components/pipelinesDirective.js"></script>
+<script type="text/javascript" src="app/routes/workflowsController.js"></script>
+
+<script type="text/javascript" src="app/app.js"></script>
+
+<style>
+
+    * {
+        margin: 0;
+    }
+    html, body {
+        height: 100%;
+    }
+    .page-wrap {
+        min-height: 100%;
+        margin-bottom: -150px;
+    }
+    .page-wrap:after {
+        content: "";
+        display: block;
+        height: 150px;
+    }
+
+    .row{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+</style>
+</body>
 </html>
