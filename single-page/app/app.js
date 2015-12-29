@@ -1,4 +1,4 @@
-var app = angular.module("vre", ["ngRoute", "navbar", "footer", "home", "signin", "auth", "workflows", "pipelines", "biosurfpipeline", "biosurf"]);
+var app = angular.module("vre", ["ngRoute", "navbar", "footer", "home", "signin", "auth", "explore", "pipelines", "biosurf", "detail"]);
 
 app.config(["$routeProvider", function ($routeProvider) {
 	$routeProvider
