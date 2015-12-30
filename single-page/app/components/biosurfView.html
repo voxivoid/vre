@@ -1,0 +1,78 @@
+<div id="biosurf">
+
+<div class="container">
+<div class="row">
+<div class="box"><h2>Metagenomics pipelines for dummies</h2>
+<p>(Click on each section to jump to its description)</p>
+</div>
+
+<img src="images/biosurf-pipeline.png" width="690" height="796" border="1" usemap="#map" />
+
+<map name="map">
+<!-- #/workflows/detail/biosurf/#$-:Image map file created by GIMP Image Map plug-in -->
+<!-- #/workflows/detail/biosurf/#$-:GIMP Image Map plug-in by Maurits Rijk -->
+<!-- #/workflows/detail/biosurf/#$-:Please do not edit lines starting with "#$" -->
+<!-- #/workflows/detail/biosurf/#$VERSION:2.3 -->
+<!-- #/workflows/detail/biosurf/#$AUTHOR:Jorge Oliveira -->
+<area shape="rect" coords="254,16,427,71" alt="Go to user input" href="#/workflows/detail/biosurf/#input" />
+<area shape="rect" coords="256,121,427,174" alt="Go to quality control" href="#/workflows/detail/biosurf/#qc" />
+<area shape="rect" coords="471,129,525,145" alt="Go to FastQC Website" href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/" />
+<area shape="rect" coords="471,146,552,163" alt="Go to Fastx Toolkit Website" href="http://hannonlab.cshl.edu/fastx_toolkit/" />
+<area shape="rect" coords="63,246,203,313" alt="Go to Taxonomy and Function" href="#/workflows/detail/biosurf/#tax_func" />
+<area shape="rect" coords="475,248,629,315" alt="Go to ORF Find" href="#/workflows/detail/biosurf/#gene" />
+<area shape="rect" coords="51,376,218,424" alt="Go to Phylogenetic Analysis" href="#/workflows/detail/biosurf/#phylo" />
+<area shape="rect" coords="74,432,204,482" href="http://huttenhower.sph.harvard.edu/metaphlan" />
+<area shape="rect" coords="51,485,217,538" alt="Go to Alignment" href="#/workflows/detail/biosurf/#alignment" />
+<area shape="rect" coords="111,551,154,566" alt="Go to BLAST website" href="http://blast.ncbi.nlm.nih.gov/Blast.cgi" />
+<area shape="rect" coords="112,568,145,582" alt="Go to LAST website" href="http://last.cbrc.jp" />
+<area shape="rect" coords="51,594,218,643" alt="Go to Database" href="#/workflows/detail/biosurf/#database" />
+<area shape="rect" coords="113,657,162,677" alt="Go to RefSeq website" href="http://www.ncbi.nlm.nih.gov/refseq/" />
+<area shape="rect" coords="112,680,186,713" alt="Go to BioSurfDB" href="#/workflows/detail/biosurf/#database" />
+<area shape="rect" coords="467,375,640,424" alt="Go to Assembly" href="#/workflows/detail/biosurf/#assembly" />
+<area shape="rect" coords="501,442,548,456" alt="Go to Velvet website" href="https://www.ebi.ac.uk/~zerbino/velvet/" />
+<area shape="rect" coords="504,458,543,472" alt="Go to MIRA website" href="http://sourceforge.net/p/mira-assembler/wiki/Home/" />
+<area shape="rect" coords="467,487,637,536" alt="Go to ORF Find" href="#/workflows/detail/biosurf/#orf" />
+<area shape="rect" coords="511,553,604,569" alt="Go to MetaGeneMark" href="http://exon.gatech.edu/GeneMark/meta_gmhmmp.cgi" />
+<area shape="rect" coords="512,570,603,584" alt="Go to FragGeneScan" href="http://omics.informatics.indiana.edu/FragGeneScan/" />
+<area shape="rect" coords="257,643,425,693" alt="Go to Post-Processing" href="#/workflows/detail/biosurf/#post" />
+<area shape="rect" coords="316,706,367,719" alt="Go to MEGAN5 website" href="http://ab.inf.uni-tuebingen.de/software/megan5/" />
+<area shape="rect" coords="314,721,388,754" alt="Go to R project webpage" href="http://www.r-project.org" />
+<area shape="rect" coords="316,755,362,770" alt="Go to STAMP website" href="http://kiwi.cs.dal.ca/Software/STAMP" />
+</map>
+<a id=input></a> 
+<h4>User Input:</h4>
+<a id=qc></a>
+<h4>Quality Control:</h4>
+<p> The first big problem to solve in metagenomics data analysis is the quality control. This step is crutial as low-quality reads or contaminations will largely influence the results.</p>
+<a id=tax_func></a>
+<h4>Taxonomy and Function:</h4>
+<a id=phylo></a>
+<h4>Phylogenetic Analysis:</h4>
+ <a id=alignment></a>
+<h4>Alignment:</h4>
+<p>This is the step where basicaly we try to discover what are our sequencies. We try to discover if there is a similar sequence in a public or private, global or custom databse.</p>
+<p>Alignment is often one of the headaches when in comes to process your metagenomes. Both the input data and the databases are growing steadly due to the advances in sequencing. It is crucial to choose the right software or you will be waiting weeks for your results.</p>
+<a id=database></a>
+<h4>Database:</h4>
+<p>Another very important factor is which database to use. Once again if your goal is just to get a taxonomic profile, it might be apropriate (because it is much faster) to just download a 16S database from RefSeq. In fact, many of the sequencing kits used in metagenomics, are 16S targeted, therefore, it does not make sense to use other database in these cases.</p>
+<p>Another option, if you are working with a focus on a specific domain (in biodegradation or surfactant production e.g.) it might be interresting to narrow the search to these sequences, using a custom database, like BioSurfDB, this is also much faster and allows the use of more strict and sensitive parameters in the alignment.</p>
+<a id=gene></a>
+<h4>Gene Find and Caracterization:</h4>
+<p>The second possible objective we are covering is the gene find and caracterization. The main diference in this pipeline is the assembly step, that tries to find contiguous sequences and merge then (into Contigs). These contigs can have thousands of nucleotides and can represent a cds, gene, operon, chromossome, etc.</p>
+<a id=assembly></a>
+<h4>Assembly:</h4>
+<p>After testing several <em>de novo</em> assemblers, we started using MIRA in a regular basis, mainly because it suports and works relatively well in all platforms. Unfortunaly it requires a lot of computational power (Up to 100GBs of RAM and rather 16 or more processing threads).</p>
+<p>If you do not have this computational power, Velvet also works very well in most cases, despite being developed for 454 sequencing.</p>
+<a id=orf></a>
+<h4>ORF Find:</h4>
+<p>Once again the main purpose is to discover what is in our sequences. But here the focus is not exactly measure the abundance, but identify the complete genomic or proteic sequence in order to characterize it. Here the softwares tipicaly try to find open reading frames and compare those frames with a database..</p>
+<a id=post></a>
+<h4>Post-Processing and Visualization:</h4>
+<p>If one wishes to compare a great number of samples, or simply top perform a fast representation of the results, MEGAN is good option. It imports alignment results (in BLAST format), CSV tables, etc., and contains several graphics for taxonomic/functional assays (barplots, clouds, pie, cladograms, rarefaction curves, PCA, clustering), inclusively an option to map the aligned reads to a KEGG, COG or SEED map, allowing an interactive functional study.</p>
+<p>Unfortunally, MEGAN is also very demanding computationally, specially for large datasets, making it dificult to use in a personal computer. The alternative is to use it in a server with display (real, virtual or with forwarding). MEGAN also has a "language" that allows some automation of processing, but might be dificult for begginers.</p>
+<p>Statistics is mandatory for a serious (publishable) study. Therefore, statistical analysis, usually pairwise tests for significant differences are performed. For begginers STAMP might be perfect. It accepts TSV (tab separated values) tables, that can be created in MEGAN or many other softwares, and based on your data, STAMP recommends several statistical tests and creates barplots, error plots, PCA, etc.</p>
+<p>For a larger project envolving many samples, it might be a good investment to learn some R. Its allows the creation of scripts to automate these tests.</p>
+</div> <!-- end of biosurf-->
+
+</div>
+</div>
