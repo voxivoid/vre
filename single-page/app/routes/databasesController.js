@@ -1,4 +1,4 @@
-angular.module("databases", ["ngRoute", "pipelines"]);
+angular.module("databases", ["ngRoute", "bases"]);
 
 angular.module("databases").config(["$routeProvider", function ($routeProvider) {
 	$routeProvider
