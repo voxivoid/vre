@@ -1,4 +1,4 @@
-angular.module("workflows", ["ngRoute", "pipelines"]);
+angular.module("workflows", ["ngRoute", "pipelines", "sidebar"]);
 
 angular.module("workflows").config(["$routeProvider", function ($routeProvider) {
 	$routeProvider
@@ -17,5 +17,7 @@ this.pubflows =
 			author: "Jorge Oliveira",
 			domainspecific: true
    }
-	]
+	];
+
+	this.buttons = ["Add Workflow","My Workflows","My Area", "My Profile"];
 });

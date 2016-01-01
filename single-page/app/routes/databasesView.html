@@ -1,7 +1,13 @@
 <div ng-controller="DatabasesController as base">
-	  <div ng-repeat="pbase in base.pubbases">
+	
+	<sidebar></sidebar>
+
+	<div class="container" style="width: 70%;">
+		<div ng-repeat="pbase in base.pubbases">
 
 			<bases></bases>
 
 		</div>
+	</div>
+
 </div>

@@ -1,4 +1,4 @@
-angular.module("databases", ["ngRoute", "bases"]);
+angular.module("databases", ["ngRoute", "bases", "sidebar"]);
 
 angular.module("databases").config(["$routeProvider", function ($routeProvider) {
 	$routeProvider
@@ -6,6 +6,7 @@ angular.module("databases").config(["$routeProvider", function ($routeProvider) 
 }]);
 
 angular.module("databases").controller("DatabasesController", function(){
+	this.buttons = ["Add Database","My Databases","My Area", "My Profile"];
 this.pubbases =
  [
 	{

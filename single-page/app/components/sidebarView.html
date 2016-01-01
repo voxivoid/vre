@@ -1,0 +1,46 @@
+<div id="sidebar" class="nav nav-stacked col-md-1" >
+
+	<div class="col-md-1"></div>
+	<div class="box center col-md-1">
+			
+
+		<h3>Tools</h3>
+
+		<div class="btn-group-vertical" role="" aria-label="">
+			<button type="button" class="btn btn-primary">{{base.buttons[0]}}{{flow.buttons[0]}}</button>
+			<button type="button" class="btn btn-success">{{base.buttons[1]}}{{flow.buttons[1]}}</button>
+
+			<div class="btn-group" role="group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Other
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">{{base.buttons[2]}}{{flow.buttons[2]}}</a></li>
+					<li><a href="#">{{base.buttons[3]}}{{flow.buttons[3]}}</a></li>
+				</ul>
+		
+			</div>
+	
+		</div> 
+
+
+	</div><!-- box -->
+
+</div>
+
+<script>
+$('#sidebar').affix({
+      offset: {
+        top: 245
+      }
+});
+
+var $body   = $(document.body);
+var navHeight = $('.navbar').outerHeight(true) + 10;
+
+$body.scrollspy({
+	target: '#leftCol',
+	offset: navHeight
+});
+</script>

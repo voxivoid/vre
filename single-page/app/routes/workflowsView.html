@@ -1,6 +1,13 @@
 <div ng-controller="WorkflowsController as flow">
-	<div ng-repeat="pflow in flow.pubflows">
-		<pipelines></pipelines>
-	</div>
-</div>
 
+  <sidebar></sidebar>
+
+	<div class="container" style="width: 70%;">
+		<div ng-repeat="pflow in flow.pubflows">
+
+      <pipelines></pipelines>
+
+		</div>
+	</div>
+
+</div>
