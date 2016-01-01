@@ -5,6 +5,17 @@ angular.module("workflows").config(["$routeProvider", function ($routeProvider) 
 		.when("/workflows", {templateUrl: "app/routes/workflowsView.html", controller: "WorkflowsController"});
 }]);
 
-angular.module("workflows").controller("WorkflowsController", ["$scope", function($scope){
-
-}]);
+angular.module("workflows").controller("WorkflowsController", function(){
+this.pubflows =
+  [
+   {
+			name: "BioSurfDB",
+			description: "A curated relational information system currently integrating 9378 Organism to Pathway networks, 47 documented bioremediation experiments and a 96 biosurfactants curated list.",
+			link: "#/workflows/detail/biosurf",
+			website: "//biosurfdb.org",
+			image: "images/workflows/biosurf-pipeline.png",
+			author: "Jorge Oliveira",
+			domainspecific: true
+   }
+	]
+});
