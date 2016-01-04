@@ -15,6 +15,13 @@ this.pubflows =
 			website: "//biosurfdb.org",
 			image: "images/workflows/biosurf-pipeline.png",
 			author: "Jorge Oliveira",
+			reviews: [
+ {
+	stars: 5,
+  body: "I have used a similar pipeline, it is simple and gives decent informatiton regarding your dataset",
+	author: "jso@kdbio.inesc-id.pt"
+ }
+ ],
 			domainspecific: true
    }
 	];

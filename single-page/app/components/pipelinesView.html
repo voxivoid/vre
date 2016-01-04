@@ -1,17 +1,62 @@
 <div id="pipelines">
 
 <div class="row" >
+	
+	
+	<div class="col-md-4">
+		<a href="{{pflow.website}}"><img class="img-responsive" ng-src="{{pflow.image}}" alt="" ></a>
+	</div> <!-- col -->
 
-				<div class="col-md-5">
-					<a href="{{pflow.website}}"><img class="img-responsive" src="{{pflow.image}}" alt="" ></a>
-				</div> <!-- col -->
-				<div class="col-md-1"></div>
-				<div class="col-md-5">
-					<h3> {{pflow.name}} </h3>
-					<p><strong><em>Author: {{pflow.author}}</em></strong></p>
-					<p> {{pflow.description}} </p>
-					<a href="{{pflow.link}}" class="btn btn-default" role="button"> View Workflow </a>
-					<a class="btn btn-primary" href="{{pflow.website}}">View Website <span class="glyphicon glyphicon-chevron-right"></span></a>
+	<div class="col-md-1"></div>
+
+	<div class="col-md-6">
+				<h3> {{pflow.name}} </h3>
+				<p><strong><em>Author: {{pflow.author}}</em></strong></p>
+				</br>
+					<section ng-init="tab = 1 ">
+						<ul class="nav nav-pills">
+							<li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1">Description</a></li>
+							<li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">View Reviews</a></li>
+							<li ng-class="{ active:tab === 3 }"><a href ng-click="tab = 3">Add Reviews</a></li>
+							<li ng-class="{ active:tab === 4 }"><a href="{{pflow.link}}">Detail</a></li>
+						</ul>
+						</section>
+						</br>
+					<div class="panel" ng-show="tab == 1">
+	          <p> {{pflow.description}} </p>
+					</div>
+					<div class="panel" ng-show="tab == 2">
+						<div ng-repeat="review in pflow.reviews">
+							<blockquote>
+							<b> {{review.stars}} Stars</b>
+							<p>{{review.body}}</p>
+							<cite>{{review.author}}</cite>
+							</blockquote>
+						</div>
+					</div>
+					<div class="panel" ng-show="tab == 3">
+            <h4> Add a Review </h4>
+							<form role="form" name="reviewForm">
+								<div class="form-group">
+								<select width="20px" required>
+									<option value="5">5 star</option>
+									<option value="4">4 star</option>
+									<option value="3">3 star</option>
+									<option value="2">2 star</option>
+									<option value="1">1 star</option>
+								</select>
+								</div>
+								<div class="form-group">
+									<textarea required></textarea>
+								</div>
+								<div class="form-group">
+									<input type="email" type="email" required />
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">Submit Review</button>
+								</div>
+							</form>						
+          </div>
 				</div> <!-- col -->
 			</div> <!-- row .-->
 			</br>
@@ -19,3 +64,20 @@
 			<hr>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
