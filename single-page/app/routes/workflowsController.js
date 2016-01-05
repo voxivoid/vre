@@ -5,6 +5,17 @@ angular.module("workflows").config(["$routeProvider", function ($routeProvider) 
 		.when("/workflows", {templateUrl: "app/routes/workflowsView.html", controller: "WorkflowsController"});
 }]);
 
+angular.module("workflows").controller("ReviewController", function(){
+
+    this.review = {};
+
+    this.addReview = function(pflow){
+      pflow.reviews.push(this.review);
+      this.review = {};
+    };
+
+  });
+
 angular.module("workflows").controller("WorkflowsController", function(){
 this.pubflows =
   [
