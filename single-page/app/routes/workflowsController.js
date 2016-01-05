@@ -16,26 +16,14 @@ angular.module("workflows").controller("ReviewController", function(){
 
   });
 
-angular.module("workflows").controller("WorkflowsController", function(){
-this.pubflows =
-  [
-   {
-			name: "BioSurfDB",
-			description: "A curated relational information system currently integrating 9378 Organism to Pathway networks, 47 documented bioremediation experiments and a 96 biosurfactants curated list.",
-			link: "#/workflows/detail/biosurf",
-			website: "//biosurfdb.org",
-			image: "images/workflows/biosurf-pipeline.png",
-			author: "Jorge Oliveira",
-			reviews: [
- {
-	stars: 5,
-  body: "I have used a similar pipeline, it is simple and gives decent informatiton regarding your dataset",
-	author: "jso@kdbio.inesc-id.pt"
- }
- ],
-			domainspecific: true
-   }
-	];
+angular.module("workflows").controller("WorkflowsController", ['$http', function($http){
+	var workflows = this;
+
+	workflows.pubflows = [ ];
+
+	$http.get('app/json/pubflows.json').success(function(data){
+		workflows.pubflows = data;
+	});
 
 	this.buttons = ["Add Workflow","My Workflows","My Area", "My Profile"];
-});
+}]);
