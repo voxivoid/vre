@@ -5,6 +5,18 @@ angular.module("databases").config(["$routeProvider", function ($routeProvider) 
 		.when("/databases", {templateUrl: "app/routes/databasesView.html", controller: "DatabasesController"});
 }]);
 
+angular.module("databases").controller("ReviewController", function(){
+
+    this.review = {};
+
+    this.addReview = function(pbase){
+      pbase.reviews.push(this.review);
+      this.review = {};
+    };
+
+  });
+
+
 angular.module("databases").controller("DatabasesController", ['$http', function($http){
 
 	var databases = this;
