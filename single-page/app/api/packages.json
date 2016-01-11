@@ -1,0 +1,11 @@
+{
+  "name": "vre-api",
+  "version": "0.0.1",
+	"dependencies": {
+		"express": "^4.13.3",
+		"body-parser": "^1.14.2",
+		"compression": "^1.6.0",
+		"helmet": "^1.0.2",
+		"logger": "^0.0.1"
+	}
+}
