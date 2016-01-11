@@ -1,4 +1,4 @@
-var mongo = require('mongodb');
+/*var mongo = require('mongodb');
 
 var Server = mongo.Server,
     Db = mongo.Db,
@@ -15,21 +15,21 @@ db.open(function(err, db) {
                 console.log("Cannot access to 'pubflows' collection:");
 								console.log(err);
             }
-        });*/
+        });
     }
 });
-
-exports.findById = function(req, res) {
+*/
+exports.findByIdPubflow = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving pflow: ' + id);
     db.collection('pubflows', function(err, collection) {
-        collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
+        collection.findOne({'_id':new require('mongodb').ObjectID(req.params.id)}, function(err, item) {
             res.send(item);
         });
     });
 };
 
-exports.findAll = function(req, res) {
+exports.findAllPubflow = function(req, res) {
     db.collection('pubflows', function(err, collection) {
         collection.find().toArray(function(err, items) {
             res.send(items);
@@ -37,7 +37,7 @@ exports.findAll = function(req, res) {
     });
 };
 
-exports.addworkflow = function(req, res) {
+exports.addPubflow = function(req, res) {
     var pflow = req.body;
     console.log('Adding workflow: ' + JSON.stringify(pflow));
     db.collection('pubflows', function(err, collection) {
@@ -52,13 +52,13 @@ exports.addworkflow = function(req, res) {
     });
 }
 
-exports.updateworkflow = function(req, res) {
+exports.updatePubflow = function(req, res) {
     var id = req.params.id;
     var pflow = req.body;
     console.log('Updating workflow: ' + id);
     console.log(JSON.stringify(pflow));
     db.collection('pubflows', function(err, collection) {
-        collection.update({'_id':new BSON.ObjectID(id)}, pflow, {safe:true}, function(err, result) {
+        collection.update({'_id':new require('mongodb').ObjectID(req.params.id)}, pflow, {safe:true}, function(err, result) {
             if (err) {
                 console.log('Error updating workflow: ' + err);
                 res.send({'error':'An error has occurred'});
@@ -70,11 +70,11 @@ exports.updateworkflow = function(req, res) {
     });
 }
 
-exports.deleteworkflow = function(req, res) {
+exports.deletePubflow = function(req, res) {
     var id = req.params.id;
     console.log('Deleting workflow: ' + id);
     db.collection('pubflows', function(err, collection) {
-        collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
+        collection.remove({'_id':new require('mongodb').ObjectID(req.params.id)}, {safe:true}, function(err, result) {
             if (err) {
                 res.send({'error':'An error has occurred - ' + err});
             } else {

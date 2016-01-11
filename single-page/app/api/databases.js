@@ -1,4 +1,4 @@
-var mongo = require('mongodb');
+/*var mongo = require('mongodb');
 
 var Server = mongo.Server,
     Db = mongo.Db,
@@ -18,8 +18,8 @@ db.open(function(err, db) {
         });
     }
 });
-
-exports.findById = function(req, res) {
+*/
+exports.findByIdPubbase = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving pflow: ' + id);
     db.collection('pubbases', function(err, collection) {
@@ -29,7 +29,7 @@ exports.findById = function(req, res) {
     });
 };
 
-exports.findAll = function(req, res) {
+exports.findAllPubbase = function(req, res) {
     db.collection('pubbases', function(err, collection) {
         collection.find().toArray(function(err, items) {
             res.send(items);
