@@ -32,6 +32,7 @@ exports.findByIdPubflow = function(req, res) {
 exports.findAllPubflow = function(req, res) {
     db.collection('pubflows', function(err, collection) {
         collection.find().toArray(function(err, items) {
+						//res.header('Access-Control-Allow-Origin', "*");
             res.send(items);
         });
     });

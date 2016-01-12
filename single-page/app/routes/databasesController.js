@@ -25,7 +25,7 @@ angular.module("databases").controller("DatabasesController", ['$http', function
 	
 	databases.pubbases = [ ];
 
-	$http.get('app/json/pubbases.json').success(function(data){
+	$http.get('//aleph.inesc-id.pt:5000/databases').success(function(data){
 		databases.pubbases = data;
 		});
 

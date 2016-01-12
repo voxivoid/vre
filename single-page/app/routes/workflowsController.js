@@ -5,6 +5,7 @@ angular.module("workflows").config(["$routeProvider", function ($routeProvider) 
 		.when("/workflows", {templateUrl: "app/routes/workflowsView.html", controller: "WorkflowsController"});
 }]);
 
+
 angular.module("workflows").controller("ReviewController", function(){
 
     this.review = {};
@@ -21,7 +22,7 @@ angular.module("workflows").controller("WorkflowsController", ['$http', function
 
 	workflows.pubflows = [ ];
 
-	$http.get('app/json/pubflows.json').success(function(data){
+	$http.get('//aleph.inesc-id.pt\:5000/workflows').success(function(data){
 		workflows.pubflows = data;
 	});
 
