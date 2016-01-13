@@ -2,7 +2,7 @@ angular.module("databases", ["ngRoute", "bases", "sidebar"]);
 
 angular.module("databases").config(["$routeProvider", function ($routeProvider) {
 	$routeProvider
-		.when("/databases", {templateUrl: "app/routes/databasesView.html", controller: "DatabasesController"});
+		.when("/databases", {templateUrl: "app/routes/databases-view.html", controller: "DatabasesController"});
 }]);
 
 angular.module("databases").controller("ReviewController", function(){

@@ -4,7 +4,7 @@
 	app.directive("footer", function(){
 		return {
 			restrict: "E",
-			templateUrl: "app/components/footerView.html"
+			templateUrl: "app/components/footer-view.html"
 		};
 	});
 })();

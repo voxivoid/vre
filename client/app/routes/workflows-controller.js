@@ -2,7 +2,7 @@ angular.module("workflows", ["ngRoute", "pipelines", "sidebar"]);
 
 angular.module("workflows").config(["$routeProvider", function ($routeProvider) {
 	$routeProvider
-		.when("/workflows", {templateUrl: "app/routes/workflowsView.html", controller: "WorkflowsController"});
+		.when("/workflows", {templateUrl: "app/routes/workflows-view.html", controller: "WorkflowsController"});
 }]);
 
 
