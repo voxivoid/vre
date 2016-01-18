@@ -1,5 +1,12 @@
 "use strict";
 
+Promise = require("bluebird");
+
+Promise.config({
+    warnings: false,
+    longStackTraces: false
+});
+
 var express = require("express");
 var mongoose = require("mongoose");
 
