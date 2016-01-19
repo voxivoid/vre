@@ -2,10 +2,13 @@
   "name": "vre-api",
   "version": "0.0.1",
   "dependencies": {
+    "bluebird": "^3.1.1",
     "body-parser": "^1.14.2",
     "compression": "^1.6.0",
     "express": "^4.13.3",
+    "express-joi-validator": "^2.0.0",
     "helmet": "^1.0.2",
+    "joi": "^7.2.1",
     "logger": "^0.0.1",
     "mongodb": "^2.1.4",
     "mongoose": "^4.3.5",
