@@ -8,7 +8,8 @@ var schema = new Schema({
     acronym: String,
     name: String,
     description: String,
-    url: String,
+    website: String,
+		image: String,
     author: String,
     domainSpecific: Boolean,
     reviews: [{type: ObjectId, ref: "Review"}]

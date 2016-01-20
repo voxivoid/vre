@@ -7,8 +7,8 @@
 		<h3>Tools</h3>
 
 		<div class="btn-group-vertical" role="" aria-label="">
-			<button type="button" class="btn btn-primary">{{base.buttons[0]}}{{flow.buttons[0]}}</button>
-			<button type="button" class="btn btn-success">{{base.buttons[1]}}{{flow.buttons[1]}}</button>
+			<a ng-href="{{flow.links[0]}}" class="btn btn-primary" role="button">{{base.buttons[0]}}{{flow.buttons[0]}}</a>
+			<a ng-href="{{flow.links[1]}}" class="btn btn-success" role="button">{{base.buttons[1]}}{{flow.buttons[1]}}</a>
 
 			<div class="btn-group" role="group">
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -16,8 +16,8 @@
 					<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
-					<li><a href="#">{{base.buttons[2]}}{{flow.buttons[2]}}</a></li>
-					<li><a href="#">{{base.buttons[3]}}{{flow.buttons[3]}}</a></li>
+					<li><a ng-href="{{flow.links[2]}}">{{base.buttons[2]}}{{flow.buttons[2]}}</a></li>
+					<li><a ng-href="{{flow.links[3]}}">{{base.buttons[3]}}{{flow.buttons[3]}}</a></li>
 				</ul>
 		
 			</div>

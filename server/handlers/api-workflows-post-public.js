@@ -6,11 +6,12 @@ var handlers = module.exports = [];
 
 handlers.push(validate({
     body: {
-        name: joi.string().required(),
-        description: joi.string().required(),
-        image: joi.string().uri().required(),
-        url: joi.string().uri().required(),
-        author: joi.string(),
+        name:						joi.string().required(),
+        description:		joi.string().required(),
+				link:						joi.string().uri().required(),
+				website:				joi.string().uri().required(),
+        image:					joi.string().uri().required(),
+        author:					joi.string(),
         domainSpecific: joi.boolean().default(false)
     }
 }));

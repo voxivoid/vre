@@ -27,4 +27,5 @@ angular.module("workflows").controller("WorkflowsController", ['$http', function
 	});
 
 	this.buttons = ["Add Workflow","My Workflows","My Area", "My Profile"];
+	this.links = ["#/newworkflow","#","#","#"];
 }]);
