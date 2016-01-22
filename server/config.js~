@@ -1,0 +1,7 @@
+module.exports = {
+	address: "aleph.inesc-id.pt",
+        port: 5000,
+  db: {
+    development: "mongodb://daleth.inesc-id.pt/vre"
+  }
+};

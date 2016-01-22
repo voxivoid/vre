@@ -4,7 +4,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var schema = new Schema({
-    starts: String,
+    stars: String,
     body: String,
     author: String
 });
