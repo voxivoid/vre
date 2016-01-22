@@ -11,6 +11,8 @@ handlers.push(function(req, res, next) {
                 workflow = workflow.toObject();
                 return workflow;
             });
+
+            res.send({workflows});
         }).catch(next);
 });
 
