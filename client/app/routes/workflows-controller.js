@@ -27,16 +27,6 @@ angular.module("workflows").controller("WorkflowsController", ['$http', function
 		workflows.pubflows = data;
 	});
 
-	this.addFlow = function(pflow){
-		$http.post('//aleph.inesc-id.pt\:5000/workflows', pflow)
-			.success(function() {
-				console.log('Successfuly posted new workflow!');
-			})
-			.error(function(){
-				console.log("Error:" + error);
-			});
-		};
-
 	this.buttons = ["Add Workflow","My Workflows","My Area", "My Profile"];
 	this.links = ["#/newworkflow","#","#","#"];
 }]);

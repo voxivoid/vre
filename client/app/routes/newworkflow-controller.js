@@ -5,10 +5,16 @@ angular.module("newworkflow").config(["$routeProvider", function ($routeProvider
 		.when("/newworkflow", {templateUrl: "app/routes/newworkflow-view.html", controller: "NewworkflowController"});
 }]);
 
-angular.module("newworkflow").controller("NewworkflowController", ["$scope", function($scope){
-	this.addReview = function(pflow){
-		pflow.reviews.push(this.review);
-		this.review = {};
+angular.module("newworkflow").controller("NewworkflowController", ["$http", function($http){
+
+	this.addFlow = function(pflow){
+		$http.post('//aleph.inesc-id.pt\:5000/workflows', pflow)
+			.success(function() {
+				console.log('Successfuly posted new workflow!');
+			})
+			.error(function(){
+				console.log("Error:" + error);
+			});
 	};
 
 }]);
