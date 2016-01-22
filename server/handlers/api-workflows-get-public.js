@@ -6,13 +6,13 @@ handlers.push(function(req, res, next) {
     var Workflow = req.app.db.models.Workflow;
 
     Promise.all(Workflow.find())
-        .then(function (workflows) {
+        .then(function(workflows){
             workflows = workflows.map(function (workflow) {
                 workflow = workflow.toObject();
                 return workflow;
             });
 
-            res.send({success: workflows});
+            res.send({workflows});
         }).catch(next);
 });
 
