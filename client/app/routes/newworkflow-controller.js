@@ -6,6 +6,10 @@ angular.module("newworkflow").config(["$routeProvider", function ($routeProvider
 }]);
 
 angular.module("newworkflow").controller("NewworkflowController", ["$scope", function($scope){
+	this.addReview = function(pflow){
+		pflow.reviews.push(this.review);
+		this.review = {};
+	};
 
 }]);
 

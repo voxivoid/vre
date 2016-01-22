@@ -1,5 +1,5 @@
 <div id="addworkflow">
-    <form name="newflowForm" ng-controller="NewworkflowController as newflowCtrl" ng-submit="newflowForm.$valid && newflowCtrl.addflow(pflow)" >
+    <form name="newflowForm" ng-controller="WorkflowsController as flowCtrl" ng-submit="newflowForm.$valid && flowCtrl.addFlow(pflow)" >
         <!--<blockquote >
             <strong>{{reviewCtrl.review.stars}} Stars</strong>
             {{reviewCtrl.review.body}}
@@ -18,31 +18,31 @@
         <!--  Review Form -->
         <h4>Create a new workflow</h4>
         <fieldset class="form-group">
-            <textarea ng-model="newflowCtrl.pubflow.name" class="form-control" placeholder="Workflow Name" title="Name" required></textarea>
+            <textarea ng-model="flowCtrl.pflow.name" class="form-control" placeholder="Workflow Name" title="Name" required></textarea>
         </fieldset>
         <fieldset class="form-group">
-            <textarea ng-model="newflowCtrl.pubflow.description" class="form-control" placeholder="Description" title="Description" required></textarea>
+            <textarea ng-model="flowCtrl.pflow.description" class="form-control" placeholder="Description" title="Description" required></textarea>
         </fieldset>
         <fieldset class="form-group">
-            <textarea ng-model="newflowCtrl.pubflow.link" class="form-control" placeholder="Internal link" title="Website" required></textarea>
+            <textarea ng-model="flowCtrl.pflow.link" class="form-control" placeholder="Internal link" title="Website" required></textarea>
         </fieldset>
         <fieldset class="form-group">
-            <textarea ng-model="newflowCtrl.pubflow.website" class="form-control" placeholder="Website link" title="Website" required></textarea>
+            <textarea ng-model="flowCtrl.pflow.website" class="form-control" placeholder="Website link" title="Website" required></textarea>
         </fieldset>
         <fieldset class="form-group">
-            <textarea ng-model="newflowCtrl.pubflow.image" class="form-control" placeholder="Image link" title="Image" required></textarea>
+            <textarea ng-model="flowCtrl.pflow.image" class="form-control" placeholder="Image link" title="Image" required></textarea>
         </fieldset>
         <fieldset class="form-group">
-            <input ng-model="newflowCtrl.pubflow.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
+            <input ng-model="flowCtrl.pflow.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
         </fieldset>
         <fieldset class="form-group">Domain Specific
             <br>
             <label>
-                <input ng-model="newflowCtrl.pubflow.domainSpecific" type="radio" value="true" class="form-control" title="Domain Specific" required/>
+                <input ng-model="flowCtrl.pflow.domainSpecific" type="radio" value="true" class="form-control" title="Domain Specific" required/>
                 Yes
             </label>
             <label>
-                <input ng-model="newflowCtrl.pubflow.domainSpecific" type="radio" value="false" class="form-control" title="Domain Specific" required/>
+                <input ng-model="flowCtrl.pflow.domainSpecific" type="radio" value="false" class="form-control" title="Domain Specific" required/>
                 No
             </label>
         </fieldset>

@@ -18,6 +18,7 @@ angular.module("workflows").controller("ReviewController", function(){
   });
 
 angular.module("workflows").controller("WorkflowsController", ['$http', function($http){
+
 	var workflows = this;
 
 	workflows.pubflows = [ ];
@@ -25,6 +26,10 @@ angular.module("workflows").controller("WorkflowsController", ['$http', function
 	$http.get('//aleph.inesc-id.pt\:5000/workflows').success(function(data){
 		workflows.pubflows = data;
 	});
+
+	this.addFlow = function(pflow){
+		$http.post('//aleph.inesc-id.pt\:5000/workflows', pflow);
+	};
 
 	this.buttons = ["Add Workflow","My Workflows","My Area", "My Profile"];
 	this.links = ["#/newworkflow","#","#","#"];
