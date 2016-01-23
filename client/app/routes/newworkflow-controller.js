@@ -7,7 +7,7 @@ angular.module("newworkflow").config(["$routeProvider", function ($routeProvider
 
 angular.module("newworkflow").controller("NewworkflowController", ["$http", function($http){
 
-	this.addFlow = function(pflow){
+	this.addFlow = function(){
 		$http.post('//aleph.inesc-id.pt\:5000/workflows', pflow)
 			.success(function() {
 				console.log('Successfuly posted new workflow!');
