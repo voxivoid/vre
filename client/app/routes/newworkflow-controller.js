@@ -9,7 +9,7 @@ angular.module("newworkflow").controller("NewworkflowController", ["$http", func
 
 	$scope.addFlow = function(){
 		$http.post('//aleph.inesc-id.pt\:5000/workflows', $scope.nflow)
-			.success(function($scope.nflow) {
+			.success(function() {
 				console.log('Successfuly posted new workflow: ' + $scope.nflow);
 			})
 			.error(function(){
