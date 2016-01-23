@@ -5,13 +5,13 @@ angular.module("newworkflow").config(["$routeProvider", function ($routeProvider
 		.when("/newworkflow", {templateUrl: "app/routes/newworkflow-view.html", controller: "NewworkflowController"});
 }]);
 
-angular.module("newworkflow").controller("NewworkflowController", ["$http", function($http){
+angular.module("newworkflow").controller("NewworkflowController", ["$http", "$location", function($http, $location){
 
     this.nflow = {};
 
 	this.addFlow = function(){
 		$http.post('//aleph.inesc-id.pt\:5000/workflows', this.nflow)
-			.success(function() {
+			.success(function(this.nflow, status) {
 				console.log('Successfuly posted new workflow: ' + this.nflow);
                 $location.path('/#workflows')
 			})
