@@ -9,13 +9,13 @@ angular.module("newworkflow").controller("NewworkflowController", ["$http", func
 
     $scope.nflow = {};
 
-	$scope.addFlow = function(){
-		$http.post('//aleph.inesc-id.pt\:5000/workflows', $scope.nflow)
+	$scope.addFlow = function(nflow){
+		$http.post('//aleph.inesc-id.pt\:5000/workflows', nflow)
 			.success(function() {
-				console.log('Successfuly posted new workflow: ' + $scope.nflow);
+				console.log('Successfuly posted new workflow: ' + nflow);
 			})
 			.error(function(){
-				console.log("Could not insert: " + $scope.nflow);
+				console.log("Could not insert: " + nflow);
 			});
 
         $scope.nflow = {};
