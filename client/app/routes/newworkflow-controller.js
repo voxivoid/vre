@@ -22,5 +22,5 @@ angular.module("newworkflow").controller("NewworkflowController", ["$http", func
 
 	};
 
-}]);
+]);
 
