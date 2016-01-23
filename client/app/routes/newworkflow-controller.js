@@ -10,13 +10,18 @@ angular.module("newworkflow").controller("NewworkflowController", ["$http", "$lo
     this.nflow = {};
 
 	this.addFlow = function(){
-		$http.post('//aleph.inesc-id.pt\:5000/workflows', this.nflow)
-			.success(function(this.nflow, status) {
-				console.log('Successfuly posted new workflow: ' + this.nflow);
+        var data = $.param({
+            json: JSON.stringify({
+                this.nflow
+            })
+        });
+		$http.post('//aleph.inesc-id.pt\:5000/workflows', data)
+			.success(function(data, status) {
+				console.log('Successfuly posted new workflow: ' + data;
                 $location.path('/#workflows')
 			})
-			.error(function(){
-				console.log("Could not insert: " + this.nflow);
+			.error(function(data, status){
+				console.log("Could not insert: " + data);
 			});
 
         this.nflow = {};
