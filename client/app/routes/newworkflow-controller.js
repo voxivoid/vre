@@ -5,19 +5,19 @@ angular.module("newworkflow").config(["$routeProvider", function ($routeProvider
 		.when("/newworkflow", {templateUrl: "app/routes/newworkflow-view.html", controller: "NewworkflowController"});
 }]);
 
-angular.module("newworkflow").controller("NewworkflowController", ["$http", function($http){
+angular.module("newworkflow").controller("NewworkflowController", ["$http", function($http, $scope){
 
-	this.addFlow = function(){
-		$http.post('//aleph.inesc-id.pt\:5000/workflows', this.nflow)
-			.success(function(this.nflow) {
-				console.log('Successfuly posted new workflow: ' + this.nflow);
+	$scope.addFlow = function(){
+		$http.post('//aleph.inesc-id.pt\:5000/workflows', $scope.nflow)
+			.success(function($scope.nflow) {
+				console.log('Successfuly posted new workflow: ' + $scope.nflow);
 			})
 			.error(function(){
-				console.log("Could not insert: " + this.nflow);
+				console.log("Could not insert: " + $scope.nflow);
 			});
 	};
 
-	this.nflow = {};
+	$scope.nflow = {};
 
 }]);
 
