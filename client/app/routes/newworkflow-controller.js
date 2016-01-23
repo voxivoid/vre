@@ -22,7 +22,7 @@ angular.module("newworkflow").controller("NewworkflowController", ["$http", "$lo
         });
 		$http.post('//aleph.inesc-id.pt\:5000/workflows', data)
 			.success(function(data, status) {
-				console.log('Successfuly posted new workflow: ' + data;
+				console.log('Successfuly posted new workflow: ' + data);
                 $location.path('/#workflows')
 			})
 			.error(function(data, status){
