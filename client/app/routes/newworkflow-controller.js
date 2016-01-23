@@ -13,7 +13,7 @@ angular.module("newworkflow").controller("NewworkflowController", ["$http", func
 				console.log('Successfuly posted new workflow!');
 			})
 			.error(function(){
-				console.log("A misterious error occurred...");
+				console.log("Could not insert: " + pflow);
 			});
 	};
 
