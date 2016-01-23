@@ -13,7 +13,7 @@ angular.module("newworkflow").controller("NewworkflowController", ["$http", func
     $http.post('//aleph.inesc-id.pt\:5000/workflows', this.nflow)
         .success(function () {
             console.log('Successfuly posted new workflow');
-            location.path = '/#workflows';
+            window.location = '#/workflows';
         })
         .error(function () {
             console.log("Error: Could not insert");
