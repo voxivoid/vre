@@ -7,15 +7,19 @@ angular.module("newworkflow").config(["$routeProvider", function ($routeProvider
 
 angular.module("newworkflow").controller("NewworkflowController", ["$http", "$window", "$scope", function($http, $window, $scope){
 
-	$scope.addFlow = function(nflow){
-		$http.post('//aleph.inesc-id.pt\:5000/workflows', nflow)
+    $scope.nflow = {};
+
+	$scope.addFlow = function(){
+		$http.post('//aleph.inesc-id.pt\:5000/workflows', $scope.nflow)
 			.success(function() {
-				console.log('Successfuly posted new workflow: ' + nflow);
+				console.log('Successfuly posted new workflow: ' + $scope.nflow);
                 $window.location.href = '#/workflows';
 			})
 			.error(function(){
-				console.log("Could not insert: " + nflow);
+				console.log("Could not insert: " + $scope.nflow);
 			});
+
+        $scope.nflow = {};
 
 	};
 
