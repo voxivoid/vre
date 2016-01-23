@@ -1,4 +1,4 @@
-angular.module("newworkflow", ["ngRoute", "addworkflow", "sidebar"]);
+angular.module("newworkflow", ["ngRoute", "addworkflow", "sidebar", "location"]);
 
 angular.module("newworkflow").config(["$routeProvider", function ($routeProvider) {
 	$routeProvider
@@ -12,7 +12,12 @@ angular.module("newworkflow").controller("NewworkflowController", ["$http", "$lo
 	this.addFlow = function(){
         var data = $.param({
             json: JSON.stringify({
-                this.nflow
+                name: this.nflow.name,
+                description: this.nflow.description,
+                website: this.nflow.website,
+                image: this.nflow.image,
+                author: this.nflow.author,
+                domainSpecific: this.nflow.domainSpecific
             })
         });
 		$http.post('//aleph.inesc-id.pt\:5000/workflows', data)
