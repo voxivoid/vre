@@ -1,11 +1,11 @@
-angular.module("newworkflow", ["ngRoute", "addworkflow", "sidebar", "location"]);
+angular.module("newworkflow", ["ngRoute", "addworkflow", "sidebar", "locationProvider"]);
 
 angular.module("newworkflow").config(["$routeProvider", function ($routeProvider) {
 	$routeProvider
 		.when("/newworkflow", {templateUrl: "app/routes/newworkflow-view.html", controller: "NewworkflowController"});
 }]);
 
-angular.module("newworkflow").controller("NewworkflowController", ["$http", "$location", function($http, $location){
+angular.module("newworkflow").controller("NewworkflowController", ["$http", "$locationProvider", function($http, $locationProvider){
 
     this.nflow = {};
 
