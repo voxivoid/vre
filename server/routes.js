@@ -12,8 +12,10 @@ module.exports = function (app) {
 
 	app.get('/workflows', handlers["api-workflows-get-public"]);
 	app.post('/workflows', handlers["api-workflows-post-public"]);
-	/*app.get('/workflows/:id', handlers["api-workflows-get-public-id"]);
-	app.put('/workflows/:id', handlers["api-workflows-put"]);
-	app.delete('/workflows/:id', handlers["api-workflows-delete"]);*/
+	app.get('/workflows/:id', handlers["api-workflows-get-public-id"]);
+	/*app.put('/workflows/:id', handlers["api-workflows-put"]);
+	app.delete('/workflows/:id', handlers["api-workflows-delete"]);
+
+	app.post('/workflows/reviews/:id', handlers["api-workflows-reviews-post-public"]);*/
 
 }
