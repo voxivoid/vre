@@ -6,7 +6,7 @@ handlers.push(function(req, res, next) {
 
     var Workflow = req.app.db.models.Workflow;
 
-    var id = Workflow.objectId(req.params.id);
+    var id = Workflow.ObjectId(req.params.id);
 
     console.log('Trying to get ' + id );
 
