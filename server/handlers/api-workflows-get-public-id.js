@@ -8,7 +8,7 @@ handlers.push(function(req, res, next) {
 
     var id = req.params.id;
 
-    console.log('Trying to get workflow with id ' + id );
+    console.log('\n\nTrying to get workflow with id ' + id );
 
     Promise.all(Workflow.findById(id))
         .then(function(workflows){
