@@ -4,7 +4,8 @@ Promise = require("bluebird");
 
 Promise.config({
     warnings: false,
-    longStackTraces: false
+    longStackTraces: false,
+    multiArgs: true
 });
 
 var express = require("express");
