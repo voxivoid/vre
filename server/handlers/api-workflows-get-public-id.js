@@ -5,7 +5,7 @@ var handlers = module.exports = [];
 handlers.push(function(req, res, next) {
     var Workflow = req.app.db.models.Workflow;
 
-    var id = new ObjectId(req.params.id);
+    var id = new req.params.id;
 
     console.log('Trying to get ' + id );
 
