@@ -6,7 +6,7 @@ handlers.push(function(req, res, next) {
 
     var Workflow = req.app.db.models.Workflow;
 
-    var id = new req.params.id;
+    var id = req.params.id;
 
     var query = Workflow.where({ _id: id });
 
