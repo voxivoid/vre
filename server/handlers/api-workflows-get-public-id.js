@@ -12,7 +12,7 @@ handlers.push(function(req, res, next) {
 
     console.log('Trying to get ' + id );
 
-    Promise.all(query.find({ "_id": "ObjectId(" + id + ")"}))
+    Promise.all(query.find())
         .then(function(workflows){
             workflows = workflows.map(function (workflow) {
                 workflow = workflow.toObject();
