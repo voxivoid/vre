@@ -8,7 +8,7 @@ handlers.push(function(req, res, next) {
 
     var id = req.params.id;
 
-    var query = Workflow.where({ _id: id });
+    var query = Workflow.where({ _id: 'ObjectId("id")' });
 
     console.log('Trying to get ' + id );
 
