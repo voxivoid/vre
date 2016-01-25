@@ -6,13 +6,11 @@ handlers.push(function(req, res, next) {
 
     var Workflow = req.app.db.models.Workflow;
 
-    var id = req.params.id;
-
-    var query = Workflow.where({ _id: 'ObjectId("id")' });
+    var id = Workflow.objectId(req.params.id);
 
     console.log('Trying to get ' + id );
 
-    Promise.all(query.find())
+    Promise.all(Workflow.find({ _id: id }))
         .then(function(workflows){
             workflows = workflows.map(function (workflow) {
                 workflow = workflow.toObject();
