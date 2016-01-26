@@ -12,7 +12,7 @@ handlers.push(function(req, res, next) {
                 return workflow;
             });
 
-            res.send({workflows});
+            res.send({success: workflows});
         }).catch(next);
 });
 

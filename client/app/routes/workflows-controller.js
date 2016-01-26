@@ -8,14 +8,14 @@ angular.module("workflows").config(["$routeProvider", function ($routeProvider) 
 
 angular.module("workflows").controller("ReviewController", function(){
 
-    this.review = {};
+	this.review = {};
 
-    this.addReview = function(pflow){
-      pflow.reviews.push(this.review);
-      this.review = {};
-    };
+	this.addReview = function(pflow){
+		pflow.reviews.push(this.review);
+		this.review = {};
+	};
 
-  });
+});
 
 angular.module("workflows").controller("WorkflowsController", ['$http', function($http){
 
@@ -24,7 +24,9 @@ angular.module("workflows").controller("WorkflowsController", ['$http', function
 	workflows.pubflows = [ ];
 
 	$http.get('//aleph.inesc-id.pt\:5000/workflows').success(function(data){
-		workflows.pubflows = data;
+		if(data.success) {
+			workflows.pubflows = data.success;
+		}
 	});
 
 	this.buttons = ["Add Workflow","My Workflows","My Area", "My Profile"];
