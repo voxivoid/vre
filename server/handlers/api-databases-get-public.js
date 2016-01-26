@@ -3,6 +3,7 @@
 var handlers = module.exports = [];
 
 handlers.push(function(req, res, next) {
+
     var Database = req.app.db.models.Database;
 
     Promise.all(Database.find())
