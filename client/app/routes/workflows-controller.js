@@ -23,7 +23,7 @@ angular.module("workflows").controller("WorkflowsController", ['$http', function
 
 	workflows.pubflows = [ ];
 
-	$http.get('//aleph.inesc-id.pt\:5000/workflows').success(function(data){
+	$http.get('//aleph.inesc-id.pt/vre/api/workflows').success(function(data){
 		if(data.success) {
 			workflows.pubflows = data.success;
 		}
