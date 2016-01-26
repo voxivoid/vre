@@ -14,5 +14,6 @@ test.once('open', function () {
 });
 
 db.models = {
-    Workflow: require("./workflow")
+    Workflow: require("./workflow"),
+    Database: require("./database")
 };
