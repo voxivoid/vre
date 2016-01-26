@@ -10,7 +10,7 @@ handlers.push(function(req, res, next) {
 
     console.log('\n\nTrying to get workflow with id ' + id );
 
-    Promise.all(Workflow.findById(id))
+    Promise.try(Workflow.findById(id))
         .then(function(workflows){
             workflows = workflows.map(function (workflow) {
                 workflow = workflow.toObject();
