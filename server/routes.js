@@ -5,8 +5,8 @@ module.exports = function (app) {
 	var handlers = require("require-dir")("./handlers");
 
 	app.get('/databases', handlers["api-databases-get-public"]);
-	/*app.get('/databases/:id', handlers["api-databases-get-public-id"]);
 	app.post('/databases', handlers["api-databases-post-public"]);
+	/*	app.get('/databases/:id', handlers["api-databases-get-public-id"]);
 	app.put('/databases/:id', handlers["api-databases-put"]);
 	app.delete('/databases/:id', handlers["api-databases-delete"]);*/
 
