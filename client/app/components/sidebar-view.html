@@ -2,7 +2,7 @@
 
 	<div class="col-md-1"></div>
 	<div class="box center col-md-1">
-			
+
 
 		<h3>Tools</h3>
 
@@ -19,10 +19,10 @@
 					<li><a ng-href="{{flow.links[2]}}">{{base.buttons[2]}}{{flow.buttons[2]}}</a></li>
 					<li><a ng-href="{{flow.links[3]}}">{{base.buttons[3]}}{{flow.buttons[3]}}</a></li>
 				</ul>
-		
+
 			</div>
-	
-		</div> 
+
+		</div>
 
 
 	</div><!-- box -->
@@ -30,17 +30,17 @@
 </div>
 
 <script>
-$('#sidebar').affix({
-      offset: {
-        top: 245
-      }
-});
+	$('#sidebar').affix({
+		offset: {
+			top: 245
+		}
+	});
 
-var $body   = $(document.body);
-var navHeight = $('.navbar').outerHeight(true) + 10;
+	var $body   = $(document.body);
+	var navHeight = $('.navbar').outerHeight(true) + 10;
 
-$body.scrollspy({
-	target: '#leftCol',
-	offset: navHeight
-});
+	$body.scrollspy({
+		target: '#leftCol',
+		offset: navHeight
+	});
 </script>
