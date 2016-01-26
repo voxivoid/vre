@@ -1,0 +1,58 @@
+<div id="addworkflow">
+    <form name="newflowForm" ng-controller="NewworkflowController as flowCtrl" ng-submit="newflowForm.$valid && flowCtrl.addFlow()" >
+
+
+        <!--  var schema = new Schema({
+          name: String,
+          description: String,
+          link: String,
+          website: String,
+          image: String,
+          author: String,
+          domainSpecific: Boolean,-->
+
+        <!--  Review Form -->
+        <h4>Create a new workflow</h4>
+        <fieldset class="form-group">
+            <textarea ng-model="flowCtrl.nflow.name" class="form-control" placeholder="Workflow Name" title="Name" required></textarea>
+        </fieldset>
+        <fieldset class="form-group">
+            <textarea ng-model="flowCtrl.nflow.description" class="form-control" placeholder="Description" title="Description" required></textarea>
+        </fieldset>
+        <fieldset class="form-group">
+            <textarea ng-model="flowCtrl.nflow.link" class="form-control" placeholder="Internal link" title="Website" required></textarea>
+        </fieldset>
+        <fieldset class="form-group">
+            <textarea ng-model="flowCtrl.nflow.website" class="form-control" placeholder="Website link" title="Website" required></textarea>
+        </fieldset>
+        <fieldset class="form-group">
+            <textarea ng-model="flowCtrl.nflow.image" class="form-control" placeholder="Image link" title="Image" required></textarea>
+        </fieldset>
+        <fieldset class="form-group">
+            <input ng-model="flowCtrl.nflow.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
+        </fieldset>
+        <fieldset class="form-group">Domain Specific
+            <br>
+            <label>
+                <input ng-model="flowCtrl.nflow.domainSpecific" type="radio" value="true" class="form-control" title="Domain Specific" required/>
+                Yes
+            </label>
+            <label>
+                <input ng-model="flowCtrl.nflow.domainSpecific" type="radio" value="false" class="form-control" title="Domain Specific" required/>
+                No
+            </label>
+        </fieldset>
+        <fieldset class="form-group">
+            <input type="submit" class="form-control btn btn-primary pull-right" value="Submit Workflow" />
+        </fieldset>
+    </form>
+</div>
+
+<style>
+    .ng-invalid.ng-dirty {
+        border-color: #FA787E;
+    }
+    .ng-valid.ng-dirty {
+        border-color: #78FA89;
+    }
+</style>

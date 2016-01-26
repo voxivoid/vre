@@ -22,11 +22,38 @@ angular.module("databases").controller("DatabasesController", ['$http', function
 	var databases = this;
 	
 	this.buttons = ["Add Database","My Databases","My Area", "My Profile"];
+	this.links = ["#/database/new","#","#","#"];
 	
 	databases.pubbases = [ ];
 
 	$http.get('//aleph.inesc-id.pt/vre/api/databases').success(function(data){
-		databases.pubbases = data;
+        if(data.success) {
+            databases.pubbases = data.success;
+        }
 		});
 
+}]);
+
+angular.module("database-new", ["ngRoute", "adddatabase", "sidebar"]);
+
+angular.module("database-new").config(["$routeProvider", function ($routeProvider) {
+    $routeProvider
+        .when("/database/new", {templateUrl: "app/routes/database-create-view.html", controller: "DatabaseNewController"});
+}]);
+
+angular.module("database-new").controller("DatabaseNewController", ["$http", function($http) {
+
+    this.nbase = {};
+
+    this.addBase = function(){
+        $http.post('//aleph.inesc-id.pt/vre/api/databases', this.nbase)
+            .success(function () {
+                console.log('Successfuly posted new database');
+                window.location = '#/databases';
+            })
+            .error(function () {
+                console.log("Error: Could not insert");
+            });
+        this.nbase = {};
+    };
 }]);

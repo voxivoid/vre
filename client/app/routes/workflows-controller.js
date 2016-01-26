@@ -45,7 +45,7 @@ angular.module("workflow-new").controller("WorkflowNewController", ["$http", fun
 	this.nflow = {};
 
 	this.addFlow = function(){
-		$http.post('//aleph.inesc-id.pt\:5000/workflows', this.nflow)
+		$http.post('//aleph.inesc-id.pt/vre/api/workflows', this.nflow)
 			.success(function () {
 				console.log('Successfuly posted new workflow');
 				window.location = '#/workflows';
