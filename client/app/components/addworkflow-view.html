@@ -1,4 +1,5 @@
 <div id="addworkflow">
+    <h2>Insert a new workflow</h2>
     <form name="newflowForm" ng-controller="WorkflowNewController as flowCtrl" ng-submit="newflowForm.$valid && flowCtrl.addFlow()" >
 
 
@@ -12,26 +13,28 @@
         domainSpecific: Boolean,-->
 
         <!--  Review Form -->
-        <h4>Create a new workflow</h4>
         <fieldset class="form-group">
+            <h4>Name</h4>
             <textarea ng-model="flowCtrl.nflow.name" class="form-control" placeholder="Workflow Name" title="Name" required></textarea>
         </fieldset>
         <fieldset class="form-group">
+            <h4>Description</h4>
             <textarea ng-model="flowCtrl.nflow.description" class="form-control" placeholder="Description" title="Description" required></textarea>
         </fieldset>
         <fieldset class="form-group">
-            <textarea ng-model="flowCtrl.nflow.link" class="form-control" placeholder="Internal link" title="Website" required></textarea>
-        </fieldset>
-        <fieldset class="form-group">
+            <h4>Website</h4>
             <textarea ng-model="flowCtrl.nflow.website" class="form-control" placeholder="Website link" title="Website" required></textarea>
         </fieldset>
         <fieldset class="form-group">
+            <h4>Image URL</h4>
             <textarea ng-model="flowCtrl.nflow.image" class="form-control" placeholder="Image link" title="Image" required></textarea>
         </fieldset>
         <fieldset class="form-group">
+            <h4>Author e-mail</h4>
             <input ng-model="flowCtrl.nflow.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
         </fieldset>
-        <fieldset class="form-group">Domain Specific
+        <fieldset class="form-group">
+            <h4>Domain Specific</h4>
             <br>
             <label>
                 <input ng-model="flowCtrl.nflow.domainSpecific" type="radio" value="true" class="form-control" title="Domain Specific" required/>

@@ -1,4 +1,5 @@
 <div id="adddatabase">
+    <h2>Insert a new Database</h2>
     <form name="newbaseForm" ng-controller="DatabaseNewController as baseCtrl" ng-submit="newbaseForm.$valid && baseCtrl.addBase()" >
 
 
@@ -12,28 +13,28 @@
           domainSpecific: Boolean,-->
 
         <!--  Review Form -->
-        <h4>Create a new database</h4>
         <fieldset class="form-group">
-            Name:
+            <h4>Name</h4>
             <textarea ng-model="baseCtrl.nbase.name" class="form-control" placeholder="Database Name" title="Name" required></textarea>
         </fieldset>
         <fieldset class="form-group">
-            Description
+            <h4>Description</h4>
             <textarea ng-model="baseCtrl.nbase.description" class="form-control" placeholder="Description" title="Description" required></textarea>
         </fieldset>
         <fieldset class="form-group">
-            Website
+            <h4>Website</h4>
             <textarea ng-model="baseCtrl.nbase.website" class="form-control" placeholder="Website link" title="Website" required></textarea>
         </fieldset>
         <fieldset class="form-group">
-            Image URL
+            <h4>Image URL</h4>
             <textarea ng-model="baseCtrl.nbase.image" class="form-control" placeholder="Image link" title="Image" required></textarea>
         </fieldset>
         <fieldset class="form-group">
-            Author
+            <h4>Author</h4>
             <input ng-model="baseCtrl.nbase.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
         </fieldset>
-        <fieldset class="form-group">Domain Specific
+        <fieldset class="form-group">
+            <h4>Domain Specific</h4>
             <br>
             <label>
                 <input ng-model="baseCtrl.nbase.domainSpecific" type="radio" value="true" class="form-control" title="Domain Specific" required/>
