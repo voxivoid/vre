@@ -13,6 +13,6 @@ handlers.push(function(req, res, next) {
                 return database;
             });
 
-            res.send({databases});
+            res.send({success: databases});
         }).catch(next);
 });
