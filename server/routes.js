@@ -6,8 +6,8 @@ module.exports = function (app) {
 
 	app.get('/vre/api/databases', handlers["api-databases-get-public"]);
 	app.post('/vre/api/databases', handlers["api-databases-post-public"]);
-	/*	app.get('/databases/:id', handlers["api-databases-get-public-id"]);
-	app.put('/databases/:id', handlers["api-databases-put"]);
+	app.get('/databases/:id', handlers["api-databases-get-public-id"]);
+	/*app.put('/databases/:id', handlers["api-databases-put"]);
 	app.delete('/databases/:id', handlers["api-databases-delete"]);*/
 
 	app.get('/vre/api/workflows', handlers["api-workflows-get-public"]);
