@@ -11,7 +11,6 @@ handlers.push(validate({
         description:	joi.string().required(),
         website:		joi.string(),
         image:			joi.string(),
-        author:			joi.string(),
         domainSpecific: joi.boolean().default(false)
     }
 }));
