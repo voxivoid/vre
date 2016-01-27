@@ -1,4 +1,4 @@
-angular.module("databases", ["ngRoute", "bases", "sidebar"]);
+angular.module("databases", ["ngRoute", "bases", "sidebar", "database-new"]);
 
 angular.module("databases").config(["$routeProvider", function ($routeProvider) {
 	$routeProvider
