@@ -11,8 +11,8 @@ handlers.push(function(req, res, next) {
     console.log('\n\nTrying to delete workflow with id ' + id );
 
     Workflow.remove(id)
-        .then(function() {
-            res.send('success');
+        .then(function(workflow) {
+            res.send({'success': workflow + " removed"});
         })
         .catch(next);
 });
