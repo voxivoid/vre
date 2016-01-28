@@ -10,7 +10,7 @@ handlers.push(function(req, res, next) {
 
     console.log('\n\nTrying to delete workflow with id ' + id );
 
-    Workflow.remove(id)
+    Workflow.findByIdAndRemove(id)
         .then(function() {
             res.send({success: "workflow removed"});
         })
