@@ -14,7 +14,7 @@ var mongoose = require("mongoose");
 global.config = require("./config");
 var app = express();
 
-app.use(function (req, res, next) {
+/*app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -31,7 +31,7 @@ app.use(function (req, res, next) {
 
     // Pass to next layer of middleware
     next();
-});
+});*/
 
 app.use(require("helmet")());
 app.use(require("compression")());
