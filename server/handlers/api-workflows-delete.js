@@ -12,7 +12,7 @@ handlers.push(function(req, res, next) {
 
     Workflow.remove(id)
         .then(function(workflow) {
-            res.send({'success': workflow + " removed"});
+            res.send({success: "workflow removed"});
         })
         .catch(next);
 });

@@ -7,8 +7,7 @@ var ObjectId = Schema.Types.ObjectId;
 var schema = new Schema({
     name: String,
     description: String,
-		link: String,
-		website: String,
+    link: String,
     image: String,
     author: String,
     domainSpecific: Boolean,

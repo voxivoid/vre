@@ -8,8 +8,7 @@ handlers.push(validate({
     body: {
         name: joi.string().required(),
         description: joi.string().required(),
-        link: joi.string().required(),
-        website: joi.string(),
+        link: joi.string(),
         image: joi.string(),
         author:	joi.string(),
         domainSpecific: joi.boolean().default(false)
