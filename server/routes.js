@@ -19,4 +19,4 @@ module.exports = function (app) {
 /*    app.put('/workflows/:id', handlers["api-workflows-put"]);
 	app.post('/workflows/reviews/:id', handlers["api-workflows-reviews-post-public"]);*/
 
-}
+};
