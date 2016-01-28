@@ -10,7 +10,7 @@ handlers.push(function(req, res, next) {
 
     console.log('\n\nTrying to insert review in workflow with id ' + id );
 
-    Workflow.findByIdAndUpdate(info._id,{$push: {"reviews": {stars: stars, body: body, author: author}}},{safe: true, upsert: true, new : true},
+    Workflow.findByIdAndUpdate(id,{$push: {"reviews": {stars: stars, body: body, author: author}}},{safe: true, upsert: true, new : true},
         function(err, Workflow) {
             console.log(err);
         }
