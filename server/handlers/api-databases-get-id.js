@@ -12,7 +12,11 @@ handlers.push(function(req, res, next) {
 
     Database.findById(id)
         .then(function(database) {
-            res.send({success: database.toObject()});
+            if(!database){
+                res.send({error: id + " database doesn't exist"});
+            } else {
+                res.send({success: database.toObject()});
+            }
         })
         .catch(next);
 });

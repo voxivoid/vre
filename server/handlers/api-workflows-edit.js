@@ -6,11 +6,11 @@ var handlers = module.exports = [];
 
 handlers.push(validate({
     body: {
-        name: joi.string(),
-        description: joi.string(),
-        link: joi.string(),
-        image: joi.string(),
-        author:	joi.string(),
+        name:           joi.string(),
+        description:    joi.string(),
+        link:           joi.string(),
+        image:          joi.string(),
+        author:         joi.string(),
         domainSpecific: joi.boolean()
     }
 }));
