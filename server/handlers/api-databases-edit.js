@@ -6,9 +6,9 @@ var handlers = module.exports = [];
 
 handlers.push(validate({
     body: {
-        acronym:        joi.string().required(),
-        name:	        joi.string().required(),
-        description:	joi.string().required(),
+        acronym:        joi.string(),
+        name:	        joi.string(),
+        description:	joi.string(),
         website:		joi.string(),
         image:			joi.string(),
         domainSpecific: joi.boolean()
