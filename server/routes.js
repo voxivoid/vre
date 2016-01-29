@@ -8,7 +8,7 @@ module.exports = function (app) {
 	app.post('/vre/api/databases', handlers["api-databases-create"]);
 	app.get('/vre/api/databases/:id', handlers["api-databases-get-id"]);
     app.delete('/vre/api/databases/delete/:id', handlers["api-databases-delete"]);
-	app.post('/vre/api/databases/:id', handlers["api-databases-edit"]);
+	app.post('/vre/api/databases/edit/:id', handlers["api-databases-edit"]);
 
 	app.get('/vre/api/workflows', handlers["api-workflows-get"]);
 	app.post('/vre/api/workflows', handlers["api-workflows-create"]);
