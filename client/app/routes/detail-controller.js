@@ -6,4 +6,5 @@ angular.module("detail").config(["$routeProvider", function ($routeProvider) {
 }]);
 
 angular.module("detail").controller("DetailController", ["$scope", function($scope){
+
 }]);

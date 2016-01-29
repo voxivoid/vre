@@ -4,14 +4,22 @@
     <div class="box center col-md-1">
 
         <div class="btn-group-vertical" role="" aria-label="">
-            <a ng-href=" window.history.back();" class="btn btn-primary" role="button">Go Back</a>
+            <a onclick="goBack();" class="btn btn-primary" role="button">Go Back</a>
         </div>
 
     </div><!-- box -->
 
 </div>
 
+
 <script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+<script>
+
     $('#sidebar').affix({
         offset: {
             top: 245
