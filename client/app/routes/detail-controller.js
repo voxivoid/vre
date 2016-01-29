@@ -1,4 +1,4 @@
-angular.module("detail", ["ngRoute", "biosurf"]);
+angular.module("detail", ["ngRoute", "biosurf", "back"]);
 
 angular.module("detail").config(["$routeProvider", function ($routeProvider) {
 	$routeProvider

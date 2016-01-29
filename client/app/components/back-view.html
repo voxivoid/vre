@@ -1,0 +1,30 @@
+<div id="back" class="nav nav-stacked col-md-2" >
+
+    <div class="col-md-1"></div>
+    <div class="box center col-md-1">
+
+
+        <div class="btn-group-vertical" role="" aria-label="">
+            <a ng-href=" window.history.back();" class="btn btn-primary" role="button">Go Back</a>
+        </div>
+
+
+    </div><!-- box -->
+
+</div>
+
+<script>
+    $('#sidebar').affix({
+        offset: {
+            top: 245
+        }
+    });
+
+    var $body   = $(document.body);
+    var navHeight = $('.navbar').outerHeight(true) + 10;
+
+    $body.scrollspy({
+        target: '#leftCol',
+        offset: navHeight
+    });
+</script>
