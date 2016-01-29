@@ -12,7 +12,11 @@ handlers.push(function(req, res, next) {
 
     Workflow.findById(id)
         .then(function(workflow) {
-            res.send({success: workflow.toObject()});
+            if(!workflow){
+                res.send({error: id + " workflow doesn't exist"});
+            } else {
+                res.send({success: workflow.toObject()});
+            }
         })
         .catch(next);
 });

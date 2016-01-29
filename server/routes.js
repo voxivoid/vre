@@ -8,12 +8,12 @@ module.exports = function (app) {
 	app.post('/vre/api/databases', handlers["api-databases-post-public"]);
 	app.get('/vre/api/databases/:id', handlers["api-databases-get-public-id"]);
 	/*app.put('/databases/:id', handlers["api-databases-put"]);
-	app.delete('/databases/:id', handlers["api-databases-delete"]);*/
+	app.delete('/databases/delete/:id', handlers["api-databases-delete"]);*/
 
 	app.get('/vre/api/workflows', handlers["api-workflows-get-public"]);
 	app.post('/vre/api/workflows', handlers["api-workflows-post-public"]);
 	app.get('/vre/api/workflows/:id', handlers["api-workflows-get-public-id"]);
-    app.delete('/vre/api/delete/workflows/:id', handlers["api-workflows-delete"]);
+    app.delete('/vre/api/workflows/delete/:id', handlers["api-workflows-delete"]);
     app.put('/workflows/reviews/:id', handlers["api-workflows-reviews-post-public"]);
 
 

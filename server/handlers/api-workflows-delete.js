@@ -11,8 +11,12 @@ handlers.push(function(req, res, next) {
     console.log('\n\nTrying to delete workflow with id ' + id );
 
     Workflow.findByIdAndRemove(id)
-        .then(function() {
-            res.send({success: "workflow removed"});
+        .then(function(workflow) {
+            if(!workflow){
+                res.send({error: id + " workflow doesn't exist"});
+            } else {
+                res.send({success: "workflow removed"});
+            }
         })
         .catch(next);
 });
