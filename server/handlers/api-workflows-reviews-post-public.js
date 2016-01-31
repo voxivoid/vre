@@ -9,7 +9,7 @@ handlers.push(validate({
     body: {
         stars:   joi.string(),
         body:    joi.string(),
-        author:  joi.string(),
+        author:  joi.string()
     }
 }));
 
