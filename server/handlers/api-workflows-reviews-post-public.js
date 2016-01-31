@@ -25,7 +25,7 @@ handlers.push(function(req, res, next) {
 
             var id = req.params.id;
 
-            console.log('\n\nTrying to insert review in workflow with id ' + id + ": " + review );
+            console.log('\n\nTrying to insert review in workflow with id ' + id + ": " + review);
 
             //return review.save();
         })
@@ -37,36 +37,22 @@ handlers.push(function(req, res, next) {
                 }
             });
         })
-        .catch(next);
+        .then(function (req, res, next) {
 
-});
+            var Workflow = req.app.db.models.Workflow;
 
-handlers.push(validate({
-    body: {
-        name:           joi.string(),
-        description:    joi.string(),
-        link:           joi.string(),
-        image:          joi.string(),
-        author:         joi.string(),
-        domainSpecific: joi.boolean()
-    }
-}));
-
-handlers.push(function (req, res, next) {
-
-    var Workflow = req.app.db.models.Workflow;
-
-    Workflow.findById(id)
-        .then(function (workflow) {
-                if (!workflow) {
-                    res.send({error: id + " workflow doesn't exist"});
-                } else {
-                    Workflow.update(id, {$push: {"reviews": review}}, {safe: true, upsert: true})
-                        .then(function () {
-                            res.send({success: id + "review added."});
-                        });
-                }
-            })
+            Workflow.findById(id)
+                .then(function (workflow) {
+                    if (!workflow) {
+                        res.send({error: id + " workflow doesn't exist"});
+                    } else {
+                        Workflow.update(id, {$push: {"reviews": review}}, {safe: true, upsert: true})
+                            .then(function () {
+                                res.send({success: id + "review added."});
+                            });
+                    }
+                });
+        })
         .catch(next);
 });
 
