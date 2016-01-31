@@ -19,17 +19,18 @@ handlers.push(function(req, res, next) {
 
     var id = req.params.id;
 
-    console.log('\n\nTrying to insert review in workflow with id ' + id );
+    var stars = req.body.stars;
+    var comment = req.body.body;
+    var author = req.body.author;
+
+    console.log('\n\nTrying to insert review in workflow with id ' + id + "{ stars: " + stars + ", body: " + comment + ", author: " + author + "}");
 
     Workflow.findById(id)
         .then(function(workflow) {
             if(!workflow){
                 res.send({error: id + " workflow doesn't exist"});
             } else {
-                Workflow.update(
-                    id,
-                    {$push: {"reviews": {"stars": req.body.stars, "body": req.body.body, "author": req.body.author}}},
-                    {safe: true, upsert: true, new : true})
+                Workflow.update(id,{$push: {"reviews": {"stars": stars, "body": comment, "author": author}}})
                     .then(function(){
                         res.send({success: id + "review added."});
                     });
