@@ -34,7 +34,8 @@ handlers.push(function(req, res, next) {
                     link:           joi.string(),
                     image:          joi.string(),
                     author:         joi.string(),
-                    domainSpecific: joi.boolean()
+                    domainSpecific: joi.boolean(),
+                    reviews: [{type: ObjectId, ref: "Review"}]
                 }
             }));
 
