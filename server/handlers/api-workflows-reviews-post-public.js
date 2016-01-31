@@ -34,8 +34,7 @@ handlers.push(function(req, res, next) {
                     link:           joi.string(),
                     image:          joi.string(),
                     author:         joi.string(),
-                    domainSpecific: joi.boolean(),
-                    reviews: [{type: ObjectId, ref: "Review"}]
+                    domainSpecific: joi.boolean()
                 }
             }));
 
@@ -48,7 +47,7 @@ handlers.push(function(req, res, next) {
                             if (!workflow) {
                                 res.send({error: id + " workflow doesn't exist"});
                             } else {
-                                Workflow.update(id, {$push: {"reviews": review}})
+                                Workflow.update(id, {$push: {"reviews": review}}, {safe: true, upsert: true})
                                     .then(function () {
                                         res.send({success: id + "review added."});
                                     });
