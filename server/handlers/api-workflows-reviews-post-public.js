@@ -40,3 +40,33 @@ handlers.push(function(req, res, next) {
         .catch(next);
 
 });
+
+handlers.push(validate({
+    body: {
+        name:           joi.string(),
+        description:    joi.string(),
+        link:           joi.string(),
+        image:          joi.string(),
+        author:         joi.string(),
+        domainSpecific: joi.boolean()
+    }
+}));
+
+handlers.push(function (req, res, next) {
+
+    var Workflow = req.app.db.models.Workflow;
+
+    Workflow.findById(id)
+        .then(function (workflow) {
+                if (!workflow) {
+                    res.send({error: id + " workflow doesn't exist"});
+                } else {
+                    Workflow.update(id, {$push: {"reviews": review}}, {safe: true, upsert: true})
+                        .then(function () {
+                            res.send({success: id + "review added."});
+                        });
+                }
+            })
+        .catch(next);
+});
+
