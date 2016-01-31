@@ -28,7 +28,7 @@ handlers.push(function(req, res, next) {
             } else {
                 Workflow.update(
                     id,
-                    {$push: {"reviews": {stars: req.body.stars, body: req.body.body, author: req.body.author}}},
+                    {$push: {"reviews": {"stars": req.body.stars, "body": req.body.body, "author": req.body.author}}},
                     {safe: true, upsert: true, new : true})
                     .then(function(){
                         res.send({success: id + "review added."});
