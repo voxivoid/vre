@@ -15,28 +15,58 @@ handlers.push(validate({
 
 handlers.push(function(req, res, next) {
 
-    var Workflow = req.app.db.models.Workflow;
+    var Review = req.app.db.models.Review;
 
-    var id = req.params.id;
+    var review = null;
 
-    var stars = req.body.stars;
-    var comment = req.body.body;
-    var author = req.body.author;
+    Promise.resolve()
+        .then(function () {
+            review = new Review(req.body);
 
-    console.log('\n\nTrying to insert review in workflow with id ' + id + "{ stars: " + stars + ", body: " + comment + ", author: " + author + "}");
+            var id = req.params.id;
 
-    Workflow.findById(id)
-        .then(function(workflow) {
-            if(!workflow){
-                res.send({error: id + " workflow doesn't exist"});
-            } else {
-                Workflow.update(id,{$push: {"reviews": {"stars": stars, "body": comment, "author": author}}})
-                    .then(function(){
-                        res.send({success: id + "review added."});
-                    });
-            }
+            console.log('\n\nTrying to insert review in workflow with id ' + id + ": " + review );
 
-        }
-    );
+            handlers.push(validate({
+                body: {
+                    name:           joi.string(),
+                    description:    joi.string(),
+                    link:           joi.string(),
+                    image:          joi.string(),
+                    author:         joi.string(),
+                    domainSpecific: joi.boolean()
+                }
+            }));
+
+            handlers.push(function (req, res, next) {
+
+                var Workflow = req.app.db.models.Workflow;
+
+                Workflow.findById(id)
+                    .then(function (workflow) {
+                            if (!workflow) {
+                                res.send({error: id + " workflow doesn't exist"});
+                            } else {
+                                Workflow.update(id, {$push: {"reviews": review}})
+                                    .then(function () {
+                                        res.send({success: id + "review added."});
+                                    });
+                            }
+
+                        }
+                    );
+            });
+
+            //return review.save();
+        })
+        .then(function () {
+            res.send({
+                success: {
+                    message: "Review created.",
+                    workflow: review._id
+                }
+            });
+        })
+        .catch(next);
 
 });
