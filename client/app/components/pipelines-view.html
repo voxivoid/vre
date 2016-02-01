@@ -1,9 +1,11 @@
 <div id="pipelines">
 
-	<div class="row" >
+	<div ng-repeat="pflow in flow.pubflows">
+
+	    <div class="row" >
 
 
-		<div class="col-md-4">
+		    <div class="col-sm-4">
 			<a href="{{pflow.website}}"><img class="img-responsive" ng-src="{{pflow.image}}" alt="" ></a>
 		</div> <!-- col -->
 
@@ -66,7 +68,7 @@
 	</br>
 
 	<hr>
-
+    </div>
 </div>
 
 <style>
