@@ -1,36 +1,29 @@
 angular.module("databases", ["ngRoute", "bases", "sidebar", "database-new"]);
 
 angular.module("databases").config(["$routeProvider", function ($routeProvider) {
-	$routeProvider
-		.when("/databases", {templateUrl: "app/routes/databases-view.html", controller: "DatabasesController"});
+    $routeProvider
+        .when("/databases", {templateUrl: "app/routes/databases-view.html", controller: "DatabasesController"});
 }]);
 
 angular.module("databases").controller("ReviewController", function(){
-
     this.review = {};
-
     this.addReview = function(pbase){
-      pbase.reviews.push(this.review);
-      this.review = {};
+        pbase.reviews.push(this.review);
+        this.review = {};
     };
+});
 
-  });
 
+angular.module("databases").controller("DatabasesController", ['$scope', '$http', function($scope, $http){
+    $scope.type = "databases";
 
-angular.module("databases").controller("DatabasesController", ['$http', function($http){
-
-	var databases = this;
-	
-	this.buttons = ["Add Database","My Databases","My Area", "My Profile"];
-	this.links = ["#/database/new","#","#","#"];
-	
-	databases.pubbases = [ ];
-
-	$http.get('//aleph.inesc-id.pt/vre/api/databases').success(function(data){
+    var databases = this;
+    databases.pubbases = [];
+    $http.get('//aleph.inesc-id.pt/vre/api/databases').success(function(data){
         if(data.success) {
             databases.pubbases = data.success;
         }
-		});
+    });
 
 }]);
 
@@ -42,9 +35,7 @@ angular.module("database-new").config(["$routeProvider", function ($routeProvide
 }]);
 
 angular.module("database-new").controller("DatabaseNewController", ["$http", function($http) {
-
     this.nbase = {};
-
     this.addBase = function(){
         $http.post('//aleph.inesc-id.pt/vre/api/databases', this.nbase)
             .success(function () {

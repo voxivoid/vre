@@ -1,42 +1,30 @@
-<div id="sidebar" class="nav nav-stacked col-sm-2" >
-
-
+<div id="sidebar" class="nav nav-stacked col-sm-2" ng-controller="SidebarController as sidebarCtrl">
 	<div class="box center">
-
-
 		<h3>Tools</h3>
-
 		<div class="btn-group-vertical">
-			<a ng-href="{{base.links[0]}}{{flow.links[0]}}" class="btn btn-primary" role="button">{{base.buttons[0]}}{{flow.buttons[0]}}</a>
-			<a ng-href="{{base.links[1]}}{{flow.links[1]}}" class="btn btn-success" role="button">{{base.buttons[1]}}{{flow.buttons[1]}}</a>
-
+			<a ng-href="{{sidebarCtrl.links[0]}}" class="btn btn-primary" role="button">{{sidebarCtrl.buttons[0]}}</a>
+			<a ng-href="{{sidebarCtrl.links[1]}}" class="btn btn-success" role="button">{{sidebarCtrl.buttons[1]}}</a>
 			<div class="btn-group" role="group">
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Other
 					<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
-					<li><a ng-href="{{base.links[2]}}{{flow.links[2]}}">{{base.buttons[2]}}{{flow.buttons[2]}}</a></li>
-					<li><a ng-href="{{base.links[3]}}{{flow.links[3]}}">{{base.buttons[3]}}{{flow.buttons[3]}}</a></li>
+					<li><a ng-href="{{sidebarCtrl.links[2]}}">{{sidebarCtrl.buttons[2]}}</a></li>
+					<li><a ng-href="{{sidebarCtrl.links[3]}}">{{sidebarCtrl.buttons[3]}}</a></li>
 				</ul>
-
 			</div>
-
 		</div>
-
 		<h3>Index</h3>
-
-			<div class="btn-group-vertical">
-                <div ng-repeat="pbase in base.pubbases">
-                    <a href="#/databases/#{{pbase.acronym}}" class="list-group-item">{{pbase.acronym}}</a>
-                </div>
-                <div ng-repeat="pflow in flow.pubflows">
-                    <a href="#/workflows/#{{pflow.name}}" class="list-group-item">{{pflow.name}}</a>
-				</div>
+		<div class="btn-group-vertical">
+			<div ng-repeat="pbase in base.pubbases">
+				<a href="#/databases/#{{pbase.acronym}}" class="list-group-item">{{pbase.acronym}}</a>
 			</div>
-
+			<div ng-repeat="pflow in flow.pubflows">
+				<a href="#/workflows/#{{pflow.name}}" class="list-group-item">{{pflow.name}}</a>
+			</div>
+		</div>
 	</div><!-- box -->
-
 </div>
 
 <script>

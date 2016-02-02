@@ -6,7 +6,35 @@ angular.module("workflows").config(["$routeProvider", function ($routeProvider) 
 }]);
 
 
+angular.module("workflows").controller("ReviewController", function(){
+	this.review = {};
 
+	this.addReview = function(pflow){
+		pflow.reviews.push(this.review);
+		this.review = {};
+	};
+});
+
+angular.module("workflows").controller("WorkflowsController", ['$scope', '$http', function($scope, $http){
+	$scope.type = "workflows";
+
+	var workflows = this;
+	workflows.pubflows = [];
+	$http.get('//aleph.inesc-id.pt/vre/api/workflows').success(function(data){
+		if(data.success) {
+			workflows.pubflows = data.success;
+		}
+	});
+
+    var rev = this;
+    this.getReview = function(review_id){
+        $http.get('//aleph.inesc-id.pt/vre/api/review/' + review_id).success(function(data){
+            if(data.success) {
+               rev = data.success;
+            }
+        });
+    };
+}]);
 
 angular.module("workflow-new", ["ngRoute", "addworkflow", "sidebar"]);
 
@@ -16,7 +44,6 @@ angular.module("workflow-new").config(["$routeProvider", function ($routeProvide
 }]);
 
 angular.module("workflow-new").controller("WorkflowNewController", ["$http", function($http) {
-
 	this.nflow = {};
 
 	this.addFlow = function(){
