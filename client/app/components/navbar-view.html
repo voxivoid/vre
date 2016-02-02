@@ -1,19 +1,14 @@
 <div id="navbar">
     <ul class="nav nav-pills">
-	    <li class="active"><a href="#/">Home</a></li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Get Started <span class="caret"/></a>
-            <ul class="dropdown-menu">
-                <li><a href="#/tutorials">Tutorial</a></li>
-                <li class=""><a href="#/signin">Sign In</a></li>
-            </ul>
-        </li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Explore <span class="caret"/></a>
+	    <li ng-class="{active: isActive('/')}"><a href="#/">Home</a></li>
+		<li ng-class="{active: isActive('/getstarted')}"><a href="#/getstarted">Get Started</a></li>
+        <li class="dropdown" ng-class="{active: isActive('/workflows') || isActive('/databases')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Explore <span class="caret"/></a>
 			<ul class="dropdown-menu">
-			    <li><a href="#/workflows">Workflows</a></li>
+			    <li ><a href="#/workflows">Workflows</a></li>
 			    <li><a href="#/databases">Databases</a></li>
 			</ul>
 	    </li>
-		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Analytics <span class="caret"/></a>
+		<li class="dropdown" ng-class="{active: isActive('/external') || isActive('/local') || isActive('/api')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Analytics <span class="caret"/></a>
 			<ul class="dropdown-menu">
 				<li><a href="#/external">External tools</a></li>
 				<li><a href="#/local">Local services</a></li>
@@ -27,8 +22,8 @@
                 <li><a href="#">BitBucket</a></li>
 			</ul>
 	    </li>
-	    <li class=""><a href="#/signin">Sign In</a></li>
-	    <li class=""><a href="#/about">About</a></li>
+	    <li ng-class="{active: isActive('/signin')}"><a href="#/signin">Sign In</a></li>
+	    <li ng-class="{active: isActive('/about')}"><a href="#/about">About</a></li>
     </ul>
 </div>
 
