@@ -15,6 +15,8 @@ angular.module("workflows").controller("ReviewController", function(){
 		this.review = {};
 	};
 
+
+
 });
 
 angular.module("workflows").controller("WorkflowsController", ['$http', function($http){
@@ -31,6 +33,15 @@ angular.module("workflows").controller("WorkflowsController", ['$http', function
 
 	this.buttons = ["Add Workflow","My Workflows","My Area", "My Profile"];
 	this.links = ["#/workflow/new","#","#","#"];
+
+    this.getReview = function(review_id){
+        $http.get('//aleph.inesc-id.pt/vre/api/review/' + review_id).success(function(data){
+            if(data.success) {
+                this.pubflows.review = data.success;
+            }
+        });
+    };
+
 }]);
 
 angular.module("workflow-new", ["ngRoute", "addworkflow", "sidebar"]);

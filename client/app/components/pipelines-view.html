@@ -29,12 +29,14 @@
 				<p> {{pflow.description}} </p>
 			</div>
 			<div class="panel" ng-show="tab == 2">
-				<div ng-repeat="review in pflow.reviews">
-					<blockquote>
-						<b> {{review.stars}} Stars</b>
-						<p>{{review.body}}</p>
-						<cite>{{review.author}}</cite>
-					</blockquote>
+				<div ng-repeat="review in getReview(pflow.reviews)">
+
+						<blockquote>
+							<b> {{review.stars}} Stars</b>
+							<p>{{review.body}}</p>
+							<cite>{{review.author}}</cite>
+						</blockquote>
+
 				</div>
 			</div>
 			<div class="panel" ng-show="tab == 3">
