@@ -16,6 +16,8 @@ module.exports = function (app) {
     app.delete('/vre/api/workflows/delete/:id', handlers["api-workflows-delete"]);
 	app.post('/vre/api/workflows/edit/:id', handlers["api-workflows-edit"]);
 
-	app.put('/vre/api/workflows/reviews/:id', handlers["api-workflows-reviews-post-public"]);
+	app.put('/vre/api/workflows/reviews/:id', handlers["api-workflows-reviews-put"]);
+
+	app.get('/vre/api/review/:id', handlers["api-review-get"]);
 
 };

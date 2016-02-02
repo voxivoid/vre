@@ -27,7 +27,7 @@ handlers.push(function(req, res, next) {
 
             console.log('\n\nTrying to insert review in workflow with id ' + id + ": " + review);
 
-            //return review.save();
+            return review.save();
         })
         .then(function () {
 
@@ -40,7 +40,7 @@ handlers.push(function(req, res, next) {
                     } else {
                         Workflow.update(workflow, {$push: {"reviews": review}}, {safe: true, upsert: true})
                             .then(function () {
-                                res.send({success: id + "review added."});
+                                res.send({success: review._id + " review added to workflow " + id});
                             });
                     }
                 });
