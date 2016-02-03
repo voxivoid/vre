@@ -17,12 +17,10 @@
 		</div>
 		<h3>Index</h3>
 		<div class="btn-group-vertical">
-			<div ng-repeat="pbase in base.pubbases">
-				<a href="#/databases/#{{pbase.acronym}}" class="list-group-item">{{pbase.acronym}}</a>
+			<div ng-repeat="item in sidebarCtrl.index">
+				<a href="#/databases/#{{item.name}}" class="list-group-item">{{item.name}}</a>
 			</div>
-			<div ng-repeat="pflow in flow.pubflows">
-				<a href="#/workflows/#{{pflow.name}}" class="list-group-item">{{pflow.name}}</a>
-			</div>
+
 		</div>
 	</div><!-- box -->
 </div>

@@ -15,6 +15,7 @@ angular.module("databases").controller("ReviewController", function(){
 
 
 angular.module("databases").controller("DatabasesController", ['$scope', '$http', function($scope, $http){
+    $scope.databasesCtrl = this;
     $scope.type = "databases";
 
     var databases = this;

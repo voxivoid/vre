@@ -16,6 +16,7 @@ angular.module("workflows").controller("ReviewController", function(){
 });
 
 angular.module("workflows").controller("WorkflowsController", ['$scope', '$http', function($scope, $http){
+	$scope.workflowsCtrl = this;
 	$scope.type = "workflows";
 
 	var workflows = this;
