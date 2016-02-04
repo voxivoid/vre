@@ -1,4 +1,4 @@
-angular.module("databases", ["ngRoute", "bases", "sidebar", "database-new"]);
+angular.module("databases", ["ngRoute", "sidebar", "database-new"]);
 
 angular.module("databases").config(["$routeProvider", function ($routeProvider) {
     $routeProvider
@@ -18,11 +18,11 @@ angular.module("databases").controller("DatabasesController", ['$scope', '$http'
     $scope.databasesCtrl = this;
     $scope.type = "databases";
 
-    var databases = this;
-    databases.pubbases = [];
+    this.databases = [];
     $http.get('//aleph.inesc-id.pt/vre/api/databases').success(function(data){
         if(data.success) {
-            databases.pubbases = data.success;
+            $scope.databasesCtrl.databases = data.success;
+            $scope.$broadcast('databasesReady', $scope.databasesCtrl.databases);
         }
     });
 

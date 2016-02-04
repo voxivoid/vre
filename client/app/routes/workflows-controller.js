@@ -1,10 +1,31 @@
-angular.module("workflows", ["ngRoute", "pipelines", "sidebar", "workflow-new"]);
+angular.module("workflows", ["ngRoute", "sidebar", "workflow-new"]);
 
 angular.module("workflows").config(["$routeProvider", function ($routeProvider) {
 	$routeProvider
 		.when("/workflows", {templateUrl: "app/routes/workflows-view.html", controller: "WorkflowsController"});
 }]);
 
+angular.module("workflows").controller("WorkflowsController", ['$scope', '$http', function($scope, $http){
+    $scope.workflowsCtrl = this;
+    $scope.type = "workflows";
+
+    this.workflows = [];
+    $http.get('//aleph.inesc-id.pt/vre/api/workflows').success(function(data){
+        if(data.success) {
+            $scope.workflowsCtrl.workflows = data.success;
+            $scope.$broadcast('workflowsReady', $scope.workflowsCtrl.workflows);
+        }
+    });
+
+    var rev = this;
+    this.getReview = function(review_id){
+        $http.get('//aleph.inesc-id.pt/vre/api/review/' + review_id).success(function(data){
+            if(data.success) {
+                rev = data.success;
+            }
+        });
+    };
+}]);
 
 angular.module("workflows").controller("ReviewController", function(){
 	this.review = {};
@@ -15,27 +36,7 @@ angular.module("workflows").controller("ReviewController", function(){
 	};
 });
 
-angular.module("workflows").controller("WorkflowsController", ['$scope', '$http', function($scope, $http){
-	$scope.workflowsCtrl = this;
-	$scope.type = "workflows";
 
-	var workflows = this;
-	workflows.pubflows = [];
-	$http.get('//aleph.inesc-id.pt/vre/api/workflows').success(function(data){
-		if(data.success) {
-			workflows.pubflows = data.success;
-		}
-	});
-
-    var rev = this;
-    this.getReview = function(review_id){
-        $http.get('//aleph.inesc-id.pt/vre/api/review/' + review_id).success(function(data){
-            if(data.success) {
-               rev = data.success;
-            }
-        });
-    };
-}]);
 
 angular.module("workflow-new", ["ngRoute", "addworkflow", "sidebar"]);
 

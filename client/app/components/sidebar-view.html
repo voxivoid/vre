@@ -16,9 +16,9 @@
 			</div>
 		</div>
 		<h3>Index</h3>
-		<div class="btn-group-vertical">
+		<div id="index" class="btn-group-vertical">
 			<div ng-repeat="item in sidebarCtrl.index">
-				<a href="#/databases/#{{item.name}}" class="list-group-item">{{item.name}}</a>
+				<a href="#/{{sidebarCtrl.type}}/#{{item}}" class="list-group-item">{{item}}</a>
 			</div>
 
 		</div>
