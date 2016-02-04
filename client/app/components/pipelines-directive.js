@@ -7,36 +7,5 @@ angular.module("pipelines").directive("pipelines", function(){
     };
 });
 
-angular.module("pipelines").controller("ReviewController", function(){
-    this.review = {};
-
-    this.addReview = function(pflow){
-        pflow.reviews.push(this.review);
-        this.review = {};
-    };
-});
-
-angular.module("pipelines").controller("WorkflowsController", ['$http', function($http){
-    var workflows = this;
-
-    workflows.pubflows = [ ];
-
-    $http.get('//aleph.inesc-id.pt/vre/api/workflows').success(function(data){
-        if(data.success) {
-            workflows.pubflows = data.success;
-        }
-    });
-
-    var rev = this;
-
-    this.getReview = function(review_id){
-        $http.get('//aleph.inesc-id.pt/vre/api/review/' + review_id).success(function(data){
-            if(data.success) {
-                rev = data.success;
-            }
-        });
-    };
-}]);
-
 
 
