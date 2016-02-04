@@ -12,19 +12,34 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
     this.workflows = [];
     $http.get('//aleph.inesc-id.pt/vre/api/workflows').success(function(data){
         if(data.success) {
-            $scope.workflowsCtrl.workflows = data.success;
+			$scope.workflowsCtrl.workflows = data.success;
             $scope.$broadcast('workflowsReady', $scope.workflowsCtrl.workflows);
         }
     });
 
-    var rev = this;
-    this.getReview = function(review_id){
+	$scope.$on('workflowsReady', function(event, workflows) {
+		angular.forEach($scope.workflowsCtrl.workflows, function(workflowObject, workflowIndex){
+			angular.forEach(workflowObject.reviews, function(reviewObject, reviewIndex) {
+                $http.get('//aleph.inesc-id.pt/vre/api/review/' + reviewObject).success(function(data){
+                    if(data.success) {
+                        console.log("Trying to get review with id: " + reviewObject + " for workflow " + workflowIndex);
+                        $scope.workflowsCtrl.workflows[workflowIndex].reviews.push(data.success);
+                    }
+                });
+			})
+		})
+	});
+
+   /* this.rev = {};
+    $scope.getReview = function(review_id){
         $http.get('//aleph.inesc-id.pt/vre/api/review/' + review_id).success(function(data){
             if(data.success) {
-                rev = data.success;
+				console.log("Trying to get review with id: " + review_id );
+                $scope.workflowsCtrl.rev = data.success;
             }
         });
-    };
+    };*/
+    
 }]);
 
 angular.module("workflows").controller("ReviewController", function(){
