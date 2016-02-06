@@ -53,7 +53,7 @@ angular.module("workflows").controller("ReviewController", function(){
 
 
 
-angular.module("workflow-new", ["ngRoute", "addworkflow", "sidebar"]);
+angular.module("workflow-new", ["ngRoute"]);
 
 angular.module("workflow-new").config(["$routeProvider", function ($routeProvider) {
 	$routeProvider
