@@ -11,7 +11,6 @@ angular.module("sidebar").controller("SidebarController", function($scope){
     $scope.sidebarCtrl = this;
     this.type = $scope.type;
 
-    console.log(this.type);
     if(this.type === "workflows") {
         this.buttons = ["Add Workflow", "My Workflows", "My Area", "My Profile"];
         this.links = ["#/workflow/new", "#", "#", "#"];

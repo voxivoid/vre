@@ -23,7 +23,7 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
                 $http.get('//aleph.inesc-id.pt/vre/api/review/' + reviewObject).success(function(data){
                     if(data.success) {
                         console.log("Trying to get review with id: " + reviewObject + " for workflow " + workflowIndex);
-                        $scope.workflowsCtrl.workflows[workflowIndex].reviews.push(data.success);
+                        $scope.workflowsCtrl.workflows[workflowIndex].reviews[reviewIndex] = data.success;
                     }
                 });
 			})
@@ -42,14 +42,21 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
     
 }]);
 
-angular.module("workflows").controller("ReviewController", function(){
+angular.module("workflows").controller("ReviewController", ['$http', function($http){
 	this.review = {};
 
-	this.addReview = function(pflow){
-		pflow.reviews.push(this.review);
+	this.addReview = function(workflow){
+		$http.put('//aleph.inesc-id.pt/vre/api/workflows/reviews/' + workflow, this.review)
+			.success(function () {
+				console.log('Successfuly posted new review in workflow ' + workflow);
+                location.reload();
+			})
+			.error(function () {
+				console.log("Error: Could not insert");
+			});
 		this.review = {};
 	};
-});
+}]);
 
 
 

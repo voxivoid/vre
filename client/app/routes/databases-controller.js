@@ -5,6 +5,7 @@ angular.module("databases").config(["$routeProvider", function ($routeProvider) 
         .when("/databases", {templateUrl: "app/routes/databases-view.html", controller: "DatabasesController"});
 }]);
 
+/*
 angular.module("databases").controller("ReviewController", function(){
     this.review = {};
     this.addReview = function(pbase){
@@ -12,6 +13,7 @@ angular.module("databases").controller("ReviewController", function(){
         this.review = {};
     };
 });
+*/
 
 
 angular.module("databases").controller("DatabasesController", ['$scope', '$http', function($scope, $http){

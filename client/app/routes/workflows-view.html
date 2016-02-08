@@ -39,7 +39,7 @@
                             </div>
                             <div class="panel" ng-show="tab == 3">
                                 <!--  Review Form -->
-                                <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(pflow)" >
+                                <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(workflow._id)" >
                                     <blockquote >
                                         <strong>{{reviewCtrl.review.stars}} Stars</strong>
                                         {{reviewCtrl.review.body}}
@@ -49,7 +49,7 @@
                                     <!--  Review Form -->
                                     <h4>Submit a Review</h4>
                                     <fieldset class="form-group">
-                                        <select ng-model="reviewCtrl.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" required>
+                                        <select ng-model="reviewCtrl.review.stars" class="form-control" ng-options="stars for stars in ['5','4','3','2','1']" title="Stars" required>
                                             <option value>Rate the Product</option>
                                         </select>
                                     </fieldset>
