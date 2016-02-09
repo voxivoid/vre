@@ -22,7 +22,6 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
 			angular.forEach(workflowObject.reviews, function(reviewObject, reviewIndex) {
                 $http.get('//aleph.inesc-id.pt/vre/api/review/' + reviewObject).success(function(data){
                     if(data.success) {
-                        console.log("Trying to get review with id: " + reviewObject + " for workflow " + workflowIndex);
                         $scope.workflowsCtrl.workflows[workflowIndex].reviews[reviewIndex] = data.success;
                     }
                 });
