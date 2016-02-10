@@ -34,6 +34,8 @@
                                             <b> {{review.stars}} Stars</b>
                                             <p>{{review.body}}</p>
                                             <cite>{{review.author}}</cite>
+                                            <p></p>
+                                            <p><a ng-click="workflowsCtrl.delRev(review._id,workflow._id)" class="btn btn-warning" role="button">Delete Review</a></p>
                                         </blockquote>
                                 </div>
                             </div>

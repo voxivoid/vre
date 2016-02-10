@@ -15,6 +15,8 @@ handlers.push(validate({
 
 handlers.push(function(req, res, next) {
 
+    var collection = req.params.collection;
+
     var Review = req.app.db.models.Review;
 
     var id = req.params.id;
@@ -31,16 +33,25 @@ handlers.push(function(req, res, next) {
         })
         .then(function () {
 
-            var Workflow = req.app.db.models.Workflow;
+            if (collection === 'workflows') {
 
-            Workflow.findById(id)
-                .then(function (workflow) {
-                    if (!workflow) {
-                        res.send({error: id + " workflow doesn't exist"});
+                var Document = req.app.db.models.Workflow;
+
+            }
+            else {
+
+                var Document = req.app.db.models.Database;
+
+            }
+
+            Document.findById(id)
+                .then(function (doc) {
+                    if (!doc) {
+                        res.send({error: id + " doc doesn't exist"});
                     } else {
-                        Workflow.update(workflow, {$push: {"reviews": review}}, {safe: true, upsert: true})
+                        Document.update(doc, {$push: {"reviews": review}}, {safe: true, upsert: true})
                             .then(function () {
-                                res.send({success: review._id + " review added to workflow " + id});
+                                res.send({success: review._id + " review added to doc " + id});
                             });
                     }
                 });
