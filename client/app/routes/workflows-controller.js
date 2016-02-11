@@ -10,7 +10,7 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
     $scope.type = "workflows";
 
     this.workflows = [];
-    $http.get('//aleph.inesc-id.pt/vre/api/workflows').success(function(data){
+    $http.get('//aleph.inesc-id.pt/vre/api/' + $scope.type).success(function(data){
         if(data.success) {
 			$scope.workflowsCtrl.workflows = data.success;
             $scope.$broadcast('workflowsReady', $scope.workflowsCtrl.workflows);
@@ -21,7 +21,7 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
 	$scope.$on('workflowsReady', function(event, workflows) {
 		angular.forEach($scope.workflowsCtrl.workflows, function(workflowObject, workflowIndex){
 			angular.forEach(workflowObject.reviews, function(reviewObject, reviewIndex) {
-                $http.get('//aleph.inesc-id.pt/vre/api/review/' + reviewObject).success(function(data){
+                $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){
                     if(data.success) {
                         $scope.workflowsCtrl.workflows[workflowIndex].reviews[reviewIndex] = data.success;
                     }
@@ -35,7 +35,7 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
 		$http.put('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
 			.success(function () {
 				console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
-				$http.delete('//aleph.inesc-id.pt/vre/api/review/delete/' + revid)
+				$http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
 					.success(function () {
 						console.log('Successfuly removed review from reviews');
 						location.reload();
@@ -48,16 +48,6 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
 				console.log("Error: Could not remove review from document");
 			});
 	};
-
-   /* this.rev = {};
-    $scope.getReview = function(review_id){
-        $http.get('//aleph.inesc-id.pt/vre/api/review/' + review_id).success(function(data){
-            if(data.success) {
-				console.log("Trying to get review with id: " + review_id );
-                $scope.workflowsCtrl.rev = data.success;
-            }
-        });
-    };*/
     
 }]);
 
@@ -90,7 +80,7 @@ angular.module("workflow-new").controller("WorkflowNewController", ["$http", fun
 	this.nflow = {};
 
 	this.addFlow = function(){
-		$http.post('//aleph.inesc-id.pt/vre/api/workflows', this.nflow)
+		$http.post('//aleph.inesc-id.pt/vre/api/create/workflows', this.nflow)
 			.success(function () {
 				console.log('Successfuly posted new workflow');
 				window.location = '#/workflows';

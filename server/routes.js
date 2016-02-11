@@ -4,23 +4,15 @@ module.exports = function (app) {
 
 	var handlers = require("require-dir")("./handlers");
 
-	
-	app.post('/vre/api/databases', handlers["api-databases-create"]);
-	app.get('/vre/api/databases/:id', handlers["api-databases-get-id"]);
-	app.delete('/vre/api/databases/delete/:id', handlers["api-databases-delete"]);
-	app.post('/vre/api/databases/edit/:id', handlers["api-databases-edit"]);
+    app.delete('/vre/api/delete/:collection/:id',           handlers["api-delete"]);
 
-	app.get('/vre/api/:collection', handlers["api-collection-get"]);
-	app.post('/vre/api/workflows', handlers["api-workflows-create"]);
-	app.get('/vre/api/workflows/:id', handlers["api-workflows-get-id"]);
-	app.delete('/vre/api/workflows/delete/:id', handlers["api-workflows-delete"]);
-	app.post('/vre/api/workflows/edit/:id', handlers["api-workflows-edit"]);
+	app.post('/vre/api/create/:collection',                 handlers["api-create"]);
+    app.post('/vre/api/edit/:collection/:id',               handlers["api-edit"]);
 
-	app.put('/vre/api/reviews/:collection/:id', handlers["api-collection-reviews-put"]);
-	app.put('/vre/api/reviews/:collection/:docid/:revid', handlers["api-collection-reviews-delete"]);
+	app.get('/vre/api/:collection',                         handlers["api-get"]);
+    app.get('/vre/api/:collection/:id',                     handlers["api-get-id"]);
 
-	app.get('/vre/api/reviews', handlers["api-reviews-get"]);
-	app.get('/vre/api/review/:id', handlers["api-review-get-id"]);
-	app.delete('/vre/api/review/delete/:id', handlers["api-review-delete"]);
+	app.put('/vre/api/reviews/:collection/:id',             handlers["api-reviews-put"]);
+	app.put('/vre/api/reviews/:collection/:docid/:revid',   handlers["api-reviews-delete"]);
 
 }
