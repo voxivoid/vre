@@ -27,8 +27,6 @@ handlers.push(function(req, res, next) {
         .then(function () {
             review = new Review(req.body);
 
-            console.log('\n\nTrying to insert review in workflow with id ' + id + ": " + review);
-
             return review.save();
         })
         .then(function () {
@@ -38,11 +36,13 @@ handlers.push(function(req, res, next) {
                 var Document = req.app.db.models.Workflow;
 
             }
-            else {
+            else if (collection === 'databases') {
 
                 var Document = req.app.db.models.Database;
 
             }
+
+            //console.log('\nTrying to insert review in ' + collection + ' with id ' + id + ": " + review);
 
             Document.findById(id)
                 .then(function (doc) {

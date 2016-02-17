@@ -21,7 +21,7 @@ handlers.push(function(req, res, next) {
 
     }
 
-        console.log('\n\nTrying to delete review with id ' + review + ' in document ' + id );
+        //console.log('\n\nTrying to delete review with id ' + review + ' in document ' + id );
 
         Document.findById(id)
             .then(function (doc) {

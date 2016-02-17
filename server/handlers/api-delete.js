@@ -28,7 +28,7 @@ handlers.push(function(req, res, next) {
 
     var id = req.params.id;
 
-    console.log('\n\nTrying to delete document with id ' + id );
+    //console.log('\n\nTrying to delete document with id ' + id );
 
     Document.findByIdAndRemove(id)
         .then(function(doc) {

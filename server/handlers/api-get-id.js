@@ -28,7 +28,7 @@ handlers.push(function(req, res, next) {
 
     var id = req.params.id;
 
-    console.log('\n\nTrying to get document with id ' + id );
+    //console.log('\nTrying to get document with id ' + id );
 
     Document.findById(id)
         .then(function(doc) {

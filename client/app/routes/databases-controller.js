@@ -23,6 +23,7 @@ angular.module("databases").controller("DatabasesController", ['$scope', '$http'
             angular.forEach(databaseObject.reviews, function(reviewObject, reviewIndex) {
                 $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){
                     if(data.success) {
+                        //console.log('got database review ' + reviewObject);
                         $scope.databasesCtrl.databases[databaseIndex].reviews[reviewIndex] = data.success;
                     }
                 });
@@ -31,13 +32,12 @@ angular.module("databases").controller("DatabasesController", ['$scope', '$http'
     });
 
     this.delRev = function(revid, docid){
-        console.log("Trying to remove review");
         $http.put('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
             .success(function () {
-                console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
+                //console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
                 $http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
                     .success(function () {
-                        console.log('Successfuly removed review from reviews');
+                        //console.log('Successfuly removed review from reviews');
                         location.reload();
                     })
                     .error(function () {
@@ -51,13 +51,13 @@ angular.module("databases").controller("DatabasesController", ['$scope', '$http'
 
 }]);
 
-angular.module("databases").controller("ReviewController", ['$http', function($http){
+angular.module("databases").controller("DataReviewController", ['$http', function($http){
     this.review = {};
 
     this.addReview = function(database){
         $http.put('//aleph.inesc-id.pt/vre/api/reviews/databases/' + database, this.review)
             .success(function () {
-                console.log('Successfuly posted new review in database ' + database);
+                //console.log('Successfuly posted new review in database ' + database);
                 location.reload();
             })
             .error(function () {
@@ -82,7 +82,7 @@ angular.module("database-new").controller("DatabaseNewController", ["$http", fun
     this.addBase = function(){
         $http.post('//aleph.inesc-id.pt/vre/api/create/databases', this.nflow)
             .success(function () {
-                console.log('Successfuly posted new database');
+                //console.log('Successfuly posted new database');
                 window.location = '#/databases';
             })
             .error(function () {

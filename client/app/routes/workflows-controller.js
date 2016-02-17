@@ -23,6 +23,7 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
 			angular.forEach(workflowObject.reviews, function(reviewObject, reviewIndex) {
                 $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){
                     if(data.success) {
+						//console.log('got review' + reviewObject);
                         $scope.workflowsCtrl.workflows[workflowIndex].reviews[reviewIndex] = data.success;
                     }
                 });
@@ -31,13 +32,13 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
 	});
 
 	this.delRev = function(revid, docid){
-        console.log("Trying to remove review");
+        //console.log("Trying to remove review");
 		$http.put('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
 			.success(function () {
-				console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
+				//console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
 				$http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
 					.success(function () {
-						console.log('Successfuly removed review from reviews');
+						//console.log('Successfuly removed review from reviews');
 						location.reload();
 					})
 					.error(function () {
@@ -51,13 +52,13 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
     
 }]);
 
-angular.module("workflows").controller("ReviewController", ['$http', function($http){
+angular.module("workflows").controller("WorkReviewController", ['$http', function($http){
 	this.review = {};
 
 	this.addReview = function(workflow){
 		$http.put('//aleph.inesc-id.pt/vre/api/reviews/workflows/' + workflow, this.review)
 			.success(function () {
-				console.log('Successfuly posted new review in workflow ' + workflow);
+				//console.log('Successfuly posted new review in workflow ' + workflow);
                 location.reload();
 			})
 			.error(function () {
@@ -82,7 +83,7 @@ angular.module("workflow-new").controller("WorkflowNewController", ["$http", fun
 	this.addFlow = function(){
 		$http.post('//aleph.inesc-id.pt/vre/api/create/workflows', this.nflow)
 			.success(function () {
-				console.log('Successfuly posted new workflow');
+				//console.log('Successfuly posted new workflow');
 				window.location = '#/workflows';
 			})
 			.error(function () {
