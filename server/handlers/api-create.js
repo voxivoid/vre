@@ -18,7 +18,7 @@ handlers.push(function (req, res, next) {
                 description: joi.string().required(),
                 link: joi.string(),
                 image: joi.string(),
-                author:	joi.string(),
+                author:	joi.string().required,
                 domainSpecific: joi.boolean().default(false)
             }
         }));
@@ -31,11 +31,11 @@ handlers.push(function (req, res, next) {
         handlers.push(validate({
             body: {
                 acronym:        joi.string(),
-                name:	        joi.string(),
-                description:	joi.string(),
-                website:		joi.string(),
+                name:	        joi.string().required,
+                description:	joi.string().required,
+                website:		joi.string().required
                 image:			joi.string(),
-                domainSpecific: joi.boolean()
+                domainSpecific: joi.boolean().default(false)
             }
         }));
 
@@ -46,9 +46,9 @@ handlers.push(function (req, res, next) {
 
         handlers.push(validate({
             body: {
-                stars:  joi.string(),
-                body:	joi.string(),
-                author:	joi.string()
+                stars:  joi.string().required,
+                body:	joi.string().required,
+                author:	joi.string().required
             }
         }));
 
