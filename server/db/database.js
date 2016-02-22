@@ -10,7 +10,6 @@ var schema = new Schema({
     description: String,
     website: String,
     image: String,
-    author: String,
     domainSpecific: Boolean,
     reviews: [{type: ObjectId, ref: "Review"}]
 });

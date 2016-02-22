@@ -16,6 +16,7 @@ handlers.push(function (req, res, next) {
             body: {
                 name: joi.string().required(),
                 description: joi.string().required(),
+                longDescription: joi.string().required(),
                 link: joi.string(),
                 image: joi.string(),
                 author:	joi.string().required,

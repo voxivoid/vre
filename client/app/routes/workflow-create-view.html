@@ -17,19 +17,23 @@
 
 			<!--  Review Form -->
 			<fieldset class="form-group">
-				<h4>Name</h4>
-				<textarea ng-model="flowCtrl.nflow.name" class="form-control" placeholder="Workflow Name" title="Name" required></textarea>
+				<h4>Name (max. 50 chars) * </h4>
+				<textarea ng-model="flowCtrl.nflow.name" class="form-control" placeholder="Workflow Name" title="Name" maxlength="50" required></textarea>
 			</fieldset>
 			<fieldset class="form-group">
-				<h4>Description</h4>
-				<textarea ng-model="flowCtrl.nflow.description" class="form-control" placeholder="Description" title="Description" required></textarea>
+				<h4>Short description (max. 250 chars) * </h4>
+				<textarea ng-model="flowCtrl.nflow.description" class="form-control" placeholder="This information will be presented in the workflows gallery" title="Short description" maxlength="250" required></textarea>
+			</fieldset>
+			<fieldset class="form-group">
+				<h4>Long description (max. 5000 chars) * </h4>
+				<textarea ng-model="flowCtrl.nflow.longDescription" class="form-control" placeholder="This will be the information available in the workflow dedicated page" title="Long description" maxlength="5000" required></textarea>
 			</fieldset>
 			<fieldset class="form-group">
 				<h4>Image URL</h4>
-				<textarea ng-model="flowCtrl.nflow.image" class="form-control" placeholder="Image link" title="Image" required></textarea>
+				<textarea ng-model="flowCtrl.nflow.image" class="form-control" placeholder="http://example-server.com/example-image.jpg" title="Image" ></textarea>
 			</fieldset>
 			<fieldset class="form-group">
-				<h4>Author e-mail</h4>
+				<h4>Author e-mail * </h4>
 				<input ng-model="flowCtrl.nflow.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
 			</fieldset>
 			<fieldset class="form-group">
@@ -43,6 +47,9 @@
 					No
 				</label>
 			</fieldset>
+            <fieldset class="form-group">
+                <h4>* Required fields</h4>
+            </fieldset>
 			<fieldset class="form-group">
 				<input type="submit" class="form-control btn btn-primary pull-right" value="Submit Workflow" />
 			</fieldset>
