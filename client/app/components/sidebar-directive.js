@@ -32,4 +32,15 @@ angular.module("sidebar").controller("SidebarController", function($scope){
             }
         });
     }
+    else if (this.type === "tools"){
+        this.buttons = ["Add Tool","My Tools","My Area", "My Profile"];
+        this.links = ["#/tool/new","#","#","#"];
+        this.index = []
+
+        $scope.$on('toolsReady', function(event, tools) {
+            for (i = 0; i < tools.length; i++) {
+                $scope.sidebarCtrl.index.push(tools[i].acronym);
+            }
+        });
+    }
 });

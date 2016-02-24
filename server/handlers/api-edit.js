@@ -43,6 +43,22 @@ handlers.push(function (req, res, next) {
         }));
 
     }
+    else if (collection === 'tools') {
+
+        var Document = req.app.db.models.Tool;
+
+        handlers.push(validate({
+            body: {
+                acronym:        joi.string(),
+                name:	        joi.string(),
+                description:	joi.string(),
+                website:		joi.string(),
+                image:			joi.string(),
+                domainSpecific: joi.boolean()
+            }
+        }));
+
+    }
     else if (collection === 'reviews') {
 
         var Document = req.app.db.models.Review;

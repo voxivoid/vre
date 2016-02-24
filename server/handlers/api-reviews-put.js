@@ -41,6 +41,11 @@ handlers.push(function(req, res, next) {
                 var Document = req.app.db.models.Database;
 
             }
+            else if (collection === 'tools') {
+
+                var Document = req.app.db.models.Tool;
+
+            }
 
             //console.log('\nTrying to insert review in ' + collection + ' with id ' + id + ": " + review);
 

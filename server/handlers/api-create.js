@@ -34,7 +34,23 @@ handlers.push(function (req, res, next) {
                 acronym:        joi.string(),
                 name:	        joi.string().required,
                 description:	joi.string().required,
-                website:		joi.string().required
+                website:		joi.string().required,
+                image:			joi.string(),
+                domainSpecific: joi.boolean().default(false)
+            }
+        }));
+
+    }
+    else if (collection === 'tools') {
+
+        var Document = req.app.db.models.Tool;
+
+        handlers.push(validate({
+            body: {
+                acronym:        joi.string(),
+                name:	        joi.string().required,
+                description:	joi.string().required,
+                website:		joi.string().required,
                 image:			joi.string(),
                 domainSpecific: joi.boolean().default(false)
             }

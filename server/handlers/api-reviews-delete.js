@@ -15,11 +15,16 @@ handlers.push(function(req, res, next) {
         var Document = req.app.db.models.Workflow;
 
     }
-    else {
+    else if (collection === 'databases'){
 
         var Document = req.app.db.models.Database;
 
     }
+    else if (collection === 'tools'){
+
+        var Document = req.app.db.models.Tool;
+
+}
 
         //console.log('\n\nTrying to delete review with id ' + review + ' in document ' + id );
 

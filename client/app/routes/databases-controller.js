@@ -77,10 +77,10 @@ angular.module("database-new").config(["$routeProvider", function ($routeProvide
 }]);
 
 angular.module("database-new").controller("DatabaseNewController", ["$http", function($http) {
-    this.nflow = {};
+    this.nbase= {};
 
     this.addBase = function(){
-        $http.post('//aleph.inesc-id.pt/vre/api/create/databases', this.nflow)
+        $http.post('//aleph.inesc-id.pt/vre/api/create/databases', this.nbase)
             .success(function () {
                 //console.log('Successfuly posted new database');
                 window.location = '#/databases';
@@ -88,6 +88,6 @@ angular.module("database-new").controller("DatabaseNewController", ["$http", fun
             .error(function () {
                 console.log("Error: Could not insert");
             });
-        this.nflow = {};
+        this.nbase = {};
     };
 }]);
