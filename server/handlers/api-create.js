@@ -18,7 +18,7 @@ handlers.push(function (req, res, next) {
                 description: joi.string().required(),
                 longDescription: joi.string().required(),
                 link: joi.string(),
-                image: joi.string(),
+                image: joi.string().default("images/workflow.png"),
                 author:	joi.string().required,
                 domainSpecific: joi.boolean().default(false)
             }
@@ -35,7 +35,7 @@ handlers.push(function (req, res, next) {
                 name:	        joi.string().required,
                 description:	joi.string().required,
                 website:		joi.string().required,
-                image:			joi.string(),
+                image:			joi.string().default("images/database.png"),
                 domainSpecific: joi.boolean().default(false)
             }
         }));
@@ -51,7 +51,7 @@ handlers.push(function (req, res, next) {
                 name:	        joi.string().required,
                 description:	joi.string().required,
                 website:		joi.string().required,
-                image:			joi.string(),
+                image:			joi.string().default("images/tool.ico"),
                 domainSpecific: joi.boolean().default(false)
             }
         }));

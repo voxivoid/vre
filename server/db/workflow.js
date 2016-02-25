@@ -9,7 +9,7 @@ var schema = new Schema({
     description: String,
     longDescription: String,
     link: String,
-    image: String,
+    image: { type: String, default: 'images/workflow.png' },
     author: String,
     domainSpecific: Boolean,
     reviews: [{type: ObjectId, ref: "Review"}]

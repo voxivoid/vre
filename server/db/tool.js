@@ -9,7 +9,7 @@ var schema = new Schema({
     name: String,
     description: String,
     website: String,
-    image: String,
+    image: { type: String, default: 'images/tool.ico' },
     domainSpecific: Boolean,
     reviews: [{type: ObjectId, ref: "Review"}]
 });
