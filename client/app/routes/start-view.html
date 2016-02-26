@@ -1,0 +1,37 @@
+<div class="container" style="width: 99%;">
+
+    <h2> Get Started </h2>
+    <p>&nbsp;</p>
+
+    <div id="rest-index" class="col-md-2">
+        <!-- Sidebar -->
+        <h3> Index </h3>
+        <div id="index" class="btn-group-vertical">
+            <a href="#/rest/#mission" class="list-group-item"> Vision & Mission </a>
+            <a href="#/rest/#structure" class="list-group-item"> VRE structure </a>
+            <a href="#/rest/#tutorial" class="list-group-item"> Tutorial </a>
+        </div>
+    </div>
+
+    <mission></mission>
+
+    <tutorial></tutorial>
+
+
+</div>
+
+<script>
+    $('#rest-index').affix({
+        offset: {
+            top: 0
+        }
+    });
+
+    var $body = $(document.body);
+    var navHeight = $('.navbar').outerHeight(true) + 10;
+
+    $body.scrollspy({
+        target: '#leftCol',
+        offset: navHeight
+    });
+</script>

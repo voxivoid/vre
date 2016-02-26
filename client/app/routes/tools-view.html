@@ -53,7 +53,7 @@
                             </div>
                             <div class="panel" ng-show="tab == 3">
                                 <!--  Review Form -->
-                                <form name="reviewForm" ng-controller="DataReviewController as toolReviewCtrl" ng-submit="reviewForm.$valid && toolReviewCtrl.addReview(tool._id)" >
+                                <form name="reviewForm" ng-controller="ToolReviewController as toolReviewCtrl" ng-submit="reviewForm.$valid && toolReviewCtrl.addReview(tool._id)" >
                                     <blockquote >
                                         <strong>{{toolReviewCtrl.review.stars}} Stars</strong>
                                         {{toolReviewCtrl.review.body}}
