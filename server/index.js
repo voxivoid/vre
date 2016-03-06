@@ -11,6 +11,8 @@ Promise.config({
 var express = require("express");
 var mongoose = require("mongoose");
 
+
+
 global.config = require("./config");
 var app = express();
 
@@ -40,6 +42,9 @@ app.use(require("body-parser").urlencoded({extended: true}));
 
 app.db = require("./db");
 require("./routes")(app);
+
+var passport = require("./passport")(app);
+
 
 app.use(function (err, req, res, next) {
     if (config.environment !== "development") { // production error handler

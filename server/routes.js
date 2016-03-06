@@ -4,6 +4,8 @@ module.exports = function (app) {
 
 	var handlers = require("require-dir")("./handlers");
 
+	app.get('/auth/google/callback', handlers["auth"]);
+
 	app.get('/vre/api/databases', handlers["api-databases-get"]);
 	app.post('/vre/api/databases', handlers["api-databases-create"]);
 	app.get('/vre/api/databases/:id', handlers["api-databases-get-id"]);
@@ -20,4 +22,10 @@ module.exports = function (app) {
     app.get('/vre/api/reviews', handlers["api-reviews-get"]);
 	app.get('/vre/api/review/:id', handlers["api-review-get-id"]);
 	app.delete('/vre/api/review/delete/:id', handlers["api-review-delete"]);
+
+	function isLoggedIn(req, res, next) {
+		if (req.isAuthenticated())
+			return next();
+		res.redirect('/');
+	}
 };
