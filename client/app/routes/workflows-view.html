@@ -1,75 +1,75 @@
-<div>
-    <div class="container" style="width: 99%;">
-        <sidebar></sidebar>
-        <div class="container" style="width: 70%;">
-            <div id="pipelines">
-                <div ng-repeat="workflow in workflowsCtrl.workflows">
-                    <div class="row" >
-                        <div class="col-sm-4">
-                            <a id="{{workflow.name}}"></a>
-                            <a href="{{workflow.website}}"><img class="img-responsive" ng-src="{{workflow.image}}" alt="" ></a>
-                        </div> <!-- col -->
+<div class="container" style="width: 99%;">
+    <sidebar></sidebar>
+    <div class="container" style="width: 70%;">
+        <div id="pipelines">
+            <div ng-repeat="workflow in workflowsCtrl.workflows">
+                <div class="row" >
+                    <div class="col-md-4">
+                        <a id="{{workflow.name}}"></a>
+                        <a href="{{workflow.website}}"><img class="img-responsive" ng-src="{{workflow.image}}" alt="" ></a>
+                    </div> <!-- col -->
 
-                        <div class="col-md-1"></div>
+                    <div class="col-md-1"></div>
 
-                        <div class="col-md-6">
-                            <h3> {{workflow.name}} </h3>
-                            <p><strong><em>Author: {{workflow.author}}</em></strong></p>
-                            </br>
-                            <section ng-init="tab = 1 ">
-                                <ul class="nav nav-pills">
-                                    <li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1">Description</a></li>
-                                    <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">View Reviews</a></li>
-                                    <li ng-class="{ active:tab === 3 }"><a href ng-click="tab = 3">Add Review</a></li>
-                                    <li ng-class="{ active:tab === 4 }"><a href="{{workflow.link}}">Start</a></li>
-                                </ul>
-                            </section>
-                            </br>
-                            <div class="panel" ng-show="tab == 1">
-                                <p> {{workflow.description}} </p>
+                    <div class="col-md-6">
+                        <h3> {{workflow.name}} </h3>
+                        <p><strong><em>Author: {{workflow.author}}</em></strong></p>
+                        </br>
+                        <section ng-init="tab = 1 ">
+                            <ul class="nav nav-pills">
+                                <li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1">Description</a></li>
+                                <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">View Reviews</a></li>
+                                <li ng-class="{ active:tab === 3 }"><a href ng-click="tab = 3">Add Review</a></li>
+                                <li ng-class="{ active:tab === 4 }"><a href="{{workflow.link}}">Start</a></li>
+                            </ul>
+                        </section>
+                        </br>
+                        <div class="panel" ng-show="tab == 1">
+                            <p> {{workflow.description}} </p>
+                        </div>
+                        <div class="panel" ng-show="tab == 2">
+                            <div ng-repeat="review in workflow.reviews">
+                                <blockquote>
+                                    <b> {{review.stars}} Stars</b>
+                                    <p>{{review.body}}</p>
+                                    <cite>{{review.author}}</cite>
+                                    <p></p>
+                                    <p><a ng-click="workflowsCtrl.delRev(review._id,workflow._id)" class="btn btn-warning" role="button">Delete Review</a></p>
+                                </blockquote>
                             </div>
-                            <div class="panel" ng-show="tab == 2">
-                                <div ng-repeat="review in workflow.reviews">
-                                        <blockquote>
-                                            <b> {{review.stars}} Stars</b>
-                                            <p>{{review.body}}</p>
-                                            <cite>{{review.author}}</cite>
-                                        </blockquote>
-                                </div>
-                            </div>
-                            <div class="panel" ng-show="tab == 3">
+                        </div>
+                        <div class="panel" ng-show="tab == 3">
+                            <!--  Review Form -->
+                            <form name="reviewForm" ng-controller="WorkReviewController as workReviewCtrl" ng-submit="reviewForm.$valid && workReviewCtrl.addReview(workflow._id)" >
+                                <blockquote >
+                                    <strong>{{workReviewCtrl.review.stars}} Stars</strong>
+                                    {{workReviewCtrl.review.body}}
+                                    <cite class="clearfix">-{{workReviewCtrl.review.author}}</cite>
+                                </blockquote>
+
                                 <!--  Review Form -->
-                                <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(workflow._id)" >
-                                    <blockquote >
-                                        <strong>{{reviewCtrl.review.stars}} Stars</strong>
-                                        {{reviewCtrl.review.body}}
-                                        <cite class="clearfix">-{{reviewCtrl.review.author}}</cite>
-                                    </blockquote>
+                                <h4>Submit a Review</h4>
+                                <fieldset class="form-group">
+                                    <select ng-model="workReviewCtrl.review.stars" class="form-control" ng-options="stars for stars in ['5','4','3','2','1']" title="Stars" required>
+                                        <option value>Rate the Product</option>
+                                    </select>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <textarea ng-model="workReviewCtrl.review.body" class="form-control" placeholder="Describe your feelings to us..." title="Review" required></textarea>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <input ng-model="workReviewCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div> <!-- col -->
+                </div> <!-- row .-->
+                </br>
 
-                                    <!--  Review Form -->
-                                    <h4>Submit a Review</h4>
-                                    <fieldset class="form-group">
-                                        <select ng-model="reviewCtrl.review.stars" class="form-control" ng-options="stars for stars in ['5','4','3','2','1']" title="Stars" required>
-                                            <option value>Rate the Product</option>
-                                        </select>
-                                    </fieldset>
-                                    <fieldset class="form-group">
-                                        <textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="Describe your feelings to us..." title="Review" required></textarea>
-                                    </fieldset>
-                                    <fieldset class="form-group">
-                                        <input ng-model="reviewCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
-                                    </fieldset>
-                                    <fieldset class="form-group">
-                                        <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div> <!-- col -->
-                    </div> <!-- row .-->
-                    </br>
-
-                    <hr>
-                </div>
+                <hr>
             </div>
         </div>
     </div>

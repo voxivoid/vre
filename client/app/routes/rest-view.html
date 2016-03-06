@@ -1,0 +1,350 @@
+<div class="container" style="width: 99%;">
+
+    <h2>Oil & Gas REST API </h2>
+    <p>&nbsp;</p>
+
+    <div id="rest-index" class="col-md-2">
+        <!-- Sidebar -->
+        <h3> Index </h3>
+        <div id="index" class="btn-group-vertical">
+            <a href="#/rest/#collections" class="list-group-item">Collections Overview</a>
+            <a href="#/rest/#getmethod" class="list-group-item">GET Method</a>
+            <a href="#/rest/#postmethod" class="list-group-item">POST Method</a>
+            <a href="#/rest/#putmethod" class="list-group-item">PUT Method</a>
+            <a href="#/rest/#deletemethod" class="list-group-item">DELETE Method</a>
+            <a href="#/rest/#schemas" class="list-group-item">Schemas</a>
+        </div>
+    </div>
+
+    <div class="container" style="width: 66%;">
+        <div class="panel panel-default col-md-12">
+            <!-- Default panel contents -->
+            <a id="collections"></a>
+            <div class="panel-heading"> Collections Overview</div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <th>Resource</th>
+                <th>Description</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Workflow</td>
+                    <td>Shared bioinformatics or biology workflow, contains an explainatory image, a description and
+                        possibly user-posted reviews.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Database</td>
+                    <td>Important databases for the domain of Oil & Gas, posted and reviewed by users, same as
+                        workflows.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tools</td>
+                    <td>Suggested tools for the domain of Oil & Gas, posted and reviewed by users, same as
+                        workflows.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Review</td>
+                    <td>Aforementioned reviews of the remaining collections</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel panel-default col-md-12">
+            <!-- Default panel contents -->
+            <a id="getmethod"></a>
+            <div class="panel-heading"> GET Method</div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <th>Resource</th>
+                <th>URI(s)</th>
+                <th>Description</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>GET All</td>
+                    <td>/api/:collection</td>
+                    <td>Returns all documents in a collection</td>
+                </tr>
+                <tr>
+                    <td>GET by id</td>
+                    <td>/api/:collection/:id</td>
+                    <td>Returns the document with inserted id in selected collection</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3> GET Examples</h3>
+        <p>Sample GET all request using cURL:</p>
+
+        <div class="well">curl <a href="http://aleph.inesc-id.pt/vre/api/databases">http://aleph.inesc-id.pt/vre/api/databases</a> </div>
+
+        <p>Sample GET by id request using cURL:</p>
+
+        <div class="well">curl <a href="http://aleph.inesc-id.pt/vre/api/databases/56a8fedafe23f6435c7b144d">http://aleph.inesc-id.pt/vre/api/databases/56a8fedafe23f6435c7b144d</a> </div>
+
+
+        <div class="panel panel-default col-md-12">
+            <!-- Default panel contents -->
+            <a id="postmethod"></a>
+            <div class="panel-heading"> POST Method</div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <th>Resource</th>
+                <th>URI(s)</th>
+                <th>Description</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Create documents</td>
+                    <td>/api/create/:collection</td>
+                    <td>Creates document in a collection</td>
+                </tr>
+                <tr>
+                    <td>Edit by id</td>
+                    <td>/api/edit/:collection/:id</td>
+                    <td>Edits a document with inserted id in selected collection</td>
+                </tr>
+                </tbody>
+            </table>
+            <strong>Remember that schema must be respected</strong>
+        </div>
+
+        <h3> POST Examples</h3>
+        <p>Sample POST Create document using cURL:</p>
+
+        <div class="well">curl -H 'Content-Type: application/json' -X POST -d '{ "name":"Metagenomics Pipeline", "description":"FASTX, BLAST, MEGAN", "author":"user@domain.com" }' http://aleph.inesc-id.pt/vre/api/create/workflows</div>
+
+        <p>Sample POST Edit by id request using cURL:</p>
+
+        <div class="well">curl -H 'Content-Type: application/json' -X POST -d '{ "name":"Metagenomics Pipeline", "description":"FASTX, BLAST, MEGAN, R", "author":"new.user@.new.domain.com" }' http://aleph.inesc-id.pt/vre/api/edit/workflows/56ca06c4624e59e10dcbe109 </div>
+
+        <div class="panel panel-default col-md-12">
+            <!-- Default panel contents -->
+            <!-- Default panel contents -->
+            <a id="putmethod"></a>
+            <div class="panel-heading"> PUT Method</div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <th>Resource</th>
+                <th>URI(s)</th>
+                <th>Description</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Create Review</td>
+                    <td>/api/reviews/:collection/:id</td>
+                    <td>Creates review in a document with id :id</td>
+                </tr>
+                <tr>
+                    <td>Remove Review</td>
+                    <td>/api/reviews/:collection/:docid/:revid</td>
+                    <td>Removes a review from a document in selected collection</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3> PUT Examples</h3>
+        <p>Sample PUT Create review using cURL:</p>
+
+        <div class="well">curl -H 'Content-Type: application/json' -X PUT -d '{ "stars":"3", "body":"dont like this one very much...blast is very basic", "author":"someone@domain.com" }' http://aleph.inesc-id.pt/vre/api/reviews/workflows/56ca06c4624e59e10dcbe109</div>
+
+        <p>Sample PUT Remove review by id request using cURL:</p>
+
+        <div class="well">curl -H 'Content-Type: application/json' -X PUT  http://aleph.inesc-id.pt/vre/api/reviews/workflows/56ca05ee624e59e10dcbe108/56ca08f3624e59e10dcbe10a</a> </div>
+
+        <div class="panel panel-default col-md-12">
+            <!-- Default panel contents -->
+            <!-- Default panel contents -->
+            <a id="deletemethod"></a>
+            <div class="panel-heading"> DELETE Method</div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <th>Resource</th>
+                <th>URI(s)</th>
+                <th>Description</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Delete document</td>
+                    <td>/api/delete/:collection/:id</td>
+                    <td>Deletes document with id :id</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3> DELETE Examples</h3>
+        <p>Sample DELETE document using cURL:</p>
+
+        <div class="well">curl -X DELETE  http://aleph.inesc-id.pt/vre/api/delete/reviews/56ca091a624e59e10dcbe10c</div>
+
+        <a id="schemas"></a>
+        <h3> Schemas </h3>
+
+        <div class="panel panel-default col-md-6">
+            <!-- Default panel contents -->
+            <div id="workflows" class="panel-heading"> Workflows </div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <th>Parameter</th>
+                <th>Type</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>name</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                <tr>
+                    <td>image</td>
+                    <td><em>String</em></td>
+                </tr>
+                <tr>
+                    <td>author</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                <tr>
+                    <td>domainSpecific</td>
+                    <td><em>boolean</em> (default = false)</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel panel-default col-md-6">
+            <!-- Default panel contents -->
+            <div id="databases" class="panel-heading"> Databases </div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <th>Parameter</th>
+                <th>Type</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>acronym</td>
+                    <td><em>String</em></td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                <tr>
+                    <td>image</td>
+                    <td><em>String</em></td>
+                </tr>
+                <tr>
+                    <td>website</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+
+                <tr>
+                    <td>domainSpecific</td>
+                    <td><em>boolean</em> (default = false)</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel panel-default col-md-6">
+            <!-- Default panel contents -->
+            <div id="tools" class="panel-heading"> Tools </div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <th>Parameter</th>
+                <th>Type</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>acronym</td>
+                    <td><em>String</em></td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                <tr>
+                    <td>image</td>
+                    <td><em>String</em></td>
+                </tr>
+                <tr>
+                    <td>website</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+
+                <tr>
+                    <td>domainSpecific</td>
+                    <td><em>boolean</em> (default = false)</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel panel-default col-md-6">
+            <!-- Default panel contents -->
+            <div id="reviews" class="panel-heading"> Reviews </div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <th>Parameter</th>
+                <th>Type</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>stars</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                <tr>
+                    <td>body</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                <tr>
+                    <td>author</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $('#rest-index').affix({
+        offset: {
+            top: 0
+        }
+    });
+
+    var $body = $(document.body);
+    var navHeight = $('.navbar').outerHeight(true) + 10;
+
+    $body.scrollspy({
+        target: '#leftCol',
+        offset: navHeight
+    });
+</script>
