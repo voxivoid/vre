@@ -1,4 +1,4 @@
-angular.module("auth", ["directive.g+signin"]);
+angular.module("auth", []);
 
 angular.module("auth").directive("auth", function(){
 	return {
