@@ -41,6 +41,21 @@ handlers.push(function (req, res, next) {
         }));
 
     }
+    else if (collection === 'pubdatas') {
+
+        var Document = req.app.db.models.Pubdata;
+
+        handlers.push(validate({
+            body: {
+                name:	        joi.string().required,
+                description:	joi.string().required,
+                website:		joi.string().required,
+                image:			joi.string().default("images/database.png"),
+                domainSpecific: joi.boolean().default(false)
+            }
+        }));
+
+    }
     else if (collection === 'tools') {
 
         var Document = req.app.db.models.Tool;

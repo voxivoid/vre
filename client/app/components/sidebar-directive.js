@@ -42,5 +42,14 @@ angular.module("sidebar").controller("SidebarController", function($scope){
                 $scope.sidebarCtrl.index.push(tools[i].acronym);
             }
         });
-    }
-});
+    }else if (this.type === "pubdatas"){
+        this.buttons = ["Add Public Resource","My Public Resources","My Area", "My Profile"];
+        this.links = ["#/publicdata/new","#","#","#"];
+        this.index = []
+
+        $scope.$on('pubdatasReady', function(event, pubdatas) {
+            for (i = 0; i < tools.length; i++) {
+                $scope.sidebarCtrl.index.push(tools[i].name);
+            }
+        });
+    }});
