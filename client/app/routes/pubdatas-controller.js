@@ -77,17 +77,17 @@ angular.module("pubdata-new").config(["$routeProvider", function ($routeProvider
 }]);
 
 angular.module("pubdata-new").controller("PubdataNewController", ["$http", function($http) {
-    this.npubd= {};
+    this.npub= {};
 
     this.addPub = function(){
-        $http.post('//aleph.inesc-id.pt/vre/api/create/pubdatas', this.npubd)
+        $http.post('//aleph.inesc-id.pt/vre/api/create/pubdatas', this.npub)
             .success(function () {
                 //console.log('Successfuly posted new pubdata');
-                window.location = '#/pubdatas';
+                window.location = '#/publicdata';
             })
             .error(function () {
                 console.log("Error: Could not insert");
             });
-        this.npubd = {};
+        this.npub = {};
     };
 }]);

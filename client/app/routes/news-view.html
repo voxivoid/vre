@@ -6,65 +6,73 @@
 
         <div class="container" style="width: 70%;">
 
-            <div id="publicdata">
+            <div id="news">
 
-                <div ng-repeat="pubdata in pubdatasCtrl.pubdatas">
+                <div ng-repeat="news in newsCtrl.news">
 
                     <div class="row">
 
                         <div class="col-md-4">
-                            <a id="{{pubdata.acronym}}"></a>
-                            <a href="{{pubdata.website}}"><img class="img-responsive" ng-src="{{pubdata.image}}" alt=""></a>
+                            <a id="{{news.acronym}}"></a>
+                            <a href="{{news.website}}"><img class="img-responsive" ng-src="{{news.image}}" alt=""></a>
                         </div> <!-- col -->
                         <div class="col-md-1"></div>
+                        <!--		<div class="col-md-5">
+                                <h3> {{pbase.acronym}} </h3>
+                                <h4> {{pbase.name}} </h4>
+                                        <p> {{pbase.description}} </p>
+                                         <a href="{{pflow.website}}" class="btn btn-default" role="button"> Website </a>
+                                  <a href="{{pflow.link}}" class="btn btn-info" role="button"> Comment </a>
+                                            <a class="btn btn-primary" href="{{pflow.link}}"> Detail <span class="glyphicon glyphicon-chevron-right"></span></a>
 
+                                </div>  col -->
                         <div class="col-md-6">
-                            <h3> {{pubdata.name}} </h3>
+                            <h3> {{news.name}} </h3>
                             </br>
                             <section ng-init="tab = 1 ">
                                 <ul class="nav nav-pills">
                                     <li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1">Description</a></li>
-                                    <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">View Reviews</a></li>
-                                    <li ng-class="{ active:tab === 3 }"><a href ng-click="tab = 3">Add Review</a></li>
-                                    <li ng-class="{ active:tab === 4 }"><a href="{{pubdata.website}}">Website</a></li>
+                                    <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">View Comment</a></li>
+                                    <li ng-class="{ active:tab === 3 }"><a href ng-click="tab = 3">Add Comment</a></li>
+                                    <li ng-class="{ active:tab === 4 }"><a href="{{news.website}}">More Info</a></li>
                                 </ul>
                             </section>
                             </br>
                             <div class="panel" ng-show="tab == 1">
-                                <p> {{pubdata.description}} </p>
+                                <p> {{news.description}} </p>
                             </div>
                             <div class="panel" ng-show="tab == 2">
-                                <div ng-repeat="review in pubdata.reviews">
+                                <div ng-repeat="review in news.reviews">
                                     <blockquote>
                                         <b> {{review.stars}} Stars</b>
                                         <p>{{review.body}}</p>
                                         <cite>{{review.author}}</cite>
                                         <p></p>
-                                        <p><a ng-click="pubdatasCtrl.delRev(review._id,pubdata._id)" class="btn btn-warning" role="button">Delete Review</a></p>
+                                        <p><a ng-click="newsCtrl.delRev(review._id,news._id)" class="btn btn-warning" role="button">Delete Review</a></p>
                                     </blockquote>
                                 </div>
                             </div>
                             <div class="panel" ng-show="tab == 3">
                                 <!--  Review Form -->
-                                <form name="reviewForm" ng-controller="PublicdataReviewController as pubdataReviewCtrl" ng-submit="reviewForm.$valid && pubdataReviewCtrl.addReview(pubdata._id)" >
+                                <form name="reviewForm" ng-controller="NewsReviewController as newsReviewCtrl" ng-submit="reviewForm.$valid && newsReviewCtrl.addReview(news._id)" >
                                     <blockquote >
-                                        <strong>{{pubdataReviewCtrl.review.stars}} Stars</strong>
-                                        {{pubdataReviewCtrl.review.body}}
-                                        <cite class="clearfix">-{{pubdataReviewCtrl.review.author}}</cite>
+                                        <strong>{{newsReviewCtrl.review.stars}} Stars</strong>
+                                        {{newsReviewCtrl.review.body}}
+                                        <cite class="clearfix">-{{newsReviewCtrl.review.author}}</cite>
                                     </blockquote>
 
                                     <!--  Review Form -->
                                     <h4>Submit a Review</h4>
                                     <fieldset class="form-group">
-                                        <select ng-model="pubdataReviewCtrl.review.stars" class="form-control" ng-options="stars for stars in ['5','4','3','2','1']" title="Stars" required>
+                                        <select ng-model="newsReviewCtrl.review.stars" class="form-control" ng-options="stars for stars in ['5','4','3','2','1']" title="Stars" required>
                                             <option value>Rate the Product</option>
                                         </select>
                                     </fieldset>
                                     <fieldset class="form-group">
-                                        <textarea ng-model="pubdataReviewCtrl.review.body" class="form-control" placeholder="Describe your feelings to us..." title="Review" required></textarea>
+                                        <textarea ng-model="newsReviewCtrl.review.body" class="form-control" placeholder="Describe your feelings to us..." title="Review" required></textarea>
                                     </fieldset>
                                     <fieldset class="form-group">
-                                        <input ng-model="pubdataReviewCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
+                                        <input ng-model="newsReviewCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
                                     </fieldset>
                                     <fieldset class="form-group">
                                         <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />

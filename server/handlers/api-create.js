@@ -56,6 +56,21 @@ handlers.push(function (req, res, next) {
         }));
 
     }
+    else if (collection === 'news') {
+
+        var Document = req.app.db.models.News;
+
+        handlers.push(validate({
+            body: {
+                name:	        joi.string().required,
+                description:	joi.string().required,
+                website:		joi.string().required,
+                image:			joi.string().default("images/news.ico"),
+                domainSpecific: joi.boolean().default(false)
+            }
+        }));
+
+    }
     else if (collection === 'tools') {
 
         var Document = req.app.db.models.Tool;

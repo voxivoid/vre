@@ -46,6 +46,11 @@ handlers.push(function(req, res, next) {
                 var Document = req.app.db.models.Pubdata;
 
             }
+            else if (collection === 'news') {
+
+                var Document = req.app.db.models.News;
+
+            }
             else if (collection === 'tools') {
 
                 var Document = req.app.db.models.Tool;

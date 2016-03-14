@@ -17,6 +17,8 @@ db.models = {
     Workflow: require("./workflow"),
     Database: require("./database"),
     Tool: require("./tool"),
+    Pubdata: require("./pubdatas"),
+    News: require("./news"),
     Review:   require("./review"),
     User:   require("./user")
 };

@@ -32,6 +32,17 @@ angular.module("sidebar").controller("SidebarController", function($scope){
             }
         });
     }
+    else if (this.type === "news"){
+        this.buttons = ["Add News","My News","My Area", "My Profile"];
+        this.links = ["#/news/new","#","#","#"];
+        this.index = []
+
+        $scope.$on('newsReady', function(event, news) {
+            for (i = 0; i < news.length; i++) {
+                $scope.sidebarCtrl.index.push(news[i].name);
+            }
+        });
+    }
     else if (this.type === "tools"){
         this.buttons = ["Add Tool","My Tools","My Area", "My Profile"];
         this.links = ["#/tool/new","#","#","#"];
@@ -48,8 +59,8 @@ angular.module("sidebar").controller("SidebarController", function($scope){
         this.index = []
 
         $scope.$on('pubdatasReady', function(event, pubdatas) {
-            for (i = 0; i < tools.length; i++) {
-                $scope.sidebarCtrl.index.push(tools[i].name);
+            for (i = 0; i < pubdatas.length; i++) {
+                $scope.sidebarCtrl.index.push(pubdatas[i].name);
             }
         });
     }});
