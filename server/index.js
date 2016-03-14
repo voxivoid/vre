@@ -40,10 +40,17 @@ app.use(require("compression")());
 app.use(require("body-parser").json());
 app.use(require("body-parser").urlencoded({extended: true}));
 
+var session = require("express-session");
+
+app.use(session({ secret: 'vre' }));
+
 app.db = require("./db");
+app.passport = require("./passport")(app);
+app.use(app.passport.initialize());
+app.use(app.passport.session());
+
 require("./routes")(app);
 
-var passport = require("./passport")(app);
 
 
 app.use(function (err, req, res, next) {

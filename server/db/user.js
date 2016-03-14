@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
 var schema = new Schema({
-    id: String,
+    googleId: String,
     token: String,
     email: String,
     name: String

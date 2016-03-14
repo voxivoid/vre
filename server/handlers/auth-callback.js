@@ -1,8 +1,8 @@
 "use strict";
 
-var passport = require("passport");
-
 var handlers = module.exports = [];
+
+var passport = require("passport");
 
 handlers.push(function(req, res, next) {
     passport.authenticate("google", function (err, user, info) {
