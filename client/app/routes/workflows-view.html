@@ -6,7 +6,7 @@
                 <div class="row" >
                     <div class="col-md-4">
                         <a id="{{workflow.name}}"></a>
-                        <a href="{{workflow.link}}"><img class="img-responsive" ng-src="{{workflow.image}}" alt="" ></a>
+                        <a href="#/workflow/detail/{{workflow._id}}"><img class="img-responsive" ng-src="{{workflow.image}}" alt="" ></a>
                     </div> <!-- col -->
 
                     <div class="col-md-1"></div>
@@ -20,7 +20,7 @@
                                 <li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1">Description</a></li>
                                 <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">View Reviews</a></li>
                                 <li ng-class="{ active:tab === 3 }"><a href ng-click="tab = 3">Add Review</a></li>
-                                <li ng-class="{ active:tab === 4 }"><a href="{{workflow.link}}">Start</a></li>
+                                <li ng-class="{ active:tab === 4 }"><a href="#/workflow/detail/{{workflow._id}}">Start</a></li>
                             </ul>
                         </section>
                         </br>

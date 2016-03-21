@@ -43,6 +43,36 @@ handlers.push(function (req, res, next) {
         }));
 
     }
+    else if (collection === 'pubdatas') {
+
+        var Document = req.app.db.models.Pubdata;
+
+        handlers.push(validate({
+            body: {
+                name:	        joi.string(),
+                description:	joi.string(),
+                website:		joi.string(),
+                image:			joi.string(),
+                domainSpecific: joi.boolean()
+            }
+        }));
+
+    }
+    else if (collection === 'news') {
+
+        var Document = req.app.db.models.News;
+
+        handlers.push(validate({
+            body: {
+                name:	        joi.string(),
+                description:	joi.string(),
+                website:		joi.string(),
+                image:			joi.string(),
+                domainSpecific: joi.boolean()
+            }
+        }));
+
+    }
     else if (collection === 'tools') {
 
         var Document = req.app.db.models.Tool;

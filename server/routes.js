@@ -16,10 +16,6 @@ module.exports = function (app) {
 	app.post('/vre/api/create/:collection',                 handlers["api-create"]);
     app.post('/vre/api/edit/:collection/:id',               handlers["api-edit"]);
 
-    app.get('/vre/api/reviews', handlers["api-reviews-get"]);
-	app.get('/vre/api/review/:id', handlers["api-review-get-id"]);
-	app.delete('/vre/api/review/delete/:id', handlers["api-review-delete"]);
-
 	app.put('/vre/api/reviews/:collection/:id',             handlers["api-reviews-put"]);
 	app.put('/vre/api/reviews/:collection/:docid/:revid',   handlers["api-reviews-delete"]);
 
