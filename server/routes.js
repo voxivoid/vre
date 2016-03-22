@@ -2,7 +2,7 @@
 
 module.exports = function (app) {
 	var handlers = require("require-dir")("./handlers");
-	var homeUrl = "http://aleph.inesc-id.pt/vre/";
+	var homeUrl = "http://aleph.inesc-id.pt/~voxivoid/vre/client/";
 	app.get('/vre/api/auth/google/callback', app.passport.authenticate('google', {
 		successRedirect : homeUrl,
 		failureRedirect : homeUrl + '#/signin'
@@ -24,7 +24,7 @@ module.exports = function (app) {
     app.post('/vre/api/edit/:collection/:id', isAuthenticated, handlers["api-edit"]);
 
 	app.put('/vre/api/reviews/:collection/:id', isAuthenticated, handlers["api-reviews-put"]);
-	app.put('/vre/api/reviews/:collection/:docid/:revid', isAuthenticated, handlers["api-reviews-delete"]);
+	app.delete('/vre/api/reviews/:collection/:docid/:revid', isAuthenticated, handlers["api-reviews-delete"]);
 
 	function isAuthenticated(req, res, next) {
 		if (req.isAuthenticated())

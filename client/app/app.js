@@ -7,11 +7,9 @@ angular.module("vre").controller("vreController", ["$scope" ,"$http", function (
 	$http.get('http://aleph.inesc-id.pt/vre/api/auth/google/isauthenticated')
 		.success(function (data) {
 			if(data.success) {
-				console.log("logado");
 				$scope.isAuthenticated = true;
 			}
 			else{
-				console.log("nao logado");
 				$scope.isAuthenticated = false;
 			}
 		})

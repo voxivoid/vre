@@ -116,10 +116,22 @@ handlers.push(function (req, res, next) {
             if(!doc){
                 res.send({error: id + " doc doesn't exist"});
             } else {
-                Document.update(doc, {$set: req.body})
-                    .then(function(){
-                        res.send({success: id + "doc updated."});
-                    });
+                var hasPermissions = false;
+                if(req.user) {
+                    for(var i = 0; i < doc.users.length; i++){
+                        if("" + doc.users[i] === "" + req.user._id){
+                            hasPermissions = true;
+                        }
+                    }
+                }
+                if(!hasPermissions){
+                    res.send({error: id + "You don't have permissions to edit this document."});
+                } else {
+                    Document.update(doc, {$set: req.body})
+                        .then(function(){
+                            res.send({success: id + "doc updated."});
+                        });
+                }
             }
         })
         .catch(next);

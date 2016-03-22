@@ -110,6 +110,7 @@ handlers.push(function (req, res, next) {
 
     Promise.resolve()
         .then(function () {
+            req.body.users = [req.user];
             doc = new Document(req.body);
 
             doc.reviews = [];

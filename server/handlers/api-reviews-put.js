@@ -25,6 +25,7 @@ handlers.push(function(req, res, next) {
 
     Promise.resolve()
         .then(function () {
+            req.body.users = [req.user];
             review = new Review(req.body);
 
             return review.save();

@@ -45,12 +45,25 @@ handlers.push(function(req, res, next) {
 
     //console.log('\n\nTrying to delete document with id ' + id );
 
-    Document.findByIdAndRemove(id)
+    Document.findById(id)
         .then(function(doc) {
             if(!doc){
                 res.send({error: id + " document doesn't exist"});
             } else {
-                res.send({success: "document removed"});
+                var hasPermissions = false;
+                if(req.user) {
+                    for(var i = 0; i < doc.users.length; i++){
+                        if("" + doc.users[i] === "" + req.user._id){
+                            hasPermissions = true;
+                        }
+                    }
+                }
+                if(!hasPermissions){
+                    res.send({error: id + " You don't have permissions to delete this document."})
+                } else {
+                    Document.remove(doc);
+                    res.send({success: "document removed"});
+                }
             }
         })
         .catch(next);

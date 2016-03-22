@@ -11,7 +11,8 @@ var schema = new Schema({
     website: String,
     image: { type: String, default: 'images/database.png' },
     domainSpecific: Boolean,
-    reviews: [{type: ObjectId, ref: "Review"}]
+    reviews: [{type: ObjectId, ref: "Review"}],
+    users: [{type: ObjectId, ref: "User"}]
 });
 
 module.exports = mongoose.model("Database", schema);

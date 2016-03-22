@@ -12,7 +12,8 @@ var schema = new Schema({
     image: { type: String, default: 'images/workflow.png' },
     author: String,
     domainSpecific: Boolean,
-    reviews: [{type: ObjectId, ref: "Review"}]
+    reviews: [{type: ObjectId, ref: "Review"}],
+    users: [{type: ObjectId, ref: "User"}]
 });
 
 module.exports = mongoose.model("Workflow", schema);

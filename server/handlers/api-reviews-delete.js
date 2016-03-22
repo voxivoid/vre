@@ -34,23 +34,35 @@ handlers.push(function(req, res, next) {
 
         var Document = req.app.db.models.Tool;
 
-}
+    }
 
-        //console.log('\n\nTrying to delete review with id ' + review + ' in document ' + id );
+    //console.log('\n\nTrying to delete review with id ' + review + ' in document ' + id );
 
-        Document.findById(id)
-            .then(function (doc) {
-                if (!doc) {
-                    res.send({error: id + " document doesn't exist"});
+    Document.findById(id)
+        .then(function (doc) {
+            if (!doc) {
+                res.send({error: id + " document doesn't exist"});
+            }
+            else {
+                var hasPermissions = false;
+                if(req.user) {
+                    for(var i = 0; i < doc.users.length; i++){
+                        if("" + doc.users[i] === "" + req.user._id){
+                            hasPermissions = true;
+                        }
+                    }
                 }
-                else {
+                if(!hasPermissions) {
+                    res.send({error: id + " You don't have permissions to delete this review."})
+                } else {
                     Document.update(doc, {$pull: {"reviews": review}}, {safe: true, upsert: true})
                         .then(function () {
                             res.send({success: review + " review removed from document " + id});
                         });
                 }
-            })
-            .catch(next);
+            }
+        })
+        .catch(next);
 
 });
 

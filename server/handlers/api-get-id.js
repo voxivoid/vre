@@ -50,7 +50,18 @@ handlers.push(function(req, res, next) {
             if(!doc){
                 res.send({error: id + " doc doesn't exist"});
             } else {
-                res.send({success: doc.toObject()});
+                doc = doc.toObject();
+                doc.hasPermissions = false;
+
+                if(req.user) {
+                    for(var i = 0; i < doc.users.length; i++){
+                        if("" + doc.users[i] === "" + req.user._id){
+                            doc.hasPermissions = true;
+                        }
+                    }
+                }
+                delete doc.users;
+                res.send({success: doc});
             }
         })
         .catch(next);
