@@ -2,7 +2,7 @@
 
 module.exports = function (app) {
 	var handlers = require("require-dir")("./handlers");
-	var homeUrl = "http://aleph.inesc-id.pt/~voxivoid/vre/client/";
+	var homeUrl = "http://aleph.inesc-id.pt/vre/";
 	app.get('/vre/api/auth/google/callback', app.passport.authenticate('google', {
 		successRedirect : homeUrl,
 		failureRedirect : homeUrl + '#/signin'
