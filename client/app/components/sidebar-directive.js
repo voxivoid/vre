@@ -12,8 +12,8 @@ angular.module("sidebar").controller("SidebarController", function($scope){
     this.type = $scope.type;
 
     if(this.type === "workflows") {
-        this.buttons = ["Add Workflow", "My Workflows", "My Area", "My Profile"];
-        this.links = ["#/workflow/new", "#", "#", "#"];
+        this.buttons = ["Add Workflow", "My Workflows"];
+        this.links = ["#/workflow/new", "#"];
         this.index = []
         $scope.$on('workflowsReady', function(event, workflows) {
             for (i = 0; i < workflows.length; i++) {
@@ -22,8 +22,8 @@ angular.module("sidebar").controller("SidebarController", function($scope){
         });
     }
     else if (this.type === "databases"){
-        this.buttons = ["Add Database","My Databases","My Area", "My Profile"];
-        this.links = ["#/database/new","#","#","#"];
+        this.buttons = ["Add Database","My Databases"];
+        this.links = ["#/database/new","#"];
         this.index = []
 
         $scope.$on('databasesReady', function(event, databases) {
@@ -33,8 +33,8 @@ angular.module("sidebar").controller("SidebarController", function($scope){
         });
     }
     else if (this.type === "news"){
-        this.buttons = ["Add News","My News","My Area", "My Profile"];
-        this.links = ["#/news/new","#","#","#"];
+        this.buttons = ["Add News","My News"];
+        this.links = ["#/news/new","#"];
         this.index = []
 
         $scope.$on('newsReady', function(event, news) {
@@ -44,8 +44,8 @@ angular.module("sidebar").controller("SidebarController", function($scope){
         });
     }
     else if (this.type === "tools"){
-        this.buttons = ["Add Tool","My Tools","My Area", "My Profile"];
-        this.links = ["#/tool/new","#","#","#"];
+        this.buttons = ["Add Tool","My Tools"];
+        this.links = ["#/tool/new","#"];
         this.index = []
 
         $scope.$on('toolsReady', function(event, tools) {
@@ -54,8 +54,8 @@ angular.module("sidebar").controller("SidebarController", function($scope){
             }
         });
     }else if (this.type === "pubdatas"){
-        this.buttons = ["Add Public Resource","My Public Resources","My Area", "My Profile"];
-        this.links = ["#/publicdata/new","#","#","#"];
+        this.buttons = ["Add Public Resource","My Public Resources"];
+        this.links = ["#/publicdata/new","#"];
         this.index = []
 
         $scope.$on('pubdatasReady', function(event, pubdatas) {

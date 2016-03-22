@@ -6,6 +6,7 @@
                 <div class="row" >
                     <div class="col-md-4">
                         <a id="{{workflow.name}}"></a>
+
                         <a href="#/workflow/detail/{{workflow._id}}"><img class="img-responsive" ng-src="{{workflow.image}}" alt="" ></a>
                     </div> <!-- col -->
 
@@ -13,7 +14,13 @@
 
                     <div class="col-md-6">
                         <h3> {{workflow.name}} </h3>
+
                         <p><strong><em>Author: {{workflow.author}}</em></strong></p>
+
+                        <div ng-show="isAuthenticated">
+                            <a ng-click="workflowsCtrl.delFlow(workflow._id)" class="btn btn-danger" role="button">Delete Workflow</a>
+                        </div>
+
                         </br>
                         <section ng-init="tab = 1 ">
                             <ul class="nav nav-pills">
@@ -34,7 +41,7 @@
                                     <p>{{review.body}}</p>
                                     <cite>{{review.author}}</cite>
                                     <p></p>
-                                    <p><a ng-click="workflowsCtrl.delRev(review._id,workflow._id)" class="btn btn-warning" role="button">Delete Review</a></p>
+                                    <p><a ng-click="workflowsCtrl.delRev(review._id,workflow._id)" class="btn btn-danger" role="button">Delete Review</a></p>
                                 </blockquote>
                             </div>
                         </div>
