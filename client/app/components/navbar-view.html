@@ -2,20 +2,20 @@
     <ul class="nav nav-pills">
 	    <li ng-class="{active: isActive('/')}"><a href="#/">Home</a></li>
 		<li ng-class="{active: isActive('/getstarted')}"><a href="#/getstarted">Get Started</a></li>
-        <li class="dropdown" ng-class="{active: isActive('/workflows') || isActive('/databases')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Explore <span class="caret"/></a>
+        <li class="dropdown" ng-class="{active: isActive('/workflows') || isActive('/databases') || isActive('/publicdata')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Explore <span class="caret"/></a>
 			<ul class="dropdown-menu">
 			    <li ><a href="#/workflows">Workflows</a></li>
 			    <li><a href="#/databases">Databases</a></li>
 				<li><a href="#/publicdata">Public Data</a></li>
 			</ul>
 	    </li>
-		<li class="dropdown" ng-class="{active: isActive('/external') || isActive('/local') || isActive('/api')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Analytics <span class="caret"/></a>
+		<li class="dropdown" ng-class="{active: isActive('/external') || isActive('/local') || isActive('/rest')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Analytics <span class="caret"/></a>
 			<ul class="dropdown-menu">
 				<li><a href="#/external">External tools</a></li>
 				<li><a href="#/rest">REST API</a></li>
 			</ul>
 	    </li>
-		<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Social <span class="caret"/></a>
+		<li class="dropdown" ng-class="{active: isActive('/news')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Social <span class="caret"/></a>
 			<ul class="dropdown-menu">
 				<li><a href="#/news">News / Publications</a></li>
 				<li><a href="//www.facebook.com/Oil-Gas-Virtual-Research-Environment-1013094608761167">Facebook</a></li>
@@ -23,9 +23,12 @@
                 <li><a href="//bitbucket.org/oilandgasvre/">BitBucket</a></li>
 			</ul>
 	    </li>
-	    <li ng-class="{active: isActive('/signin')}"><a href="#/signin">Sign In</a></li>
-	    <li ng-class="{active: isActive('/about')}"><a href="#/about">About</a></li>
-    </ul>
+		<li ng-class="{active: isActive('/about')}"><a href="#/about">About</a></li>
+		<li ng-class="{active: isActive('/signin')}" ng-hide="isAuthenticated"><a href="#/signin">Sign In</a></li>
+		<li ng-class="{active: isActive('/profile')}" ng-show="isAuthenticated"><a href="#/profile">My Profile</a></li>
+		<li ng-show="isAuthenticated"><a href="http://aleph.inesc-id.pt/vre/api/auth/google/logout">Logout</a></li>
+
+	</ul>
 </div>
 
 <style>

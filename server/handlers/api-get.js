@@ -43,11 +43,13 @@ handlers.push(function(req, res, next) {
 
     Promise.all(Document.find())
         .then(function(docs){
-            docs = docs.map(function (doc) {
+            var sortedDocs = docs.sort(function(a,b) {
+                return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+            });
+            sortedDocs = sortedDocs.map(function (doc) {
                 doc = doc.toObject();
                 return doc;
             });
-
-            res.send({success: docs});
+            res.send({success: sortedDocs});
         }).catch(next);
 });

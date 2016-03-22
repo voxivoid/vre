@@ -1,5 +1,5 @@
 <div class="container" style="width: 99%;">
-    <sidebar></sidebar>
+    <sidebar ng-show="isAuthenticated"></sidebar>
     <div class="container" style="width: 70%;">
         <div id="pipelines">
             <div ng-repeat="workflow in workflowsCtrl.workflows">
