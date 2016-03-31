@@ -31,11 +31,6 @@ handlers.push(function(req, res, next) {
         var Document = req.app.db.models.Tool;
 
     }
-    else if (collection === 'reviews') {
-
-        var Document = req.app.db.models.Review;
-
-    }
     else {
 
         res.send('Error: no collection specified');

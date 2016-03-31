@@ -33,7 +33,7 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
 
     this.delRev = function(revid, docid){
         //console.log("Trying to remove review");
-        $http.put('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
+        $http.delete('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
             .success(function () {
                 //console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
                 $http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)

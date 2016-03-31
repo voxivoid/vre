@@ -7,6 +7,7 @@ var ObjectId = Schema.Types.ObjectId;
 var schema = new Schema({
     stars: String,
     body: String,
+    author: String,
     users: [{type: ObjectId, ref: "User"}]
 });
 
