@@ -51,16 +51,15 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
     };
 
     this.delFlow = function(docid){
-        console.log("Trying to remove workflow");
         $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
             .success(function () {
                 console.log('Successfuly removed ' + $scope.type + ' with id ' + docid);
                 location.reload();
             })
-            .error(function () {
-                console.log("Error: Could not remove document");
-            });
-    };
+    .error(function () {
+        console.log("Error: Could not remove document");
+    });
+};
 
 }]);
 

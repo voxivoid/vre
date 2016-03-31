@@ -50,19 +50,24 @@ handlers.push(function(req, res, next) {
             if(!doc){
                 res.send({error: id + " document doesn't exist"});
             } else {
-                var hasPermissions = false;
+                console.log("document exists");
                 if(req.user) {
+                    var hasPermissions = false;
                     for(var i = 0; i < doc.users.length; i++){
                         if("" + doc.users[i] === "" + req.user._id){
                             hasPermissions = true;
+                            //console.log("user has permissions");
                         }
                     }
                 }
                 if(!hasPermissions){
                     res.send({error: id + " You don't have permissions to delete this document."})
                 } else {
-                    Document.remove(doc);
-                    res.send({success: "document removed"});
+                    //console.log("will delete document now");
+                    Document.remove(doc)
+                        .then(function(){
+                            res.send({success: id + " doc removed."});
+                        });
                 }
             }
         })

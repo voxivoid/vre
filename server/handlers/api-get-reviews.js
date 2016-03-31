@@ -20,7 +20,7 @@ handlers.push(function(req, res, next) {
                 }
             }*/
 
-            //delete doc.users;
+            delete doc.users;
             return doc;
 
         });
