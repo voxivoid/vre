@@ -49,6 +49,17 @@ angular.module("news").controller("NewsController", ['$scope', '$http', function
             });
     };
 
+    this.delNew = function(docid){
+        $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
+            .success(function () {
+                console.log('Successfuly removed ' + $scope.type + ' with id ' + docid);
+                location.reload();
+            })
+            .error(function () {
+                console.log("Error: Could not remove document");
+            });
+    };
+
 }]);
 
 angular.module("news").controller("NewsReviewController", ['$http', function($http){

@@ -49,6 +49,17 @@ angular.module("tools").controller("ToolsController", ['$scope', '$http', functi
             });
     };
 
+    this.delTool = function(docid){
+        $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
+            .success(function () {
+                console.log('Successfuly removed ' + $scope.type + ' with id ' + docid);
+                location.reload();
+            })
+            .error(function () {
+                console.log("Error: Could not remove document");
+            });
+    };
+
 }]);
 
 angular.module("tools").controller("ToolReviewController", ['$http', function($http){
