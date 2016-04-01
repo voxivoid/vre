@@ -17,7 +17,7 @@
 
                         <p><strong><em>Author: {{workflow.author}}</em></strong></p>
 
-                        <div ng-show="isAuthenticated">
+                        <div ng-show="workflow.hasPermissions">
                             <a ng-click="workflowsCtrl.delFlow(workflow._id)" class="btn btn-danger" role="button">Delete Workflow</a>
                         </div>
 
@@ -41,7 +41,7 @@
                                     <p>{{review.body}}</p>
                                     <cite>{{review.author}}</cite>
                                     <p></p>
-                                    <p><a ng-click="workflowsCtrl.delRev(review._id,workflow._id)" class="btn btn-danger" role="button">Delete Review</a></p>
+                                    <p ng-show="review.hasPermissions"><a ng-click="workflowsCtrl.delRev(review._id,workflow._id)" class="btn btn-danger" role="button">Delete Review</a></p>
                                 </blockquote>
                             </div>
                         </div>

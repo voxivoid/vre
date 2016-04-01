@@ -28,7 +28,7 @@
                             <h3> {{tool.acronym}} </h3>
                             <p><strong><em>{{tool.name}}</em></strong></p>
 
-                            <div ng-show="isAuthenticated">
+                            <div ng-show="tool.hasPermissions">
                                 <a ng-click="toolsCtrl.delTool(tool._id)" class="btn btn-danger" role="button">Delete Tool</a>
                             </div>
 
@@ -52,7 +52,7 @@
                                         <p>{{review.body}}</p>
                                         <cite>{{review.author}}</cite>
                                         <p></p>
-                                        <p><a ng-click="toolsCtrl.delRev(review._id,tool._id)" class="btn btn-warning" role="button">Delete Review</a></p>
+                                        <p ng-show="review.hasPermissions"><a ng-click="toolsCtrl.delRev(review._id,tool._id)" class="btn btn-warning" role="button">Delete Review</a></p>
                                     </blockquote>
                                 </div>
                             </div>

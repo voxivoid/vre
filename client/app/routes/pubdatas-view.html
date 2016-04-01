@@ -21,7 +21,7 @@
                         <div class="col-md-6">
                             <h3> {{pubdata.name}} </h3>
 
-                            <div ng-show="isAuthenticated">
+                            <div ng-show="pubdata.hasPermissions">
                                 <a ng-click="pubdatasCtrl.delPub(pubdata._id)" class="btn btn-danger" role="button">Delete Public Resource</a>
                             </div>
 
@@ -45,7 +45,7 @@
                                         <p>{{review.body}}</p>
                                         <cite>{{review.author}}</cite>
                                         <p></p>
-                                        <p><a ng-click="pubdatasCtrl.delRev(review._id,pubdata._id)" class="btn btn-warning" role="button">Delete Review</a></p>
+                                        <p ng-show="review.hasPermissions"><a ng-click="pubdatasCtrl.delRev(review._id,pubdata._id)" class="btn btn-warning" role="button">Delete Review</a></p>
                                     </blockquote>
                                 </div>
                             </div>

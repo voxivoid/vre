@@ -30,7 +30,7 @@
                             <h3> {{database.acronym}} </h3>
                             <p><strong><em>{{database.name}}</em></strong></p>
 
-                            <div ng-show="isAuthenticated">
+                            <div ng-show="database.hasPermissions">
                                 <a ng-click="databasesCtrl.delBase(database._id)" class="btn btn-danger" role="button">Delete Database</a>
                             </div>
 
@@ -54,7 +54,7 @@
                                         <p>{{review.body}}</p>
                                         <cite>{{review.author}}</cite>
                                         <p></p>
-                                        <p><a ng-click="databasesCtrl.delRev(review._id,database._id)" class="btn btn-warning" role="button">Delete Review</a></p>
+                                        <p ng-show="review.hasPermissions"><a ng-click="databasesCtrl.delRev(review._id,database._id)" class="btn btn-warning" role="button">Delete Review</a></p>
                                     </blockquote>
                                 </div>
                             </div>
