@@ -9,26 +9,31 @@ handlers.push(function(req, res, next) {
     if (collection === 'workflows') {
 
         var Document = req.app.db.models.Workflow;
+        var RevModel = req.app.db.models.Review;
 
     }
     else if (collection === 'databases') {
 
         var Document = req.app.db.models.Database;
+        var RevModel = req.app.db.models.Review;
 
     }
     else if (collection === 'pubdatas') {
 
         var Document = req.app.db.models.Pubdata;
+        var RevModel = req.app.db.models.Review;
 
     }
     else if (collection === 'news') {
 
         var Document = req.app.db.models.News;
+        var RevModel = req.app.db.models.Review;
 
     }
     else if (collection === 'tools') {
 
         var Document = req.app.db.models.Tool;
+        var RevModel = req.app.db.models.Review;
 
     }
     else if (collection === 'reviews') {
@@ -63,6 +68,19 @@ handlers.push(function(req, res, next) {
                 if(!hasPermissions){
                     res.send({error: id + " You don't have permissions to delete this document."})
                 } else {
+                    if (collection != 'reviews') {
+                        for (var j = 0; j < doc.reviews.length; j++) {
+                            console.log("will delete review " + doc.reviews[j]);
+                            var revid = doc.reviews[j];
+                            RevModel.findById(revid)
+                                .then(function (review) {
+                                    RevModel.remove(review)
+                                        .then(function () {
+                                            console.log("review with id " + revid + " deleted");
+                                        });
+                                });
+                        }
+                    }
                     //console.log("will delete document now");
                     Document.remove(doc)
                         .then(function(){
