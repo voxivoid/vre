@@ -12,7 +12,7 @@
             <a href="#/rest/#postmethod" class="list-group-item">POST Method</a>
             <a href="#/rest/#putmethod" class="list-group-item">PUT Method</a>
             <a href="#/rest/#deletemethod" class="list-group-item">DELETE Method</a>
-            <a href="#/rest/#schemas" class="list-group-item">Schemas</a>
+            <a href="#/rest/#schemas" class="list-group-item">MongoDB Schemas</a>
         </div>
     </div>
 
@@ -29,27 +29,37 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Workflow</td>
-                    <td>Shared bioinformatics or biology workflow, contains an explainatory image, a description and
+                    <td>workflows</td>
+                    <td>Shared bioinformatics or biology workflow, contains an explanatory image, a description and
                         possibly user-posted reviews.
                     </td>
                 </tr>
                 <tr>
-                    <td>Database</td>
+                    <td>databases</td>
                     <td>Important databases for the domain of Oil & Gas, posted and reviewed by users, same as
                         workflows.
                     </td>
                 </tr>
                 <tr>
-                    <td>Tools</td>
+                    <td>pubdatas</td>
+                    <td>Public data repositories for the domain of Oil & Gas, posted and reviewed by users, same as workflows.
+                    </td>
+                </tr>
+                <tr>
+                    <td>tools</td>
                     <td>Suggested tools for the domain of Oil & Gas, posted and reviewed by users, same as
                         workflows.
                     </td>
                 </tr>
                 <tr>
-                    <td>Review</td>
-                    <td>Aforementioned reviews of the remaining collections</td>
+                    <td>news</td>
+                    <td>Lastest news and publications related to our domain.
+                    </td>
                 </tr>
+                <!--<tr>
+                    <td>reviews</td>
+                    <td>Aforementioned reviews of the remaining collections.</td>
+                </tr>-->
                 </tbody>
             </table>
         </div>
@@ -57,7 +67,8 @@
         <div class="panel panel-default col-md-12">
             <!-- Default panel contents -->
             <a id="getmethod"></a>
-            <div class="panel-heading"> GET Method</div>
+            <h3> GET</h3>
+            <div class="panel-heading">  Method</div>
             <!-- Table -->
             <table class="table">
                 <thead>
@@ -80,7 +91,7 @@
             </table>
         </div>
 
-        <h3> GET Examples</h3>
+        <h4> Examples</h4>
         <p>Sample GET all request using cURL:</p>
 
         <div class="well">curl <a href="http://aleph.inesc-id.pt/vre/api/databases">http://aleph.inesc-id.pt/vre/api/databases</a> </div>
@@ -93,7 +104,8 @@
         <div class="panel panel-default col-md-12">
             <!-- Default panel contents -->
             <a id="postmethod"></a>
-            <div class="panel-heading"> POST Method</div>
+            <h3> POST </h3>
+            <div class="panel-heading"> Method</div>
             <!-- Table -->
             <table class="table">
                 <thead>
@@ -117,7 +129,7 @@
             <strong>Remember that schema must be respected</strong>
         </div>
 
-        <h3> POST Examples</h3>
+        <h4> Examples</h4>
         <p>Sample POST Create document using cURL:</p>
 
         <div class="well">curl -H 'Content-Type: application/json' -X POST -d '{ "name":"Metagenomics Pipeline", "description":"FASTX, BLAST, MEGAN", "author":"user@domain.com" }' http://aleph.inesc-id.pt/vre/api/create/workflows</div>
@@ -130,7 +142,8 @@
             <!-- Default panel contents -->
             <!-- Default panel contents -->
             <a id="putmethod"></a>
-            <div class="panel-heading"> PUT Method</div>
+            <h3> PUT </h3>
+            <div class="panel-heading"> Method</div>
             <!-- Table -->
             <table class="table">
                 <thead>
@@ -153,7 +166,7 @@
             </table>
         </div>
 
-        <h3> PUT Examples</h3>
+        <h4> Examples </h4>
         <p>Sample PUT Create review using cURL:</p>
 
         <div class="well">curl -H 'Content-Type: application/json' -X PUT -d '{ "stars":"3", "body":"dont like this one very much...blast is very basic", "author":"someone@domain.com" }' http://aleph.inesc-id.pt/vre/api/reviews/workflows/56ca06c4624e59e10dcbe109</div>
@@ -166,7 +179,8 @@
             <!-- Default panel contents -->
             <!-- Default panel contents -->
             <a id="deletemethod"></a>
-            <div class="panel-heading"> DELETE Method</div>
+            <h3>DELETE</h3>
+            <div class="panel-heading">  Method</div>
             <!-- Table -->
             <table class="table">
                 <thead>
@@ -184,13 +198,13 @@
             </table>
         </div>
 
-        <h3> DELETE Examples</h3>
+        <h4>  Examples</h4>
         <p>Sample DELETE document using cURL:</p>
 
         <div class="well">curl -X DELETE  http://aleph.inesc-id.pt/vre/api/delete/reviews/56ca091a624e59e10dcbe10c</div>
 
         <a id="schemas"></a>
-        <h3> Schemas </h3>
+        <h3> MongoDB Schemas </h3>
 
         <div class="panel panel-default col-md-6">
             <!-- Default panel contents -->
@@ -218,10 +232,10 @@
                     <td>author</td>
                     <td><em>String</em> (required)</td>
                 </tr>
-                <tr>
+              <!--  <tr>
                     <td>domainSpecific</td>
                     <td><em>boolean</em> (default = false)</td>
-                </tr>
+                </tr>-->
                 </tbody>
             </table>
         </div>
@@ -257,10 +271,44 @@
                     <td><em>String</em> (required)</td>
                 </tr>
 
-                <tr>
+               <!-- <tr>
                     <td>domainSpecific</td>
                     <td><em>boolean</em> (default = false)</td>
+                </tr>-->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel panel-default col-md-6">
+            <!-- Default panel contents -->
+            <div id="pubdata" class="panel-heading"> Public Data </div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <th>Parameter</th>
+                <th>Type</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>name</td>
+                    <td><em>String</em> (required)</td>
                 </tr>
+                <tr>
+                    <td>description</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                <tr>
+                    <td>image</td>
+                    <td><em>String</em></td>
+                </tr>
+                <tr>
+                    <td>author</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                <!--  <tr>
+                      <td>domainSpecific</td>
+                      <td><em>boolean</em> (default = false)</td>
+                  </tr>-->
                 </tbody>
             </table>
         </div>
@@ -296,10 +344,44 @@
                     <td><em>String</em> (required)</td>
                 </tr>
 
-                <tr>
+                <!--<tr>
                     <td>domainSpecific</td>
                     <td><em>boolean</em> (default = false)</td>
+                </tr>-->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel panel-default col-md-6">
+            <!-- Default panel contents -->
+            <div id="news" class="panel-heading"> News </div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                <th>Parameter</th>
+                <th>Type</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>name</td>
+                    <td><em>String</em> (required)</td>
                 </tr>
+                <tr>
+                    <td>description</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                <tr>
+                    <td>image</td>
+                    <td><em>String</em></td>
+                </tr>
+                <tr>
+                    <td>author</td>
+                    <td><em>String</em> (required)</td>
+                </tr>
+                <!--  <tr>
+                      <td>domainSpecific</td>
+                      <td><em>boolean</em> (default = false)</td>
+                  </tr>-->
                 </tbody>
             </table>
         </div>
