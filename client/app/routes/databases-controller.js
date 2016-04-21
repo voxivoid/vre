@@ -102,3 +102,4 @@ angular.module("database-new").controller("DatabaseNewController", ["$http", fun
         this.nbase = {};
     };
 }]);
+

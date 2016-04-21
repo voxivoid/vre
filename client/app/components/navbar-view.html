@@ -1,48 +1,74 @@
 <div id="navbar">
     <ul class="nav nav-pills">
-	    <li ng-class="{active: isActive('/')}"><a href="#/">Home</a></li>
-		<li ng-class="{active: isActive('/getstarted')}"><a href="#/getstarted">Get Started</a></li>
-        <li class="dropdown" ng-class="{active: isActive('/workflows') || isActive('/databases') || isActive('/publicdata')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Explore <span class="caret"/></a>
-			<ul class="dropdown-menu">
-			    <li ><a href="#/workflows">Workflows</a></li>
-			    <li><a href="#/databases">Databases</a></li>
-				<li><a href="#/publicdata">Public Data</a></li>
-			</ul>
-	    </li>
-		<li class="dropdown" ng-class="{active: isActive('/external') || isActive('/local') || isActive('/rest')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Analytics <span class="caret"/></a>
-			<ul class="dropdown-menu">
-				<li><a href="#/external">External tools</a></li>
-				<li><a href="#/rest">REST API</a></li>
-			</ul>
-	    </li>
-		<li class="dropdown" ng-class="{active: isActive('/news')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Social <span class="caret"/></a>
-			<ul class="dropdown-menu">
-				<li><a href="#/news">News / Publications</a></li>
-				<li><a href="//www.facebook.com/ogvre">Facebook</a></li>
-            	<li><a href="//www.myexperiment.org/groups/1299.html">myExperiment</a></li>
+        <li ng-class="{active: isActive('/')}"><a href="#/">Home</a></li>
+        <li ng-class="{active: isActive('/getstarted')}"><a href="#/getstarted">Get Started</a></li>
+        <li class="dropdown" ng-class="{active: isActive('/protocols') || isActive('/workflows') }"><a class="dropdown-toggle" data-toggle="dropdown" href="" aria-labelledby="dLabel">Explore <span class="caret"/></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-submenu" role="menu" ng-class="{active: isActive('/workflows') || isActive('/bench') }"><a class="dropdown-toggle" data-toggle="dropdown" href="" tabindex="-1">Protocols <span class="caret"/></a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="#/workflows">Bioinfo</a></li>
+                            <li><a href="#/bench">Bench</a></li>
+                        </ul>
+                </li>
+                <li class="dropdown-submenu" ng-class="{active:  isActive('/databases') || isActive('/publicdata')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Data <span class="caret"/></a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#/databases">Databases</a></li>
+                        <li><a href="#/publicdata">Public Data</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown" ng-class="{active: isActive('/external') || isActive('/local') || isActive('/rest')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Analytics <span class="caret"/></a>
+            <ul class="dropdown-menu">
+                <li><a href="#/external">External tools</a></li>
+                <li><a href="#/rest">REST API</a></li>
+            </ul>
+        </li>
+        <li class="dropdown" ng-class="{active: isActive('/news')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Social <span class="caret"/></a>
+            <ul class="dropdown-menu">
+                <li><a href="#/news">News / Publications</a></li>
+                <li><a href="//www.facebook.com/ogvre">Facebook</a></li>
+                <li><a href="//www.myexperiment.org/groups/1299.html">myExperiment</a></li>
                 <li><a href="//bitbucket.org/oilandgasvre/">BitBucket</a></li>
-			</ul>
-	    </li>
-		<li ng-class="{active: isActive('/about')}"><a href="#/about">About</a></li>
-		<li ng-class="{active: isActive('/signin')}" ng-hide="isAuthenticated"><a href="#/signin">Sign In</a></li>
-		<li ng-class="{active: isActive('/profile')}" ng-show="isAuthenticated"><a href="#/profile">My Profile</a></li>
-		<li ng-show="isAuthenticated"><a href="http://aleph.inesc-id.pt/vre/api/auth/google/logout">Logout</a></li>
+            </ul>
+        </li>
+        <li ng-class="{active: isActive('/about')}"><a href="#/about">About</a></li>
+        <li ng-class="{active: isActive('/signin')}" ng-hide="isAuthenticated"><a href="#/signin">Sign In</a></li>
+        <li ng-class="{active: isActive('/profile')}" ng-show="isAuthenticated"><a href="#/profile">My Profile</a></li>
+        <li ng-show="isAuthenticated"><a href="http://aleph.inesc-id.pt/vre/api/auth/google/logout">Logout</a></li>
 
-	</ul>
+    </ul>
 </div>
 
 <style>
-	ul.nav li.dropdown:hover > ul.dropdown-menu {
-	    display: block;
-	    margin-top: 0;
-	}
+    ul.nav li.dropdown:hover > ul.dropdown-menu {
+        display: block;
+        margin-top: 0;
+    }
 
-	ul.nav li.dropdown > ul.dropdown-menu {
-	    margin-top: 0;
-	}
+    ul.nav li.dropdown > ul.dropdown-menu {
+        margin-top: 0;
+    }
 
-	#navbar{
-		padding-top: 10px;
-		padding-bottom: 10px;
-	}
+    ul.nav li.dropdown ul.dropdown-menu li.dropdown-submenu:hover > ul.dropdown-menu {
+        display: block;
+        margin-top: 0;
+    }
+
+    ul.nav li.dropdown ul.dropdown-menu li.dropdown-submenu > ul.dropdown-menu {
+        margin-top: 0;
+        top:0;
+        left:100%;
+        margin-top:-6px;
+        margin-left:-1px;
+        -webkit-border-radius:0 6px 6px 6px;
+        -moz-border-radius:0 6px 6px 6px;
+        border-radius:0 6px 6px 6px;
+
+    }
+
+    #navbar{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
 </style>

@@ -5,7 +5,7 @@
             <div ng-repeat="workflow in workflowsCtrl.workflows">
                 <div class="row" >
                     <div class="col-md-4">
-                        <a id="{{workflow.name}}"></a>
+                        <a id="anchor{{workflow.name}}"></a>
 
                         <a href="#/workflow/detail/{{workflow._id}}"><img class="img-responsive" ng-src="{{workflow.image}}" alt="" ></a>
                     </div> <!-- col -->

@@ -1,17 +1,121 @@
-<div class="container" style="width: 40%;">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/pt_PT/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-    <div class="row>">
+<div class="row>">
 
-        <h1>Profile page is coming soon! </h1>
+    <div class="container-fluid">
 
-        <div class="container" style="width: 60%;">
+        <div class="col-sm-3 col-md-2 sidebar">
 
-            <img src="images/tool.ico">
+            <h4>My Documents</h4>
 
-            <h3>We're sorry for the inconvenience </h3>
+            <ul class="nav nav-sidebar">
+
+                <li><a href="#">Workflows</a></li>
+                <li><a href="#">Databses</a></li>
+                <li><a href="#">Public Data</a></li>
+                <li><a href="#">Tools</a></li>
+                <li><a href="#">News</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-8 col-md-7 main">
+
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Welcome {{user}}!</h1>
+                    <p>This is your profile page, here you can manage your documentos and reviews and check how the other users ate interacting with it.</p>
+                    <p><a class="btn btn-primary btn-lg" href="#/tutorials" role="button">Take the guided tour »</a></p>
+                </div>
+            </div>
+
+            <div class="row placeholders">
+                <div class="col-xs-6 col-sm-3 placeholder">
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    <h4>Messages <span class="badge">3</span></a></li></h4>
+                    <span class="text-muted"></span>
+                </div>
+
+                <div class="col-xs-6 col-sm-3 placeholder">
+                    <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span>
+                    <h4>Documents <span class="badge">2</span></a></li></h4>
+                    <span class="text-muted"></span>
+                </div>
+                <div class="col-xs-6 col-sm-3 placeholder">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    <h4>Reviews <span class="badge">13</span></a></li></h4>
+                    <span class="text-muted"></span>
+                </div>
+                <div class="col-xs-6 col-sm-2 placeholder">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <h4>Groups <span class="badge">1</span></a></li></h4>
+                    <span class="text-muted"></span>
+                </div>
+            </div>
+
+            <h2 class="sub-header">Contributions List</h2>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Views</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>123451</td>
+                        <td>Workflow</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>67998</td>
+                        <td>Tools</td>
+                        <td>12</td>
+
+                    </tr>
+                    <tr>
+                        <td>123457</td>
+                        <td>Review</td>
+                        <td>8</td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-sm-9 col-md-3 main">
+
+            <h4>Social </h4>
+
+            <div class="fb-page" data-href="http://www.facebook.com/ogvre" data-tabs="timeline" data-width="250" data-height="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+                <div class="fb-xfbml-parse-ignore">
+                    <blockquote cite="http://www.facebook.com/ogvre">
+                    <a href="http://www.facebook.com/ogvre">Oil &amp; Gas Virtual Research Environment</a>
+                </blockquote>
+                </div>
+            </div>
 
         </div>
 
     </div>
 
 </div>
+
+<style>
+    .glyphicon {
+        font-size: 8em;
+        text-align: center;
+        padding-left:0px;
+        padding-top:30px;
+    }
+</style>
