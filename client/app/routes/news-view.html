@@ -8,6 +8,7 @@
 
             <div id="news">
 
+                <div ng-hide="newsCtrl.news.length"><h1>There are no items to show.</h1></div>
                 <div ng-repeat="news in newsCtrl.news">
 
                     <div class="row">

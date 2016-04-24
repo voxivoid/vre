@@ -1,0 +1,26 @@
+-----
+SETUP
+-----
+
+Setup config.js with the MongoDB credentials in the root directory with the following template:
+
+module.exports = {
+	port: ,
+	environment: "",
+	db: {
+		user: "",
+		password: "",
+		host: "",
+		database: "",
+		port:
+	}
+};
+
+
+----------
+HOW TO RUN
+----------
+
+In order to run type the following command on the command line:
+
+forever start index.js

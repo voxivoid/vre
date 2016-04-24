@@ -1,6 +1,15 @@
 "use strict";
 
+var joi = require("joi");
+var validate = require("express-joi-validator");
+
 var handlers = module.exports = [];
+
+handlers.push(validate({
+    query: {
+        self: joi.boolean().default(false)
+    }
+}));
 
 handlers.push(function(req, res, next) {
 
@@ -55,6 +64,19 @@ handlers.push(function(req, res, next) {
                 delete doc.users;
                 return doc;
             });
-            res.send({success: sortedDocs});
+            if(req.query.self === true){
+                var selfDocs = [];
+                for(var i = 0; i < sortedDocs.length; i++){
+                    if(sortedDocs[i].hasPermissions){
+                        selfDocs.push(sortedDocs[i]);
+                    }
+                }
+                console.log("self");
+                res.send({success: selfDocs});
+            } else {
+                console.log("all");
+                console.log(req.query.self);
+                res.send({success: sortedDocs});
+            }
         }).catch(next);
 });

@@ -2,6 +2,7 @@
     <sidebar ng-show="isAuthenticated"></sidebar>
     <div class="container" style="width: 70%;">
         <div id="pipelines">
+            <div ng-hide="workflowsCtrl.workflows.length"><h1>There are no items to show.</h1></div>
             <div ng-repeat="workflow in workflowsCtrl.workflows">
                 <div class="row" >
                     <div class="col-md-4">

@@ -13,7 +13,7 @@ angular.module("sidebar").controller("SidebarController", ['$anchorScroll', '$lo
 
     if(this.type === "workflows") {
         this.buttons = ["Add Workflow", "My Workflows"];
-        this.links = ["#/workflow/new", "#"];
+        this.links = ["#/workflow/new", "#/workflows/self"];
         this.index = [];
         $scope.$on('workflowsReady', function(event, workflows) {
             for (i = 0; i < workflows.length; i++) {
@@ -23,7 +23,7 @@ angular.module("sidebar").controller("SidebarController", ['$anchorScroll', '$lo
     }
     else if (this.type === "databases"){
         this.buttons = ["Add Database","My Databases"];
-        this.links = ["#/database/new","#"];
+        this.links = ["#/databases/new","#/databases/self"];
         this.index = [];
 
         $scope.$on('databasesReady', function(event, databases) {
@@ -34,7 +34,7 @@ angular.module("sidebar").controller("SidebarController", ['$anchorScroll', '$lo
     }
     else if (this.type === "news"){
         this.buttons = ["Add News","My News"];
-        this.links = ["#/news/new","#"];
+        this.links = ["#/news/new","#/news/self"];
         this.index = [];
 
         $scope.$on('newsReady', function(event, news) {
@@ -45,7 +45,7 @@ angular.module("sidebar").controller("SidebarController", ['$anchorScroll', '$lo
     }
     else if (this.type === "tools"){
         this.buttons = ["Add Tool","My Tools"];
-        this.links = ["#/tool/new","#"];
+        this.links = ["#/tools/new","#/tools/self"];
         this.index = [];
 
         $scope.$on('toolsReady', function(event, tools) {
@@ -55,7 +55,7 @@ angular.module("sidebar").controller("SidebarController", ['$anchorScroll', '$lo
         });
     }else if (this.type === "pubdatas"){
         this.buttons = ["Add Public Resource","My Public Resources"];
-        this.links = ["#/publicdata/new","#"];
+        this.links = ["#/publicdata/new","#/publicdata/self"];
         this.index = [];
 
         $scope.$on('pubdatasReady', function(event, pubdatas) {

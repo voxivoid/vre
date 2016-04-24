@@ -2,7 +2,8 @@ angular.module("workflows", ["ngRoute", "sidebar", "workflow-new", "workflow-det
 
 angular.module("workflows").config(["$routeProvider", function ($routeProvider) {
     $routeProvider
-        .when("/workflows", {templateUrl: "app/routes/workflows-view.html", controller: "WorkflowsController"});
+        .when("/workflows", {templateUrl: "app/routes/workflows-view.html", controller: "WorkflowsController"})
+        .when("/workflows/self", {templateUrl: "app/routes/workflows-view.html", controller: "MyWorkflowsController"});
 }]);
 
 angular.module("workflows").controller("WorkflowsController", ['$scope', '$http', function($scope, $http){
@@ -131,5 +132,63 @@ angular.module("workflow-detail").controller("WorkflowDetailController", ["$scop
         .error(function () {
             console.log("Error: Could not insert");
         });
+
+}]);
+
+angular.module("workflows").controller("MyWorkflowsController", ['$scope', '$http', function($scope, $http){
+    $scope.workflowsCtrl = this;
+    $scope.type = "workflows";
+
+    this.workflows = [];
+    $http.get('//aleph.inesc-id.pt/vre/api/' + $scope.type + "?self=true").success(function(data){
+        if(data.success) {
+            $scope.workflowsCtrl.workflows = data.success;
+            $scope.$broadcast('workflowsReady', $scope.workflowsCtrl.workflows);
+        }
+    });
+
+
+    $scope.$on('workflowsReady', function(event, workflows) {
+        angular.forEach($scope.workflowsCtrl.workflows, function(workflowObject, workflowIndex){
+            angular.forEach(workflowObject.reviews, function(reviewObject, reviewIndex) {
+                $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){
+                    if(data.success) {
+                        //console.log('got review' + reviewObject);
+                        $scope.workflowsCtrl.workflows[workflowIndex].reviews[reviewIndex] = data.success;
+                    }
+                });
+            })
+        })
+    });
+
+    this.delRev = function(revid, docid){
+        //console.log("Trying to remove review");
+        $http.delete('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
+            .success(function () {
+                //console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
+                $http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
+                    .success(function () {
+                        //console.log('Successfuly removed review from reviews');
+                        location.reload();
+                    })
+                    .error(function () {
+                        console.log("Error: Could not remove review from reviews");
+                    });
+            })
+            .error(function () {
+                console.log("Error: Could not remove review from document");
+            });
+    };
+
+    this.delFlow = function(docid){
+        $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
+            .success(function () {
+                console.log('Successfuly removed ' + $scope.type + ' with id ' + docid);
+                location.reload();
+            })
+            .error(function () {
+                console.log("Error: Could not remove document");
+            });
+    };
 
 }]);

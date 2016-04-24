@@ -2,7 +2,8 @@ angular.module("databases", ["ngRoute", "sidebar", "database-new"]);
 
 angular.module("databases").config(["$routeProvider", function ($routeProvider) {
     $routeProvider
-        .when("/databases", {templateUrl: "app/routes/databases-view.html", controller: "DatabasesController"});
+        .when("/databases", {templateUrl: "app/routes/databases-view.html", controller: "DatabasesController"})
+        .when("/databases/self", {templateUrl: "app/routes/databases-view.html", controller: "MyDatabasesController"});
 }]);
 
 angular.module("databases").controller("DatabasesController", ['$scope', '$http', function($scope, $http){
@@ -84,7 +85,7 @@ angular.module("database-new", ["ngRoute"]);
 
 angular.module("database-new").config(["$routeProvider", function ($routeProvider) {
     $routeProvider
-        .when("/database/new", {templateUrl: "app/routes/database-create-view.html", controller: "DatabaseNewController"});
+        .when("/databases/new", {templateUrl: "app/routes/database-create-view.html", controller: "DatabaseNewController"});
 }]);
 
 angular.module("database-new").controller("DatabaseNewController", ["$http", function($http) {
@@ -103,3 +104,59 @@ angular.module("database-new").controller("DatabaseNewController", ["$http", fun
     };
 }]);
 
+angular.module("databases").controller("MyDatabasesController", ['$scope', '$http', function($scope, $http){
+    $scope.databasesCtrl = this;
+    $scope.type = "databases";
+
+    this.databases = [];
+    $http.get('//aleph.inesc-id.pt/vre/api/' + $scope.type + "?self=true").success(function(data){
+        if(data.success) {
+            $scope.databasesCtrl.databases = data.success;
+            $scope.$broadcast('databasesReady', $scope.databasesCtrl.databases);
+        }
+    });
+
+
+    $scope.$on('databasesReady', function(event, databases) {
+        angular.forEach($scope.databasesCtrl.databases, function(databaseObject, databaseIndex){
+            angular.forEach(databaseObject.reviews, function(reviewObject, reviewIndex) {
+                $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){
+                    if(data.success) {
+                        //console.log('got database review ' + reviewObject);
+                        $scope.databasesCtrl.databases[databaseIndex].reviews[reviewIndex] = data.success;
+                    }
+                });
+            })
+        })
+    });
+
+    this.delRev = function(revid, docid){
+        $http.delete('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
+            .success(function () {
+                //console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
+                $http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
+                    .success(function () {
+                        //console.log('Successfuly removed review from reviews');
+                        location.reload();
+                    })
+                    .error(function () {
+                        console.log("Error: Could not remove review from reviews");
+                    });
+            })
+            .error(function () {
+                console.log("Error: Could not remove review from document");
+            });
+    };
+
+    this.delBase = function(docid){
+        $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
+            .success(function () {
+                console.log('Successfuly removed ' + $scope.type + ' with id ' + docid);
+                location.reload();
+            })
+            .error(function () {
+                console.log("Error: Could not remove document");
+            });
+    };
+
+}]);
