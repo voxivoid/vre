@@ -1,4 +1,4 @@
-angular.module("workflows", ["ngRoute", "sidebar", "workflow-new", "workflow-detail"]);
+angular.module("workflows", ["ngRoute", "sidebar", "workflow-new", "workflow-detail", "reviews"]);
 
 angular.module("workflows").config(["$routeProvider", function ($routeProvider) {
     $routeProvider

@@ -1,4 +1,4 @@
-angular.module("tools", ["ngRoute", "sidebar", "tool-new"]);
+angular.module("tools", ["ngRoute", "sidebar", "tool-new", "reviews"]);
 
 angular.module("tools").config(["$routeProvider", function ($routeProvider) {
     $routeProvider
