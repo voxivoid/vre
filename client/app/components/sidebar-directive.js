@@ -13,7 +13,7 @@ angular.module("sidebar").controller("SidebarController", ['$anchorScroll', '$lo
 
     if(this.type === "workflows") {
         this.buttons = ["Add Workflow", "My Workflows"];
-        this.links = ["#/workflow/new", "#/workflows/self"];
+        this.links = ["#/workflows/new", "#/workflows/self"];
         this.index = [];
         $scope.$on('workflowsReady', function(event, workflows) {
             for (i = 0; i < workflows.length; i++) {

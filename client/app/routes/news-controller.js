@@ -1,9 +1,10 @@
-angular.module("news", ["ngRoute", "sidebar", "news-new", "reviews"]);
+angular.module("news", ["ngRoute", "sidebar", "documents", "reviews"]);
 
 angular.module("news").config(["$routeProvider", function ($routeProvider) {
     $routeProvider
         .when("/news", {templateUrl: "app/routes/news-view.html", controller: "NewsController"})
-        .when("/news/self", {templateUrl: "app/routes/news-view.html", controller: "MyNewsController"});
+        .when("/news/self", {templateUrl: "app/routes/news-view.html", controller: "MyNewsController"})
+        .when("/news/new", {templateUrl: "app/routes/news-create-view.html", controller: "NewNewsController"});
 }]);
 
 angular.module("news").controller("NewsController", ['$scope', '$http', function($scope, $http){
@@ -30,41 +31,6 @@ angular.module("news").controller("NewsController", ['$scope', '$http', function
             })
         })
     });
-
-    this.delNew = function(docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
-            .success(function () {
-                console.log('Successfuly removed ' + $scope.type + ' with id ' + docid);
-                location.reload();
-            })
-            .error(function () {
-                console.log("Error: Could not remove document");
-            });
-    };
-
-}]);
-
-angular.module("news-new", ["ngRoute"]);
-
-angular.module("news-new").config(["$routeProvider", function ($routeProvider) {
-    $routeProvider
-        .when("/news/new", {templateUrl: "app/routes/news-create-view.html", controller: "NewsNewController"});
-}]);
-
-angular.module("news-new").controller("NewsNewController", ["$http", function($http) {
-    this.nnews= {};
-
-    this.addNews = function(){
-        $http.post('//aleph.inesc-id.pt/vre/api/create/news', this.nnews)
-            .success(function () {
-                //console.log('Successfuly posted new news');
-                window.location = '#/news';
-            })
-            .error(function () {
-                console.log("Error: Could not insert");
-            });
-        this.nnews = {};
-    };
 }]);
 
 angular.module("news").controller("MyNewsController", ['$scope', '$http', function($scope, $http){
@@ -79,7 +45,6 @@ angular.module("news").controller("MyNewsController", ['$scope', '$http', functi
         }
     });
 
-
     $scope.$on('newsReady', function(event, news) {
         angular.forEach($scope.newsCtrl.news, function(newsObject, newsIndex){
             angular.forEach(newsObject.reviews, function(reviewObject, reviewIndex) {
@@ -92,16 +57,9 @@ angular.module("news").controller("MyNewsController", ['$scope', '$http', functi
             })
         })
     });
-
-    this.delNew = function(docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
-            .success(function () {
-                console.log('Successfuly removed ' + $scope.type + ' with id ' + docid);
-                location.reload();
-            })
-            .error(function () {
-                console.log("Error: Could not remove document");
-            });
-    };
-
 }]);
+
+angular.module("news").controller("NewsNewsController", ["$scope", function($scope) {
+    $scope.type = "news";
+}]);
+

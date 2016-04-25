@@ -1,32 +1,21 @@
 <div>
-
     <div class="container" style="width: 99%;">
-
         <sidebar ng-show="isAuthenticated"></sidebar>
-
         <div class="container" style="width: 70%;">
-
             <div id="publicdata">
-
                 <div ng-hide="pubdatasCtrl.pubdatas.length"><h1>There are no items to show.</h1></div>
-
-                <div ng-controller="ReviewsController as reviewsCtrl" ng-repeat="pubdata in pubdatasCtrl.pubdatas">
-
+                <div ng-controller="DocumentsController as documentsCtrl" ng-controller="ReviewsController as reviewsCtrl" ng-repeat="pubdata in pubdatasCtrl.pubdatas">
                     <div class="row">
-
                         <div class="col-md-4">
                             <a id="anchor{{pubdata.acronym}}"></a>
                             <a href="{{pubdata.website}}"><img class="img-responsive" ng-src="{{pubdata.image}}" alt=""></a>
-                        </div> <!-- col -->
+                        </div>
                         <div class="col-md-1"></div>
-
                         <div class="col-md-6">
                             <h3> {{pubdata.name}} </h3>
-
                             <div ng-show="pubdata.hasPermissions">
-                                <a ng-click="pubdatasCtrl.delPub(pubdata._id)" class="btn btn-danger" role="button">Delete Public Resource</a>
+                                <a ng-click="documentsCtrl.delDoc(pubdata._id)" class="btn btn-danger" role="button">Delete Public Resource</a>
                             </div>
-
                             </br>
                             <section ng-init="tab = 1 ">
                                 <ul class="nav nav-pills">
@@ -55,11 +44,10 @@
                                 <!--  Review Form -->
                                 <form name="reviewForm" ng-submit="reviewForm.$valid && reviewsCtrl.addReview(pubdata._id)" >
                                     <blockquote >
-                                        <strong>{{pubdataReviewCtrl.review.stars}} Stars</strong>
-                                        {{pubdataReviewCtrl.review.body}}
-                                        <cite class="clearfix">-{{pubdataReviewCtrl.review.author}}</cite>
+                                        <strong>{{reviewsCtrl.review.stars}} Stars</strong>
+                                        {{reviewsCtrl.review.body}}
+                                        <cite class="clearfix">-{{reviewsCtrl.review.author}}</cite>
                                     </blockquote>
-
                                     <!--  Review Form -->
                                     <h4>Submit a Review</h4>
                                     <fieldset class="form-group">
@@ -78,19 +66,14 @@
                                     </fieldset>
                                 </form>
                             </div>
-                        </div> <!-- row -->
+                        </div>
                         </br>
                         <hr>
-
                     </div>
-                </div> <!-- bases-->
-
+                </div>
             </div>
-
         </div>
-
     </div>
-
 </div>
 
 <style>

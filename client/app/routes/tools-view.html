@@ -1,15 +1,10 @@
 <div>
-
     <div class="container" style="width: 99%;">
-
         <sidebar ng-show="isAuthenticated"></sidebar>
-
         <div class="container" style="width: 70%;">
             <div ng-hide="toolsCtrl.tools.length"><h1>There are no items to show.</h1></div>
-            <div ng-controller="ReviewsController as reviewsCtrl" ng-repeat="tool in toolsCtrl.tools">
-
+            <div ng-controller="DocumentsController as documentsCtrl" ng-controller="ReviewsController as reviewsCtrl" ng-repeat="tool in toolsCtrl.tools">
                 <div class="row">
-
                     <div class="col-md-4">
                         <a id="anchor{{tool.acronym}}"></a>
                         <a href="{{tool.website}}"><img class="img-responsive" ng-src="{{tool.image}}" alt=""></a>
@@ -18,11 +13,9 @@
                     <div class="col-md-6">
                         <h3> {{tool.acronym}} </h3>
                         <p><strong><em>{{tool.name}}</em></strong></p>
-
                         <div ng-show="tool.hasPermissions">
-                            <a ng-click="toolsCtrl.delTool(tool._id)" class="btn btn-danger" role="button">Delete Tool</a>
+                            <a ng-click="documentsCtrl.delDoc(tool._id)" class="btn btn-danger" role="button">Delete Tool</a>
                         </div>
-
                         </br>
                         <section ng-init="tab = 1 ">
                             <ul class="nav nav-pills">
@@ -55,7 +48,6 @@
                                     {{reviewsCtrl.review.body}}
                                     <cite class="clearfix">-{{reviewsCtrl.review.author}}</cite>
                                 </blockquote>
-
                                 <!--  Review Form -->
                                 <h4>Submit a Review</h4>
                                 <fieldset class="form-group">
@@ -74,19 +66,13 @@
                                 </fieldset>
                             </form>
                         </div>
-                    </div> <!-- row -->
+                    </div>
                     </br>
                     <hr>
-
                 </div>
-
-
             </div>
-
         </div>
-
     </div>
-
 </div>
 
 <style>

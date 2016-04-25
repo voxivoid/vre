@@ -1,11 +1,7 @@
-<div ng-controller="WorkflowNewController">
-
+<div ng-controller="DocumentsController as documentCtrl">
 	<div class="container" style="width: 70%;">
-
 		<h2>Insert a new workflow</h2>
-		<form name="newflowForm" ng-controller="WorkflowNewController as flowCtrl" ng-submit="newflowForm.$valid && flowCtrl.addFlow()" >
-
-
+		<form name="newflowForm" ng-submit="newflowForm.$valid && documentCtrl.addDoc()" >
 			<!--  var schema = new Schema({
               name: String,
               description: String,
@@ -14,27 +10,26 @@
               image: String,
               author: String,
               domainSpecific: Boolean,-->
-
 			<!--  Review Form -->
 			<fieldset class="form-group">
 				<h4>Name (max. 50 chars) * </h4>
-				<textarea ng-model="flowCtrl.nflow.name" class="form-control" placeholder="Workflow Name" title="Name" maxlength="50" required></textarea>
+				<textarea ng-model="documentCtrl.doc.name" class="form-control" placeholder="Workflow Name" title="Name" maxlength="50" required></textarea>
 			</fieldset>
 			<fieldset class="form-group">
 				<h4>Short description (max. 250 chars) * </h4>
-				<textarea ng-model="flowCtrl.nflow.description" class="form-control" placeholder="This information will be presented in the workflows gallery" title="Short description" maxlength="250" required></textarea>
+				<textarea ng-model="documentCtrl.doc.description" class="form-control" placeholder="This information will be presented in the workflows gallery" title="Short description" maxlength="250" required></textarea>
 			</fieldset>
 			<fieldset class="form-group">
 				<h4>Long description (max. 5000 chars) * </h4>
-				<textarea ng-model="flowCtrl.nflow.longDescription" class="form-control" placeholder="This will be the information available in the workflow dedicated page" title="Long description" maxlength="5000" required></textarea>
+				<textarea ng-model="documentCtrl.doc.longDescription" class="form-control" placeholder="This will be the information available in the workflow dedicated page" title="Long description" maxlength="5000" required></textarea>
 			</fieldset>
 			<fieldset class="form-group">
 				<h4>Image URL</h4>
-				<textarea ng-model="flowCtrl.nflow.image" class="form-control" placeholder="http://example-server.com/example-image.jpg" title="Image" ></textarea>
+				<textarea ng-model="documentCtrl.doc.image" class="form-control" placeholder="http://example-server.com/example-image.jpg" title="Image" ></textarea>
 			</fieldset>
 			<fieldset class="form-group">
 				<h4>Author e-mail * </h4>
-				<input ng-model="flowCtrl.nflow.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
+				<input ng-model="documentCtrl.doc.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
 			</fieldset>
 		<!--	<fieldset class="form-group">
 				<h4>Oil & Gas Domain Specific</h4>
@@ -54,13 +49,8 @@
 				<input type="submit" class="form-control btn btn-primary pull-right" value="Submit Workflow" />
 			</fieldset>
 		</form>
-
-
-
 	</div>
-
 </div>
-
 
 <style>
 	.ng-invalid.ng-dirty {

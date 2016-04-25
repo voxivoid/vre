@@ -1,11 +1,7 @@
-<div ng-controller="NewsNewController">
-
+<div ng-controller="DocumentsController as documentCtrl">
     <div class="container" style="width: 70%;">
-
         <h2>Insert a new Publication / News</h2>
-        <form name="newnewsForm" ng-controller="NewsNewController as newsCtrl" ng-submit="newnewsForm.$valid && newsCtrl.addNews()" >
-
-
+        <form name="newnewsForm" ng-submit="newnewsForm.$valid && documentCtrl.addDoc()" >
             <!--  var schema = new Schema({
               name: String,
               description: String,
@@ -14,24 +10,22 @@
               image: String,
               author: String,
               domainSpecific: Boolean,-->
-
             <!--  Review Form -->
-
             <fieldset class="form-group">
                 <h4>Title (max. 50 chars) * </h4>
-                <textarea ng-model="newsCtrl.nnews.name" class="form-control" placeholder="News Name" title="Name" maxlength="50" required></textarea>
+                <textarea ng-model="documentCtrl.nnews.name" class="form-control" placeholder="News Name" title="Name" maxlength="50" required></textarea>
             </fieldset>
             <fieldset class="form-group">
                 <h4>Description (max. 500 chars) * </h4>
-                <textarea ng-model="newsCtrl.nnews.description" class="form-control" placeholder="Description to be placed in news gallery" title="Description" maxlength="500" required></textarea>
+                <textarea ng-model="documentCtrl.nnews.description" class="form-control" placeholder="Description to be placed in news gallery" title="Description" maxlength="500" required></textarea>
             </fieldset>
             <fieldset class="form-group">
                 <h4>Link * </h4>
-                <textarea ng-model="newsCtrl.nnews.website" class="form-control" placeholder="A link with more info about this publication" title="Website" required></textarea>
+                <textarea ng-model="documentCtrl.nnews.website" class="form-control" placeholder="A link with more info about this publication" title="Website" required></textarea>
             </fieldset>
             <fieldset class="form-group">
                 <h4>Image URL</h4>
-                <textarea ng-model="newsCtrl.nnews.image" class="form-control" placeholder="http://example-server.com/example-image.jpg" title="Image" ></textarea>
+                <textarea ng-model="documentCtrl.nnews.image" class="form-control" placeholder="http://example-server.com/example-image.jpg" title="Image" ></textarea>
             </fieldset>
             <!-- <fieldset class="form-group">
                  <h4>Oil & Gas Domain Specific</h4>
@@ -51,7 +45,5 @@
                 <input type="submit" class="form-control btn btn-primary pull-right" value="Submit News" />
             </fieldset>
         </form>
-
     </div>
-
 </div>

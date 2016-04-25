@@ -1,9 +1,10 @@
-angular.module("pubdatas", ["ngRoute", "sidebar", "pubdata-new", "reviews"]);
+angular.module("pubdatas", ["ngRoute", "sidebar", "documents", "reviews"]);
 
 angular.module("pubdatas").config(["$routeProvider", function ($routeProvider) {
     $routeProvider
         .when("/publicdata", {templateUrl: "app/routes/pubdatas-view.html", controller: "PubdatasController"})
-        .when("/publicdata/self", {templateUrl: "app/routes/pubdatas-view.html", controller: "MyPubdatasController"});
+        .when("/publicdata/self", {templateUrl: "app/routes/pubdatas-view.html", controller: "MyPubdatasController"})
+        .when("/publicdata/new", {templateUrl: "app/routes/pubdatas-create-view.html", controller: "NewPubdatasController"});
 }]);
 
 angular.module("pubdatas").controller("PubdatasController", ['$scope', '$http', function($scope, $http){
@@ -30,41 +31,6 @@ angular.module("pubdatas").controller("PubdatasController", ['$scope', '$http', 
             })
         })
     });
-
-    this.delPub = function(docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
-            .success(function () {
-                console.log('Successfuly removed ' + $scope.type + ' with id ' + docid);
-                location.reload();
-            })
-            .error(function () {
-                console.log("Error: Could not remove document");
-            });
-    };
-
-}]);
-
-angular.module("pubdata-new", ["ngRoute"]);
-
-angular.module("pubdata-new").config(["$routeProvider", function ($routeProvider) {
-    $routeProvider
-        .when("/publicdata/new", {templateUrl: "app/routes/pubdatas-create-view.html", controller: "PubdataNewController"});
-}]);
-
-angular.module("pubdata-new").controller("PubdataNewController", ["$http", function($http) {
-    this.npub= {};
-
-    this.addPub = function(){
-        $http.post('//aleph.inesc-id.pt/vre/api/create/pubdatas', this.npub)
-            .success(function () {
-                //console.log('Successfuly posted new pubdata');
-                window.location = '#/publicdata';
-            })
-            .error(function () {
-                console.log("Error: Could not insert");
-            });
-        this.npub = {};
-    };
 }]);
 
 angular.module("pubdatas").controller("MyPubdatasController", ['$scope', '$http', function($scope, $http){
@@ -92,16 +58,8 @@ angular.module("pubdatas").controller("MyPubdatasController", ['$scope', '$http'
             })
         })
     });
+}]);
 
-    this.delPub = function(docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
-            .success(function () {
-                console.log('Successfuly removed ' + $scope.type + ' with id ' + docid);
-                location.reload();
-            })
-            .error(function () {
-                console.log("Error: Could not remove document");
-            });
-    };
-
+angular.module("pubdatas").controller("NewPubdatasController", ["$scope", function($scope) {
+    $scope.type = "pubdatas";
 }]);

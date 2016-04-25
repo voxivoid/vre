@@ -1,9 +1,10 @@
-angular.module("tools", ["ngRoute", "sidebar", "tool-new", "reviews"]);
+angular.module("tools", ["ngRoute", "sidebar", "documents", "reviews"]);
 
 angular.module("tools").config(["$routeProvider", function ($routeProvider) {
     $routeProvider
         .when("/tools", {templateUrl: "app/routes/tools-view.html", controller: "ToolsController"})
-        .when("/tools/self", {templateUrl: "app/routes/tools-view.html", controller: "MyToolsController"});
+        .when("/tools/self", {templateUrl: "app/routes/tools-view.html", controller: "MyToolsController"})
+        .when("/tools/new", {templateUrl: "app/routes/tools-create-view.html", controller: "NewToolsController"});
 }]);
 
 angular.module("tools").controller("ToolsController", ['$scope', '$http', function($scope, $http){
@@ -30,41 +31,6 @@ angular.module("tools").controller("ToolsController", ['$scope', '$http', functi
             })
         })
     });
-
-    this.delTool = function(docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
-            .success(function () {
-                console.log('Successfuly removed ' + $scope.type + ' with id ' + docid);
-                location.reload();
-            })
-            .error(function () {
-                console.log("Error: Could not remove document");
-            });
-    };
-
-}]);
-
-angular.module("tool-new", ["ngRoute"]);
-
-angular.module("tool-new").config(["$routeProvider", function ($routeProvider) {
-    $routeProvider
-        .when("/tools/new", {templateUrl: "app/routes/tool-create-view.html", controller: "ToolNewController"});
-}]);
-
-angular.module("tool-new").controller("ToolNewController", ["$http", function($http) {
-    this.ntool= {};
-
-    this.addBase = function(){
-        $http.post('//aleph.inesc-id.pt/vre/api/create/tools', this.ntool)
-            .success(function () {
-                //console.log('Successfuly posted new tool');
-                window.location = '#/external';
-            })
-            .error(function () {
-                console.log("Error: Could not insert");
-            });
-        this.ntool = {};
-    };
 }]);
 
 angular.module("tools").controller("MyToolsController", ['$scope', '$http', function($scope, $http){
@@ -91,15 +57,8 @@ angular.module("tools").controller("MyToolsController", ['$scope', '$http', func
             })
         })
     });
+}]);
 
-    this.delTool = function(docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
-            .success(function () {
-                console.log('Successfuly removed ' + $scope.type + ' with id ' + docid);
-                location.reload();
-            })
-            .error(function () {
-                console.log("Error: Could not remove document");
-            });
-    };
+angular.module("tools").controller("NewToolsController", ["$scope", function($scope) {
+    $scope.type = "tools";
 }]);

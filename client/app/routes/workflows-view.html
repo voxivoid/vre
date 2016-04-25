@@ -3,25 +3,19 @@
     <div class="container" style="width: 70%;">
         <div id="pipelines">
             <div ng-hide="workflowsCtrl.workflows.length"><h1>There are no items to show.</h1></div>
-            <div ng-controller="ReviewsController as reviewsCtrl" ng-repeat="workflow in workflowsCtrl.workflows">
+            <div ng-controller="DocumentsController as documentsCtrl" ng-controller="ReviewsController as reviewsCtrl" ng-repeat="workflow in workflowsCtrl.workflows">
                 <div class="row" >
                     <div class="col-md-4">
                         <a id="anchor{{workflow.name}}"></a>
-
                         <a href="#/workflow/detail/{{workflow._id}}"><img class="img-responsive" ng-src="{{workflow.image}}" alt="" ></a>
-                    </div> <!-- col -->
-
+                    </div>
                     <div class="col-md-1"></div>
-
                     <div class="col-md-6">
                         <h3> {{workflow.name}} </h3>
-
                         <p><strong><em>Author: {{workflow.author}}</em></strong></p>
-
                         <div ng-show="workflow.hasPermissions">
-                            <a ng-click="workflowsCtrl.delFlow(workflow._id)" class="btn btn-danger" role="button">Delete Workflow</a>
+                            <a ng-click="documentsCtrl.delDoc(workflow._id)" class="btn btn-danger" role="button">Delete Workflow</a>
                         </div>
-
                         </br>
                         <section ng-init="tab = 1 ">
                             <ul class="nav nav-pills">
@@ -54,7 +48,6 @@
                                     {{reviewsCtrl.review.body}}
                                     <cite class="clearfix">-{{reviewsCtrl.review.author}}</cite>
                                 </blockquote>
-
                                 <!--  Review Form -->
                                 <h4>Submit a Review</h4>
                                 <fieldset class="form-group">
@@ -73,10 +66,9 @@
                                 </fieldset>
                             </form>
                         </div>
-                    </div> <!-- col -->
-                </div> <!-- row .-->
+                    </div>
+                </div>
                 </br>
-
                 <hr>
             </div>
         </div>

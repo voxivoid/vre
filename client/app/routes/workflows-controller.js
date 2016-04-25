@@ -1,9 +1,10 @@
-angular.module("workflows", ["ngRoute", "sidebar", "workflow-new", "workflow-detail", "reviews"]);
+angular.module("workflows", ["ngRoute", "sidebar", "workflow-detail", "documents", "reviews"]);
 
 angular.module("workflows").config(["$routeProvider", function ($routeProvider) {
     $routeProvider
         .when("/workflows", {templateUrl: "app/routes/workflows-view.html", controller: "WorkflowsController"})
-        .when("/workflows/self", {templateUrl: "app/routes/workflows-view.html", controller: "MyWorkflowsController"});
+        .when("/workflows/self", {templateUrl: "app/routes/workflows-view.html", controller: "MyWorkflowsController"})
+        .when("/workflows/new", {templateUrl: "app/routes/workflows-create-view.html", controller: "NewWorkflowsController"});
 }]);
 
 angular.module("workflows").controller("WorkflowsController", ['$scope', '$http', function($scope, $http){
@@ -12,6 +13,32 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
 
     this.workflows = [];
     $http.get('//aleph.inesc-id.pt/vre/api/' + $scope.type).success(function(data){
+        if(data.success) {
+            $scope.workflowsCtrl.workflows = data.success;
+            $scope.$broadcast('workflowsReady', $scope.workflowsCtrl.workflows);
+        }
+    });
+
+    $scope.$on('workflowsReady', function(event, workflows) {
+        angular.forEach($scope.workflowsCtrl.workflows, function(workflowObject, workflowIndex){
+            angular.forEach(workflowObject.reviews, function(reviewObject, reviewIndex) {
+                $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){
+                    if(data.success) {
+                        //console.log('got review' + reviewObject);
+                        $scope.workflowsCtrl.workflows[workflowIndex].reviews[reviewIndex] = data.success;
+                    }
+                });
+            })
+        })
+    });
+}]);
+
+angular.module("workflows").controller("MyWorkflowsController", ['$scope', '$http', function($scope, $http){
+    $scope.workflowsCtrl = this;
+    $scope.type = "workflows";
+
+    this.workflows = [];
+    $http.get('//aleph.inesc-id.pt/vre/api/' + $scope.type + "?self=true").success(function(data){
         if(data.success) {
             $scope.workflowsCtrl.workflows = data.success;
             $scope.$broadcast('workflowsReady', $scope.workflowsCtrl.workflows);
@@ -31,41 +58,10 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
             })
         })
     });
-
-    this.delFlow = function(docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
-            .success(function () {
-                console.log('Successfuly removed ' + $scope.type + ' with id ' + docid);
-                location.reload();
-            })
-    .error(function () {
-        console.log("Error: Could not remove document");
-    });
-};
-
 }]);
 
-angular.module("workflow-new", ["ngRoute"]);
-
-angular.module("workflow-new").config(["$routeProvider", function ($routeProvider) {
-    $routeProvider
-        .when("/workflow/new", {templateUrl: "app/routes/workflow-create-view.html", controller: "WorkflowNewController"});
-}]);
-
-angular.module("workflow-new").controller("WorkflowNewController", ["$http", function($http) {
-    this.nflow = {};
-
-    this.addFlow = function(){
-        $http.post('//aleph.inesc-id.pt/vre/api/create/workflows', this.nflow)
-            .success(function (data) {
-                //console.log('Successfuly posted new workflow');
-                window.location = '#/workflows';
-            })
-            .error(function () {
-                console.log("Error: Could not insert");
-            });
-        this.nflow = {};
-    };
+angular.module("workflows").controller("NewWorkflowsController", ["$scope", function($scope) {
+    $scope.type = "workflows";
 }]);
 
 angular.module("workflow-detail", ["ngRoute"]);
@@ -95,44 +91,4 @@ angular.module("workflow-detail").controller("WorkflowDetailController", ["$scop
         .error(function () {
             console.log("Error: Could not insert");
         });
-
-}]);
-
-angular.module("workflows").controller("MyWorkflowsController", ['$scope', '$http', function($scope, $http){
-    $scope.workflowsCtrl = this;
-    $scope.type = "workflows";
-
-    this.workflows = [];
-    $http.get('//aleph.inesc-id.pt/vre/api/' + $scope.type + "?self=true").success(function(data){
-        if(data.success) {
-            $scope.workflowsCtrl.workflows = data.success;
-            $scope.$broadcast('workflowsReady', $scope.workflowsCtrl.workflows);
-        }
-    });
-
-
-    $scope.$on('workflowsReady', function(event, workflows) {
-        angular.forEach($scope.workflowsCtrl.workflows, function(workflowObject, workflowIndex){
-            angular.forEach(workflowObject.reviews, function(reviewObject, reviewIndex) {
-                $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){
-                    if(data.success) {
-                        //console.log('got review' + reviewObject);
-                        $scope.workflowsCtrl.workflows[workflowIndex].reviews[reviewIndex] = data.success;
-                    }
-                });
-            })
-        })
-    });
-
-    this.delFlow = function(docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
-            .success(function () {
-                console.log('Successfuly removed ' + $scope.type + ' with id ' + docid);
-                location.reload();
-            })
-            .error(function () {
-                console.log("Error: Could not remove document");
-            });
-    };
-
 }]);

@@ -1,11 +1,7 @@
-<div ng-controller="DatabaseNewController">
-
+<div ng-controller="DocumentsController as documentCtrl">
     <div class="container" style="width: 70%;">
-
         <h2>Insert a new Database</h2>
-        <form name="newbaseForm" ng-controller="DatabaseNewController as baseCtrl" ng-submit="newbaseForm.$valid && baseCtrl.addBase()" >
-
-
+        <form name="newbaseForm" ng-submit="newbaseForm.$valid && documentCtrl.addDoc()" >
             <!--  var schema = new Schema({
               name: String,
               description: String,
@@ -14,27 +10,26 @@
               image: String,
               author: String,
               domainSpecific: Boolean,-->
-
             <!--  Review Form -->
             <fieldset class="form-group">
                 <h4>Acronym (max. 10 chars)</h4>
-                <textarea ng-model="baseCtrl.nbase.acronym" class="form-control" placeholder="Database Acronym" title="Name" maxlength="10" ></textarea>
+                <textarea ng-model="documentCtrl.doc.acronym" class="form-control" placeholder="Database Acronym" title="Name" maxlength="10" ></textarea>
             </fieldset>
             <fieldset class="form-group">
                 <h4>Name (max. 50 chars) * </h4>
-                <textarea ng-model="baseCtrl.nbase.name" class="form-control" placeholder="Database Name" title="Name" maxlength="50" required></textarea>
+                <textarea ng-model="documentCtrl.doc.name" class="form-control" placeholder="Database Name" title="Name" maxlength="50" required></textarea>
             </fieldset>
             <fieldset class="form-group">
                 <h4>Description (max. 50 chars) * </h4>
-                <textarea ng-model="baseCtrl.nbase.description" class="form-control" placeholder="Description to be placed in databases gallery" title="Description" maxlength="250" required></textarea>
+                <textarea ng-model="documentCtrl.doc.description" class="form-control" placeholder="Description to be placed in databases gallery" title="Description" maxlength="250" required></textarea>
             </fieldset>
             <fieldset class="form-group">
                 <h4>Website * </h4>
-                <textarea ng-model="baseCtrl.nbase.website" class="form-control" placeholder="www.database.com" title="Website" required></textarea>
+                <textarea ng-model="documentCtrl.doc.website" class="form-control" placeholder="www.database.com" title="Website" required></textarea>
             </fieldset>
             <fieldset class="form-group">
                 <h4>Image URL</h4>
-                <textarea ng-model="baseCtrl.nbase.image" class="form-control" placeholder="http://example-server.com/example-image.jpg" title="Image" ></textarea>
+                <textarea ng-model="documentCtrl.doc.image" class="form-control" placeholder="http://example-server.com/example-image.jpg" title="Image" ></textarea>
             </fieldset>
            <!-- <fieldset class="form-group">
                 <h4>Oil & Gas Domain Specific</h4>
@@ -54,7 +49,5 @@
                 <input type="submit" class="form-control btn btn-primary pull-right" value="Submit Database" />
             </fieldset>
         </form>
-
     </div>
-
 </div>

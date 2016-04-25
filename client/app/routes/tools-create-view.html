@@ -1,11 +1,7 @@
-<div ng-controller="ToolNewController">
-
+<div ng-controller="DocumentsController as documentCtrl">
     <div class="container" style="width: 70%;">
-
         <h2>Insert a new Tool</h2>
-        <form name="newtoolForm" ng-controller="ToolNewController as toolCtrl" ng-submit="newtoolForm.$valid && toolCtrl.addBase()" >
-
-
+        <form name="newtoolForm" ng-submit="newtoolForm.$valid && documentCtrl.addDoc()" >
             <!--  var schema = new Schema({
               name: String,
               description: String,
@@ -14,27 +10,26 @@
               image: String,
               author: String,
               domainSpecific: Boolean,-->
-
             <!--  Review Form -->
             <fieldset class="form-group">
                 <h4>Acronym (max. 10 chars)</h4>
-                <textarea ng-model="toolCtrl.ntool.acronym" class="form-control" placeholder="Tool Acronym" title="Name" maxlength="10" ></textarea>
+                <textarea ng-model="documentCtrl.doc.acronym" class="form-control" placeholder="Tool Acronym" title="Name" maxlength="10" ></textarea>
             </fieldset>
             <fieldset class="form-group">
                 <h4>Name (max. 50 chars) * </h4>
-                <textarea ng-model="toolCtrl.ntool.name" class="form-control" placeholder="Tool Name" title="Name" maxlength="50" required></textarea>
+                <textarea ng-model="documentCtrl.doc.name" class="form-control" placeholder="Tool Name" title="Name" maxlength="50" required></textarea>
             </fieldset>
             <fieldset class="form-group">
                 <h4>Description (max. 50 chars) * </h4>
-                <textarea ng-model="toolCtrl.ntool.description" class="form-control" placeholder="Description to be placed in tools gallery" title="Description" maxlength="250" required></textarea>
+                <textarea ng-model="documentCtrl.doc.description" class="form-control" placeholder="Description to be placed in tools gallery" title="Description" maxlength="250" required></textarea>
             </fieldset>
             <fieldset class="form-group">
                 <h4>Website * </h4>
-                <textarea ng-model="toolCtrl.ntool.website" class="form-control" placeholder="www.tool.com" title="Website" required></textarea>
+                <textarea ng-model="documentCtrl.doc.website" class="form-control" placeholder="www.tool.com" title="Website" required></textarea>
             </fieldset>
             <fieldset class="form-group">
                 <h4>Image URL</h4>
-                <textarea ng-model="toolCtrl.ntool.image" class="form-control" placeholder="http://example-server.com/example-image.jpg" title="Image" ></textarea>
+                <textarea ng-model="documentCtrl.doc.image" class="form-control" placeholder="http://example-server.com/example-image.jpg" title="Image" ></textarea>
             </fieldset>
             <!--<fieldset class="form-group">
                 <h4>Oil & Gas Domain Specific</h4>
