@@ -3,48 +3,28 @@ angular.module("workflows", ["ngRoute", "sidebar", "workflow-detail", "documents
 angular.module("workflows").config(["$routeProvider", function ($routeProvider) {
     $routeProvider
         .when("/workflows", {templateUrl: "app/routes/workflows-view.html", controller: "WorkflowsController"})
-        .when("/workflows/self", {templateUrl: "app/routes/workflows-view.html", controller: "MyWorkflowsController"})
+        .when("/workflows/self", {templateUrl: "app/routes/workflows-view.html", controller: "WorkflowsController"})
         .when("/workflows/new", {templateUrl: "app/routes/workflows-create-view.html", controller: "NewWorkflowsController"});
 }]);
 
-angular.module("workflows").controller("WorkflowsController", ['$scope', '$http', function($scope, $http){
+angular.module("workflows").controller("WorkflowsController", ['$location', '$scope', '$http', function($location, $scope, $http){
     $scope.workflowsCtrl = this;
     $scope.type = "workflows";
 
+    var getUrl;
+    if($location.path() === "/workflows/self"){
+        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type + "?self=true";
+    } else{
+        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type;
+    }
+
     this.workflows = [];
-    $http.get('//aleph.inesc-id.pt/vre/api/' + $scope.type).success(function(data){
+    $http.get(getUrl).success(function(data){
         if(data.success) {
             $scope.workflowsCtrl.workflows = data.success;
             $scope.$broadcast('workflowsReady', $scope.workflowsCtrl.workflows);
         }
     });
-
-    $scope.$on('workflowsReady', function(event, workflows) {
-        angular.forEach($scope.workflowsCtrl.workflows, function(workflowObject, workflowIndex){
-            angular.forEach(workflowObject.reviews, function(reviewObject, reviewIndex) {
-                $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){
-                    if(data.success) {
-                        //console.log('got review' + reviewObject);
-                        $scope.workflowsCtrl.workflows[workflowIndex].reviews[reviewIndex] = data.success;
-                    }
-                });
-            })
-        })
-    });
-}]);
-
-angular.module("workflows").controller("MyWorkflowsController", ['$scope', '$http', function($scope, $http){
-    $scope.workflowsCtrl = this;
-    $scope.type = "workflows";
-
-    this.workflows = [];
-    $http.get('//aleph.inesc-id.pt/vre/api/' + $scope.type + "?self=true").success(function(data){
-        if(data.success) {
-            $scope.workflowsCtrl.workflows = data.success;
-            $scope.$broadcast('workflowsReady', $scope.workflowsCtrl.workflows);
-        }
-    });
-
 
     $scope.$on('workflowsReady', function(event, workflows) {
         angular.forEach($scope.workflowsCtrl.workflows, function(workflowObject, workflowIndex){
