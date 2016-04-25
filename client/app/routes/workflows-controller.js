@@ -32,25 +32,6 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
         })
     });
 
-    this.delRev = function(revid, docid){
-        //console.log("Trying to remove review");
-        $http.delete('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
-            .success(function () {
-                //console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
-                $http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
-                    .success(function () {
-                        //console.log('Successfuly removed review from reviews');
-                        location.reload();
-                    })
-                    .error(function () {
-                        console.log("Error: Could not remove review from reviews");
-                    });
-            })
-            .error(function () {
-                console.log("Error: Could not remove review from document");
-            });
-    };
-
     this.delFlow = function(docid){
         $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
             .success(function () {
@@ -63,24 +44,6 @@ angular.module("workflows").controller("WorkflowsController", ['$scope', '$http'
 };
 
 }]);
-
-angular.module("workflows").controller("WorkReviewController", ['$http', function($http){
-    this.review = {};
-
-    this.addReview = function(workflow){
-        $http.put('//aleph.inesc-id.pt/vre/api/reviews/workflows/' + workflow, this.review)
-            .success(function () {
-                //console.log('Successfuly posted new review in workflow ' + workflow);
-                location.reload();
-            })
-            .error(function () {
-                console.log("Error: Could not insert");
-            });
-        this.review = {};
-    };
-}]);
-
-
 
 angular.module("workflow-new", ["ngRoute"]);
 
@@ -160,25 +123,6 @@ angular.module("workflows").controller("MyWorkflowsController", ['$scope', '$htt
             })
         })
     });
-
-    this.delRev = function(revid, docid){
-        //console.log("Trying to remove review");
-        $http.delete('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
-            .success(function () {
-                //console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
-                $http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
-                    .success(function () {
-                        //console.log('Successfuly removed review from reviews');
-                        location.reload();
-                    })
-                    .error(function () {
-                        console.log("Error: Could not remove review from reviews");
-                    });
-            })
-            .error(function () {
-                console.log("Error: Could not remove review from document");
-            });
-    };
 
     this.delFlow = function(docid){
         $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)

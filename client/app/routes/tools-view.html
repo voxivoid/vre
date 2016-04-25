@@ -6,7 +6,7 @@
 
         <div class="container" style="width: 70%;">
             <div ng-hide="toolsCtrl.tools.length"><h1>There are no items to show.</h1></div>
-            <div ng-repeat="tool in toolsCtrl.tools">
+            <div ng-controller="ReviewsController as reviewsCtrl" ng-repeat="tool in toolsCtrl.tools">
 
                 <div class="row">
 
@@ -15,15 +15,6 @@
                         <a href="{{tool.website}}"><img class="img-responsive" ng-src="{{tool.image}}" alt=""></a>
                     </div> <!-- col -->
                     <div class="col-md-1"></div>
-                    <!--		<div class="col-md-5">
-                            <h3> {{pbase.acronym}} </h3>
-                            <h4> {{pbase.name}} </h4>
-                                    <p> {{pbase.description}} </p>
-                                     <a href="{{pflow.website}}" class="btn btn-default" role="button"> Website </a>
-                              <a href="{{pflow.link}}" class="btn btn-info" role="button"> Comment </a>
-                                        <a class="btn btn-primary" href="{{pflow.link}}"> Detail <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-                            </div>  col -->
                     <div class="col-md-6">
                         <h3> {{tool.acronym}} </h3>
                         <p><strong><em>{{tool.name}}</em></strong></p>
@@ -52,31 +43,31 @@
                                     <p>{{review.body}}</p>
                                     <cite>{{review.author}}</cite>
                                     <p></p>
-                                    <p ng-show="review.hasPermissions"><a ng-click="toolsCtrl.delRev(review._id,tool._id)" class="btn btn-warning" role="button">Delete Review</a></p>
+                                    <p ng-show="review.hasPermissions"><a ng-click="reviewsCtrl.delRev(review._id,tool._id)" class="btn btn-warning" role="button">Delete Review</a></p>
                                 </blockquote>
                             </div>
                         </div>
                         <div class="panel" ng-show="tab == 3">
                             <!--  Review Form -->
-                            <form name="reviewForm" ng-controller="ToolReviewController as toolReviewCtrl" ng-submit="reviewForm.$valid && toolReviewCtrl.addReview(tool._id)" >
+                            <form name="reviewForm" ng-submit="reviewForm.$valid && reviewsCtrl.addReview(tool._id)" >
                                 <blockquote >
-                                    <strong>{{toolReviewCtrl.review.stars}} Stars</strong>
-                                    {{toolReviewCtrl.review.body}}
-                                    <cite class="clearfix">-{{toolReviewCtrl.review.author}}</cite>
+                                    <strong>{{reviewsCtrl.review.stars}} Stars</strong>
+                                    {{reviewsCtrl.review.body}}
+                                    <cite class="clearfix">-{{reviewsCtrl.review.author}}</cite>
                                 </blockquote>
 
                                 <!--  Review Form -->
                                 <h4>Submit a Review</h4>
                                 <fieldset class="form-group">
-                                    <select ng-model="toolReviewCtrl.review.stars" class="form-control" ng-options="stars for stars in ['5','4','3','2','1']" title="Stars" required>
+                                    <select ng-model="reviewsCtrl.review.stars" class="form-control" ng-options="stars for stars in ['5','4','3','2','1']" title="Stars" required>
                                         <option value>Rate the Product</option>
                                     </select>
                                 </fieldset>
                                 <fieldset class="form-group">
-                                    <textarea ng-model="toolReviewCtrl.review.body" class="form-control" placeholder="Describe your feelings to us..." title="Review" required></textarea>
+                                    <textarea ng-model="reviewsCtrl.review.body" class="form-control" placeholder="Describe your feelings to us..." title="Review" required></textarea>
                                 </fieldset>
                                 <fieldset class="form-group">
-                                    <input ng-model="toolReviewCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
+                                    <input ng-model="reviewsCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
                                 </fieldset>
                                 <fieldset class="form-group">
                                     <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />

@@ -1,5 +1,5 @@
 var app = angular.module("vre", ["ngRoute", "navbar", "footer", "home", "signin", "workflows", "databases", "pubdatas",
-	"news", "detail", "rest", "tools", "start", "about", "tutorials","profile"]);
+	"news", "detail", "rest", "tools", "start", "about", "tutorials", "profile"]);
 
 angular.module("vre").controller("vreController", ["$scope" ,"$http", function ($scope,$http) {
 	$scope.isAuthenticated = false;

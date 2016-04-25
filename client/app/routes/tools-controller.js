@@ -18,7 +18,6 @@ angular.module("tools").controller("ToolsController", ['$scope', '$http', functi
         }
     });
 
-
     $scope.$on('toolsReady', function(event, tools) {
         angular.forEach($scope.toolsCtrl.tools, function(toolObject, toolIndex){
             angular.forEach(toolObject.reviews, function(reviewObject, reviewIndex) {
@@ -32,24 +31,6 @@ angular.module("tools").controller("ToolsController", ['$scope', '$http', functi
         })
     });
 
-    this.delRev = function(revid, docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
-            .success(function () {
-                //console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
-                $http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
-                    .success(function () {
-                        //console.log('Successfuly removed review from reviews');
-                        location.reload();
-                    })
-                    .error(function () {
-                        console.log("Error: Could not remove review from reviews");
-                    });
-            })
-            .error(function () {
-                console.log("Error: Could not remove review from document");
-            });
-    };
-
     this.delTool = function(docid){
         $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
             .success(function () {
@@ -62,24 +43,6 @@ angular.module("tools").controller("ToolsController", ['$scope', '$http', functi
     };
 
 }]);
-
-angular.module("tools").controller("ToolReviewController", ['$http', function($http){
-    this.review = {};
-
-    this.addReview = function(tool){
-        $http.put('//aleph.inesc-id.pt/vre/api/reviews/tools/' + tool, this.review)
-            .success(function () {
-                //console.log('Successfuly posted new review in tool ' + tool);
-                location.reload();
-            })
-            .error(function () {
-                console.log("Error: Could not insert");
-            });
-        this.review = {};
-    };
-}]);
-
-
 
 angular.module("tool-new", ["ngRoute"]);
 
@@ -116,7 +79,6 @@ angular.module("tools").controller("MyToolsController", ['$scope', '$http', func
         }
     });
 
-
     $scope.$on('toolsReady', function(event, tools) {
         angular.forEach($scope.toolsCtrl.tools, function(toolObject, toolIndex){
             angular.forEach(toolObject.reviews, function(reviewObject, reviewIndex) {
@@ -130,24 +92,6 @@ angular.module("tools").controller("MyToolsController", ['$scope', '$http', func
         })
     });
 
-    this.delRev = function(revid, docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
-            .success(function () {
-                //console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
-                $http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
-                    .success(function () {
-                        //console.log('Successfuly removed review from reviews');
-                        location.reload();
-                    })
-                    .error(function () {
-                        console.log("Error: Could not remove review from reviews");
-                    });
-            })
-            .error(function () {
-                console.log("Error: Could not remove review from document");
-            });
-    };
-
     this.delTool = function(docid){
         $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
             .success(function () {
@@ -158,5 +102,4 @@ angular.module("tools").controller("MyToolsController", ['$scope', '$http', func
                 console.log("Error: Could not remove document");
             });
     };
-
 }]);

@@ -1,4 +1,4 @@
-angular.module("databases", ["ngRoute", "sidebar", "database-new"]);
+angular.module("databases", ["ngRoute", "sidebar", "database-new", "reviews"]);
 
 angular.module("databases").config(["$routeProvider", function ($routeProvider) {
     $routeProvider
@@ -32,24 +32,6 @@ angular.module("databases").controller("DatabasesController", ['$scope', '$http'
         })
     });
 
-    this.delRev = function(revid, docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
-            .success(function () {
-                //console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
-                $http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
-                    .success(function () {
-                        //console.log('Successfuly removed review from reviews');
-                        location.reload();
-                    })
-                    .error(function () {
-                        console.log("Error: Could not remove review from reviews");
-                    });
-            })
-            .error(function () {
-                console.log("Error: Could not remove review from document");
-            });
-    };
-
     this.delBase = function(docid){
         $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
             .success(function () {
@@ -62,24 +44,6 @@ angular.module("databases").controller("DatabasesController", ['$scope', '$http'
     };
 
 }]);
-
-angular.module("databases").controller("DataReviewController", ['$http', function($http){
-    this.review = {};
-
-    this.addReview = function(database){
-        $http.put('//aleph.inesc-id.pt/vre/api/reviews/databases/' + database, this.review)
-            .success(function () {
-                //console.log('Successfuly posted new review in database ' + database);
-                location.reload();
-            })
-            .error(function () {
-                console.log("Error: Could not insert");
-            });
-        this.review = {};
-    };
-}]);
-
-
 
 angular.module("database-new", ["ngRoute"]);
 
@@ -129,24 +93,6 @@ angular.module("databases").controller("MyDatabasesController", ['$scope', '$htt
             })
         })
     });
-
-    this.delRev = function(revid, docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
-            .success(function () {
-                //console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
-                $http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
-                    .success(function () {
-                        //console.log('Successfuly removed review from reviews');
-                        location.reload();
-                    })
-                    .error(function () {
-                        console.log("Error: Could not remove review from reviews");
-                    });
-            })
-            .error(function () {
-                console.log("Error: Could not remove review from document");
-            });
-    };
 
     this.delBase = function(docid){
         $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)

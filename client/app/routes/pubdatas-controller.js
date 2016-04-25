@@ -1,4 +1,4 @@
-angular.module("pubdatas", ["ngRoute", "sidebar", "pubdata-new"]);
+angular.module("pubdatas", ["ngRoute", "sidebar", "pubdata-new", "reviews"]);
 
 angular.module("pubdatas").config(["$routeProvider", function ($routeProvider) {
     $routeProvider
@@ -18,7 +18,6 @@ angular.module("pubdatas").controller("PubdatasController", ['$scope', '$http', 
         }
     });
 
-
     $scope.$on('pubdatasReady', function(event, pubdatas) {
         angular.forEach($scope.pubdatasCtrl.pubdatas, function(pubdataObject, pubdataIndex){
             angular.forEach(pubdataObject.reviews, function(reviewObject, reviewIndex) {
@@ -32,24 +31,6 @@ angular.module("pubdatas").controller("PubdatasController", ['$scope', '$http', 
         })
     });
 
-    this.delRev = function(revid, docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
-            .success(function () {
-                //console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
-                $http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
-                    .success(function () {
-                        //console.log('Successfuly removed review from reviews');
-                        location.reload();
-                    })
-                    .error(function () {
-                        console.log("Error: Could not remove review from reviews");
-                    });
-            })
-            .error(function () {
-                console.log("Error: Could not remove review from document");
-            });
-    };
-
     this.delPub = function(docid){
         $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
             .success(function () {
@@ -62,24 +43,6 @@ angular.module("pubdatas").controller("PubdatasController", ['$scope', '$http', 
     };
 
 }]);
-
-angular.module("pubdatas").controller("PublicdataReviewController", ['$http', function($http){
-    this.review = {};
-
-    this.addReview = function(pubdata){
-        $http.put('//aleph.inesc-id.pt/vre/api/reviews/pubdatas/' + pubdata, this.review)
-            .success(function () {
-                //console.log('Successfuly posted new review in pubdata ' + pubdata);
-                location.reload();
-            })
-            .error(function () {
-                console.log("Error: Could not insert");
-            });
-        this.review = {};
-    };
-}]);
-
-
 
 angular.module("pubdata-new", ["ngRoute"]);
 
@@ -129,24 +92,6 @@ angular.module("pubdatas").controller("MyPubdatasController", ['$scope', '$http'
             })
         })
     });
-
-    this.delRev = function(revid, docid){
-        $http.delete('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
-            .success(function () {
-                //console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
-                $http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
-                    .success(function () {
-                        //console.log('Successfuly removed review from reviews');
-                        location.reload();
-                    })
-                    .error(function () {
-                        console.log("Error: Could not remove review from reviews");
-                    });
-            })
-            .error(function () {
-                console.log("Error: Could not remove review from document");
-            });
-    };
 
     this.delPub = function(docid){
         $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
