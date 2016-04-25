@@ -1,3 +1,4 @@
+// Using Passport to sign in with a google account
 "use strict";
 
 module.exports = function (app) {

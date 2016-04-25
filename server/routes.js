@@ -1,3 +1,4 @@
+// Declaration of all possible routes
 "use strict";
 
 module.exports = function (app) {

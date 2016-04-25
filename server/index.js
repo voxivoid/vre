@@ -11,29 +11,8 @@ Promise.config({
 var express = require("express");
 var mongoose = require("mongoose");
 
-
-
 global.config = require("./config");
 var app = express();
-
-/*app.use(function (req, res, next) {
-
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-    // Request methods you wish to allow (other options: OPTIONS, PATCH, DELETE)
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', false);
-
-    // Pass to next layer of middleware
-    next();
-});*/
 
 app.use(require("helmet")());
 app.use(require("compression")());
@@ -50,8 +29,6 @@ app.use(app.passport.initialize());
 app.use(app.passport.session());
 
 require("./routes")(app);
-
-
 
 app.use(function (err, req, res, next) {
     if (config.environment !== "development") { // production error handler

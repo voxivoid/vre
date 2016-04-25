@@ -2,7 +2,7 @@ var app = angular.module("vre", ["ngRoute", "navbar", "footer", "home", "signin"
 	"news", "detail", "rest", "tools", "start", "about", "tutorials", "profile"]);
 
 angular.module("vre").controller("vreController", ["$scope" ,"$http", function ($scope,$http) {
-	$scope.isAuthenticated = false;
+	$scope.isAuthenticated = false; // used to know if the user is logged in
 
 	$http.get('http://aleph.inesc-id.pt/vre/api/auth/google/isauthenticated')
 		.success(function (data) {

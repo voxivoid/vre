@@ -1,3 +1,4 @@
+// News model
 "use strict";
 
 var mongoose = require("mongoose");

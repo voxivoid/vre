@@ -1,3 +1,4 @@
+// Databases pages module and controllers
 angular.module("databases", ["ngRoute", "sidebar", "documents", "reviews"]);
 
 angular.module("databases").config(["$routeProvider", function ($routeProvider) {
@@ -9,29 +10,28 @@ angular.module("databases").config(["$routeProvider", function ($routeProvider) 
 
 angular.module("databases").controller("DatabasesController", ['$location', '$scope', '$http', function($location, $scope, $http){
     $scope.databasesCtrl = this;
-    $scope.type = "databases";
+    $scope.type = "databases"; // used to know the actual context
 
     var getUrl;
     if($location.path() === "/databases/self"){
-        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type + "?self=true";
+        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type + "?self=true"; // requests only own databases
     } else{
-        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type;
+        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type; // requests all databases
     }
 
     this.databases = [];
     $http.get(getUrl).success(function(data){
         if(data.success) {
             $scope.databasesCtrl.databases = data.success;
-            $scope.$broadcast('databasesReady', $scope.databasesCtrl.databases);
+            $scope.$broadcast('databasesReady', $scope.databasesCtrl.databases); // broadcasts when the databases are loaded
         }
     });
 
     $scope.$on('databasesReady', function(event, databases) {
         angular.forEach($scope.databasesCtrl.databases, function(databaseObject, databaseIndex){
             angular.forEach(databaseObject.reviews, function(reviewObject, reviewIndex) {
-                $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){
+                $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){ // requests reviews for each database
                     if(data.success) {
-                        //console.log('got database review ' + reviewObject);
                         $scope.databasesCtrl.databases[databaseIndex].reviews[reviewIndex] = data.success;
                     }
                 });

@@ -1,6 +1,4 @@
-/**
- * Created by rmfigueiredo on 29/01/16.
- */
+// This directive is used to present a back button
 angular.module("backbar", []);
 
 angular.module("backbar").directive("backbar", function(){

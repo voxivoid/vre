@@ -1,13 +1,13 @@
+// Reviews controller
 angular.module("reviews", []);
 
 angular.module("reviews").controller("ReviewsController", ['$scope', '$http', function($scope, $http) {
 
         this.review = {};
 
-        this.addReview = function(docid){
+        this.addReview = function(docid){ // adds review to the document depending on the actual context
             $http.put('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + "/" + docid, this.review)
                 .success(function () {
-                    //console.log('Successfuly posted new review in database ' + database);
                     location.reload();
                 })
                 .error(function () {
@@ -16,13 +16,11 @@ angular.module("reviews").controller("ReviewsController", ['$scope', '$http', fu
             this.review = {};
         };
 
-        this.delRev = function (revid, docid) {
+        this.delRev = function (revid, docid) { // deletes review to the document depending on the actual context
             $http.delete('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + '/' + docid + '/' + revid)
                 .success(function () {
-                    //console.log('Successfuly removed review with id ' + revid + ' from ' + $scope.type + ' with id ' + docid);
                     $http.delete('//aleph.inesc-id.pt/vre/api/delete/reviews/' + revid)
                         .success(function () {
-                            //console.log('Successfuly removed review from reviews');
                             location.reload();
                         })
                         .error(function () {

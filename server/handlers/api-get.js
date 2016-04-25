@@ -12,36 +12,24 @@ handlers.push(validate({
 }));
 
 handlers.push(function(req, res, next) {
-
     var collection = req.params.collection;
 
     if (collection === 'workflows') {
-
         var Document = req.app.db.models.Workflow;
-
     }
     else if (collection === 'databases') {
-
         var Document = req.app.db.models.Database;
-
     }
     else if (collection === 'pubdatas') {
-
         var Document = req.app.db.models.Pubdata;
-
     }
     else if (collection === 'news') {
-
         var Document = req.app.db.models.News;
-
     }
     else if (collection === 'tools') {
-
         var Document = req.app.db.models.Tool;
-
     }
     else {
-
         res.send('Error: no collection specified');
     }
 
@@ -64,17 +52,15 @@ handlers.push(function(req, res, next) {
                 delete doc.users;
                 return doc;
             });
-            if(req.query.self === true){
+            if(req.query.self === true){  // returns only the user documents from the specified collection
                 var selfDocs = [];
                 for(var i = 0; i < sortedDocs.length; i++){
                     if(sortedDocs[i].hasPermissions){
                         selfDocs.push(sortedDocs[i]);
                     }
                 }
-                console.log("self");
                 res.send({success: selfDocs});
-            } else {
-                console.log("all");
+            } else { // returns all documents from the specified collection
                 console.log(req.query.self);
                 res.send({success: sortedDocs});
             }

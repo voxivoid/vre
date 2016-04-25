@@ -1,3 +1,4 @@
+// This directive is used to present authentication methods to the user like Google auth
 angular.module("auth", []);
 
 angular.module("auth").directive("auth", function(){

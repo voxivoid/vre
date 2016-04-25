@@ -1,3 +1,4 @@
+// Tool model
 "use strict";
 
 var mongoose = require("mongoose");

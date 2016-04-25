@@ -1,3 +1,4 @@
+// Tutorial page controller
 angular.module("tutorials", ["ngRoute", "tutorial"]);
 
 angular.module("tutorials").config(["$routeProvider", function ($routeProvider) {

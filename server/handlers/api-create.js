@@ -4,12 +4,10 @@ var validate = require("express-joi-validator");
 
 var handlers = module.exports = [];
 
-handlers.push(function (req, res, next) {
-
+handlers.push(function (req, res, next) { // input validation
     var collection = req.params.collection;
 
     if (collection === 'workflows') {
-
         var Document = req.app.db.models.Workflow;
 
         handlers.push(validate({
@@ -23,10 +21,8 @@ handlers.push(function (req, res, next) {
                 domainSpecific: joi.boolean().default(false)
             }
         }));
-
     }
     else if (collection === 'databases') {
-
         var Document = req.app.db.models.Database;
 
         handlers.push(validate({
@@ -39,10 +35,8 @@ handlers.push(function (req, res, next) {
                 domainSpecific: joi.boolean().default(false)
             }
         }));
-
     }
     else if (collection === 'pubdatas') {
-
         var Document = req.app.db.models.Pubdata;
 
         handlers.push(validate({
@@ -54,10 +48,8 @@ handlers.push(function (req, res, next) {
                 domainSpecific: joi.boolean().default(false)
             }
         }));
-
     }
     else if (collection === 'news') {
-
         var Document = req.app.db.models.News;
 
         handlers.push(validate({
@@ -69,10 +61,8 @@ handlers.push(function (req, res, next) {
                 domainSpecific: joi.boolean().default(false)
             }
         }));
-
     }
     else if (collection === 'tools') {
-
         var Document = req.app.db.models.Tool;
 
         handlers.push(validate({
@@ -85,10 +75,8 @@ handlers.push(function (req, res, next) {
                 domainSpecific: joi.boolean().default(false)
             }
         }));
-
     }
     else if (collection === 'reviews') {
-
         var Document = req.app.db.models.Review;
 
         handlers.push(validate({
@@ -98,18 +86,16 @@ handlers.push(function (req, res, next) {
                 author:	joi.string().required
             }
         }));
-
     }
     else {
-
         res.send('Error: no collection specified');
     }
+});
 
-
+handlers.push(function (req, res, next) { // create document in the database
     var doc = null;
 
-    Promise.resolve()
-        .then(function () {
+    Promise.then(function () {
             req.body.users = [req.user];
             doc = new Document(req.body);
 
@@ -126,5 +112,4 @@ handlers.push(function (req, res, next) {
             });
         })
         .catch(next);
-
 });

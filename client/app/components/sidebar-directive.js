@@ -1,3 +1,5 @@
+// This directive is used to present the sidebar used in workflows, databases, news, etc.
+
 angular.module("sidebar", []);
 
 angular.module("sidebar").directive("sidebar", function(){
@@ -13,8 +15,10 @@ angular.module("sidebar").controller("SidebarController", ['$anchorScroll', '$lo
 
     if(this.type === "workflows") {
         this.buttons = ["Add Workflow", "My Workflows"];
+        // links[0] -> relative url to new workflows page; links[1] -> relative url to my workflows page
         this.links = ["#/workflows/new", "#/workflows/self"];
         this.index = [];
+        // fills the index array with workflows when the workflows request to the server is fulfilled
         $scope.$on('workflowsReady', function(event, workflows) {
             for (i = 0; i < workflows.length; i++) {
                 $scope.sidebarCtrl.index.push(workflows[i].name);

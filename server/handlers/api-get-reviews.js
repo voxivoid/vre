@@ -3,7 +3,6 @@
 var handlers = module.exports = [];
 
 handlers.push(function(req, res, next) {
-
     var Document = req.app.db.models.Review;
 
     Promise.all(Document.find())
@@ -19,14 +18,9 @@ handlers.push(function(req, res, next) {
                         }
                     }
                 }
-
                 delete doc.users;
                 return doc;
-
             });
-
             res.send({success: docs});
-
         }).catch(next);
-
 });

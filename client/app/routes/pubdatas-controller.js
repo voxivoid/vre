@@ -1,3 +1,4 @@
+// Public data pages module and controllers
 angular.module("pubdatas", ["ngRoute", "sidebar", "documents", "reviews"]);
 
 angular.module("pubdatas").config(["$routeProvider", function ($routeProvider) {
@@ -9,29 +10,28 @@ angular.module("pubdatas").config(["$routeProvider", function ($routeProvider) {
 
 angular.module("pubdatas").controller("PubdatasController", ['$location', '$scope', '$http', function($location, $scope, $http){
     $scope.pubdatasCtrl = this;
-    $scope.type = "pubdatas";
+    $scope.type = "pubdatas"; // used to know the actual context
 
     var getUrl;
     if($location.path() === "/publicdata/self"){
-        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type + "?self=true";
+        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type + "?self=true"; // requests only own public data
     } else{
-        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type;
+        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type; // requests all public data
     }
 
     this.pubdatas = [];
     $http.get(getUrl).success(function(data){
         if(data.success) {
             $scope.pubdatasCtrl.pubdatas = data.success;
-            $scope.$broadcast('pubdatasReady', $scope.pubdatasCtrl.pubdatas);
+            $scope.$broadcast('pubdatasReady', $scope.pubdatasCtrl.pubdatas); // broadcasts when the public data is loaded
         }
     });
 
     $scope.$on('pubdatasReady', function(event, pubdatas) {
         angular.forEach($scope.pubdatasCtrl.pubdatas, function(pubdataObject, pubdataIndex){
             angular.forEach(pubdataObject.reviews, function(reviewObject, reviewIndex) {
-                $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){
+                $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){ // requests reviews for each public data
                     if(data.success) {
-                        //console.log('got pubdata review ' + reviewObject);
                         $scope.pubdatasCtrl.pubdatas[pubdataIndex].reviews[reviewIndex] = data.success;
                     }
                 });

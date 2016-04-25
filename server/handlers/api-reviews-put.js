@@ -23,8 +23,7 @@ handlers.push(function(req, res, next) {
 
     var review = null;
 
-    Promise.resolve()
-        .then(function () {
+    Promise.then(function () {
             req.body.users = [req.user];
             review = new Review(req.body);
 
@@ -33,32 +32,20 @@ handlers.push(function(req, res, next) {
         .then(function () {
 
             if (collection === 'workflows') {
-
                 var Document = req.app.db.models.Workflow;
-
             }
             else if (collection === 'databases') {
-
                 var Document = req.app.db.models.Database;
-
             }
             else if (collection === 'pubdatas') {
-
                 var Document = req.app.db.models.Pubdata;
-
             }
             else if (collection === 'news') {
-
                 var Document = req.app.db.models.News;
-
             }
             else if (collection === 'tools') {
-
                 var Document = req.app.db.models.Tool;
-
             }
-
-            //console.log('\nTrying to insert review in ' + collection + ' with id ' + id + ": " + review);
 
             Document.findById(id)
                 .then(function (doc) {

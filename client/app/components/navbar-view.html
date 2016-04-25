@@ -5,10 +5,10 @@
         <li class="dropdown" ng-class="{active: isActive('/protocols') || isActive('/workflows') }"><a class="dropdown-toggle" data-toggle="dropdown" href="" aria-labelledby="dLabel">Explore <span class="caret"/></a>
             <ul class="dropdown-menu">
                 <li class="dropdown-submenu" role="menu" ng-class="{active: isActive('/workflows') || isActive('/bench') }"><a class="dropdown-toggle" data-toggle="dropdown" href="" tabindex="-1">Protocols <span class="caret"/></a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a href="#/workflows">Bioinfo</a></li>
-                            <li><a href="#/bench">Bench</a></li>
-                        </ul>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#/workflows">Bioinfo</a></li>
+                        <li><a href="#/bench">Bench</a></li>
+                    </ul>
                 </li>
                 <li class="dropdown-submenu" ng-class="{active:  isActive('/databases') || isActive('/publicdata')}"><a class="dropdown-toggle" data-toggle="dropdown" href="">Data <span class="caret"/></a>
                     <ul class="dropdown-menu dropdown-menu-right">
@@ -36,7 +36,6 @@
         <li ng-class="{active: isActive('/signin')}" ng-hide="isAuthenticated"><a href="#/signin">Sign In</a></li>
         <li ng-class="{active: isActive('/profile')}" ng-show="isAuthenticated"><a href="#/profile">My Profile</a></li>
         <li ng-show="isAuthenticated"><a href="http://aleph.inesc-id.pt/vre/api/auth/google/logout">Logout</a></li>
-
     </ul>
 </div>
 

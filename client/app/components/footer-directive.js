@@ -1,3 +1,4 @@
+// This directive is used to present the footer
 (function(){
 	var app = angular.module("footer", []);
 

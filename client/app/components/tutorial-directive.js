@@ -1,3 +1,4 @@
+// This directive is used to present the vre tutorial
 angular.module("tutorial", []);
 
 angular.module("tutorial").directive("tutorial", function(){

@@ -1,3 +1,4 @@
+// News pages module and controllers
 angular.module("news", ["ngRoute", "sidebar", "documents", "reviews"]);
 
 angular.module("news").config(["$routeProvider", function ($routeProvider) {
@@ -9,29 +10,28 @@ angular.module("news").config(["$routeProvider", function ($routeProvider) {
 
 angular.module("news").controller("NewsController", ['$location', '$scope', '$http', function($location, $scope, $http){
     $scope.newsCtrl = this;
-    $scope.type = "news";
+    $scope.type = "news"; // used to know the actual context
 
     var getUrl;
     if($location.path() === "/news/self"){
-        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type + "?self=true";
+        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type + "?self=true"; // requests only own news
     } else{
-        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type;
+        getUrl = '//aleph.inesc-id.pt/vre/api/' + $scope.type; // requests all news
     }
 
     this.news = [];
     $http.get(getUrl).success(function(data){
         if(data.success) {
             $scope.newsCtrl.news = data.success;
-            $scope.$broadcast('newsReady', $scope.newsCtrl.news);
+            $scope.$broadcast('newsReady', $scope.newsCtrl.news); // broadcasts when the news are loaded
         }
     });
 
     $scope.$on('newsReady', function(event, news) {
         angular.forEach($scope.newsCtrl.news, function(newsObject, newsIndex){
             angular.forEach(newsObject.reviews, function(reviewObject, reviewIndex) {
-                $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){
+                $http.get('//aleph.inesc-id.pt/vre/api/reviews/' + reviewObject).success(function(data){ // requests reviews for each news
                     if(data.success) {
-                        //console.log('got news review ' + reviewObject);
                         $scope.newsCtrl.news[newsIndex].reviews[reviewIndex] = data.success;
                     }
                 });

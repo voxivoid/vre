@@ -1,8 +1,6 @@
 <div class="container" style="width: 99%;">
-
     <h2>Oil & Gas REST API </h2>
     <p>&nbsp;</p>
-
     <div id="rest-index" class="col-md-2">
         <!-- Sidebar -->
         <h3> Index </h3>
@@ -15,7 +13,6 @@
             <a href="#/rest/#schemas" class="list-group-item">MongoDB Schemas</a>
         </div>
     </div>
-
     <div class="container" style="width: 66%;">
         <div class="panel panel-default col-md-12">
             <!-- Default panel contents -->
@@ -63,7 +60,6 @@
                 </tbody>
             </table>
         </div>
-
         <div class="panel panel-default col-md-12">
             <!-- Default panel contents -->
             <a id="getmethod"></a>
@@ -90,17 +86,11 @@
                 </tbody>
             </table>
         </div>
-
         <h4> Examples</h4>
         <p>Sample GET all request using cURL:</p>
-
-        <div class="well">curl <a href="http://aleph.inesc-id.pt/vre/api/databases">http://aleph.inesc-id.pt/vre/api/databases</a> </div>
-
+        <div class="well">curl <a href="http://aleph.inesc-id.pt/vre/api/databases">http://aleph.inesc-id.pt/vre/api/databases</a></div>
         <p>Sample GET by id request using cURL:</p>
-
-        <div class="well">curl <a href="http://aleph.inesc-id.pt/vre/api/databases/56a8fedafe23f6435c7b144d">http://aleph.inesc-id.pt/vre/api/databases/56a8fedafe23f6435c7b144d</a> </div>
-
-
+        <div class="well">curl <a href="http://aleph.inesc-id.pt/vre/api/databases/56a8fedafe23f6435c7b144d">http://aleph.inesc-id.pt/vre/api/databases/56a8fedafe23f6435c7b144d</a></div>
         <div class="panel panel-default col-md-12">
             <!-- Default panel contents -->
             <a id="postmethod"></a>
@@ -128,16 +118,11 @@
             </table>
             <strong>Remember that schema must be respected</strong>
         </div>
-
         <h4> Examples</h4>
         <p>Sample POST Create document using cURL:</p>
-
         <div class="well">curl -H 'Content-Type: application/json' -X POST -d '{ "name":"Metagenomics Pipeline", "description":"FASTX, BLAST, MEGAN", "author":"user@domain.com" }' http://aleph.inesc-id.pt/vre/api/create/workflows</div>
-
         <p>Sample POST Edit by id request using cURL:</p>
-
         <div class="well">curl -H 'Content-Type: application/json' -X POST -d '{ "name":"Metagenomics Pipeline", "description":"FASTX, BLAST, MEGAN, R", "author":"new.user@.new.domain.com" }' http://aleph.inesc-id.pt/vre/api/edit/workflows/56ca06c4624e59e10dcbe109 </div>
-
         <div class="panel panel-default col-md-12">
             <!-- Default panel contents -->
             <!-- Default panel contents -->
@@ -165,16 +150,11 @@
                 </tbody>
             </table>
         </div>
-
         <h4> Examples </h4>
         <p>Sample PUT Create review using cURL:</p>
-
         <div class="well">curl -H 'Content-Type: application/json' -X PUT -d '{ "stars":"3", "body":"dont like this one very much...blast is very basic", "author":"someone@domain.com" }' http://aleph.inesc-id.pt/vre/api/reviews/workflows/56ca06c4624e59e10dcbe109</div>
-
         <p>Sample PUT Remove review by id request using cURL:</p>
-
         <div class="well">curl -H 'Content-Type: application/json' -X PUT  http://aleph.inesc-id.pt/vre/api/reviews/workflows/56ca05ee624e59e10dcbe108/56ca08f3624e59e10dcbe10a</a> </div>
-
         <div class="panel panel-default col-md-12">
             <!-- Default panel contents -->
             <!-- Default panel contents -->
@@ -197,15 +177,10 @@
                 </tbody>
             </table>
         </div>
-
-        <h4>  Examples</h4>
-        <p>Sample DELETE document using cURL:</p>
-
+        <h4> Examples </h4><p>Sample DELETE document using cURL:</p>
         <div class="well">curl -X DELETE  http://aleph.inesc-id.pt/vre/api/delete/reviews/56ca091a624e59e10dcbe10c</div>
-
         <a id="schemas"></a>
         <h3> MongoDB Schemas </h3>
-
         <div class="panel panel-default col-md-6">
             <!-- Default panel contents -->
             <div id="workflows" class="panel-heading"> Workflows </div>
@@ -232,14 +207,13 @@
                     <td>author</td>
                     <td><em>String</em> (required)</td>
                 </tr>
-              <!--  <tr>
-                    <td>domainSpecific</td>
-                    <td><em>boolean</em> (default = false)</td>
-                </tr>-->
+                <!--  <tr>
+                      <td>domainSpecific</td>
+                      <td><em>boolean</em> (default = false)</td>
+                  </tr>-->
                 </tbody>
             </table>
         </div>
-
         <div class="panel panel-default col-md-6">
             <!-- Default panel contents -->
             <div id="databases" class="panel-heading"> Databases </div>
@@ -271,14 +245,13 @@
                     <td><em>String</em> (required)</td>
                 </tr>
 
-               <!-- <tr>
-                    <td>domainSpecific</td>
-                    <td><em>boolean</em> (default = false)</td>
-                </tr>-->
+                <!-- <tr>
+                     <td>domainSpecific</td>
+                     <td><em>boolean</em> (default = false)</td>
+                 </tr>-->
                 </tbody>
             </table>
         </div>
-
         <div class="panel panel-default col-md-6">
             <!-- Default panel contents -->
             <div id="pubdata" class="panel-heading"> Public Data </div>
@@ -312,7 +285,6 @@
                 </tbody>
             </table>
         </div>
-
         <div class="panel panel-default col-md-6">
             <!-- Default panel contents -->
             <div id="tools" class="panel-heading"> Tools </div>
@@ -351,7 +323,6 @@
                 </tbody>
             </table>
         </div>
-
         <div class="panel panel-default col-md-6">
             <!-- Default panel contents -->
             <div id="news" class="panel-heading"> News </div>
@@ -385,7 +356,6 @@
                 </tbody>
             </table>
         </div>
-
         <div class="panel panel-default col-md-6">
             <!-- Default panel contents -->
             <div id="reviews" class="panel-heading"> Reviews </div>
@@ -411,7 +381,6 @@
                 </tbody>
             </table>
         </div>
-
     </div>
 </div>
 

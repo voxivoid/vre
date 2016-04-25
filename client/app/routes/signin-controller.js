@@ -1,3 +1,4 @@
+// Signin page controller
 angular.module("signin", ["ngRoute", "auth"]);
 
 angular.module("signin").config(["$routeProvider", function ($routeProvider) {
@@ -5,6 +6,4 @@ angular.module("signin").config(["$routeProvider", function ($routeProvider) {
 		.when("/signin", {templateUrl: "app/routes/signin-view.html", controller: "SigninController"});
 }]);
 
-angular.module("signin").controller("SigninController", ["$scope", function($scope){
-
-}]);
+angular.module("signin").controller("SigninController", []);

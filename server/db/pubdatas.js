@@ -1,3 +1,4 @@
+// Public data model
 "use strict";
 
 var mongoose = require("mongoose");
