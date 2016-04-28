@@ -6,4 +6,6 @@ angular.module("home").config(["$routeProvider", function ($routeProvider) {
 		.when("/", {templateUrl: "app/routes/home-view.html", controller: "HomeController"});
 }]);
 
-angular.module("home").controller("HomeController", []);
+angular.module("home").controller("HomeController", ["$scope", function($scope){
+
+}]);

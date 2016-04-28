@@ -6,4 +6,6 @@ angular.module("detail").config(["$routeProvider", function ($routeProvider) {
 		.when("/workflows/detail/biosurf", {templateUrl: "app/routes/detail-view.html", controller: "DetailController"});
 }]);
 
-angular.module("detail").controller("DetailController", []);
+angular.module("detail").controller("DetailController", ["$scope", function($scope){
+
+}]);
