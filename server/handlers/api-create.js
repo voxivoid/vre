@@ -90,12 +90,10 @@ handlers.push(function (req, res, next) { // input validation
     else {
         res.send('Error: no collection specified');
     }
-});
 
-handlers.push(function (req, res, next) { // create document in the database
     var doc = null;
 
-    Promise.then(function () {
+    Promise.resolve().then(function () {
             req.body.users = [req.user];
             doc = new Document(req.body);
 
