@@ -23,7 +23,7 @@ handlers.push(function(req, res, next) {
 
     var review = null;
 
-    Promise.then(function () {
+    Promise.resolve().then(function () {
             req.body.users = [req.user];
             review = new Review(req.body);
 

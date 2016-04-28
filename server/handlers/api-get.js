@@ -11,7 +11,7 @@ handlers.push(validate({
     }
 }));
 
-handlers.push(function(req, res, next) {
+handlers.push(function(req, res, next) { // get document from collection
     var collection = req.params.collection;
 
     if (collection === 'workflows') {
@@ -35,10 +35,10 @@ handlers.push(function(req, res, next) {
 
     Promise.all(Document.find())
         .then(function(docs){
-            var sortedDocs = docs.sort(function(a,b) {
+           /* var sortedDocs = docs.sort(function(a,b) {
                 return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
-            });
-            sortedDocs = sortedDocs.map(function (doc) {
+            });*/
+            var sortedDocs = docs.map(function (doc) {
                 doc = doc.toObject();
                 doc.hasPermissions = false;
 

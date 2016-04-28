@@ -2,7 +2,7 @@
 
 var handlers = module.exports = [];
 
-handlers.push(function(req, res, next) {
+handlers.push(function(req, res, next) { // get document by id
 
     var collection = req.params.collection;
 

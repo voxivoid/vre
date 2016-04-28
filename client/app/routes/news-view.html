@@ -4,8 +4,8 @@
         <div class="container" style="width: 70%;">
             <div id="news">
                 <div ng-hide="newsCtrl.news.length"><h1>There are no items to show.</h1></div>
-                <div ng-controller="DocumentsController as documentsCtrl" ng-controller="ReviewsController as reviewsCtrl" ng-repeat="news in newsCtrl.news">
-                    <div class="row">
+                <div ng-controller="DocumentsController as documentsCtrl" ng-repeat="news in newsCtrl.news">
+                    <div ng-controller="ReviewsController as reviewsCtrl" class="row">
                         <div class="col-md-4">
                             <a id="anchor{{news.acronym}}"></a>
                             <a href="{{news.website}}"><img class="img-responsive" ng-src="{{news.image}}" alt=""></a>

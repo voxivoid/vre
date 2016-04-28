@@ -3,8 +3,8 @@
         <sidebar ng-show="isAuthenticated"></sidebar>
         <div class="container" style="width: 70%;">
             <div ng-hide="toolsCtrl.tools.length"><h1>There are no items to show.</h1></div>
-            <div ng-controller="DocumentsController as documentsCtrl" ng-controller="ReviewsController as reviewsCtrl" ng-repeat="tool in toolsCtrl.tools">
-                <div class="row">
+            <div ng-controller="DocumentsController as documentsCtrl" ng-repeat="tool in toolsCtrl.tools">
+                <div ng-controller="ReviewsController as reviewsCtrl" class="row">
                     <div class="col-md-4">
                         <a id="anchor{{tool.acronym}}"></a>
                         <a href="{{tool.website}}"><img class="img-responsive" ng-src="{{tool.image}}" alt=""></a>

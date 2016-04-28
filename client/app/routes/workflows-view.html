@@ -3,8 +3,8 @@
     <div class="container" style="width: 70%;">
         <div id="pipelines">
             <div ng-hide="workflowsCtrl.workflows.length"><h1>There are no items to show.</h1></div>
-            <div ng-controller="DocumentsController as documentsCtrl" ng-controller="ReviewsController as reviewsCtrl" ng-repeat="workflow in workflowsCtrl.workflows">
-                <div class="row" >
+            <div ng-controller="DocumentsController as documentsCtrl" ng-repeat="workflow in workflowsCtrl.workflows">
+                <div ng-controller="ReviewsController as reviewsCtrl"  class="row" >
                     <div class="col-md-4">
                         <a id="anchor{{workflow.name}}"></a>
                         <a href="#/workflow/detail/{{workflow._id}}"><img class="img-responsive" ng-src="{{workflow.image}}" alt="" ></a>

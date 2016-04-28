@@ -2,7 +2,7 @@
 
 var handlers = module.exports = [];
 
-handlers.push(function(req, res, next) {
+handlers.push(function(req, res, next) { // delete document from collection
     var collection = req.params.collection;
     var RevModel = req.app.db.models.Review;
 

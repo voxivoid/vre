@@ -2,7 +2,7 @@
 
 var handlers = module.exports = [];
 
-handlers.push(function(req, res, next) {
+handlers.push(function(req, res, next) { // get reviews
     var Document = req.app.db.models.Review;
 
     Promise.all(Document.find())

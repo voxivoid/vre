@@ -16,12 +16,15 @@ angular.module("documents").controller("DocumentsController", ['$scope', '$http'
     };
 
     this.delDoc = function(docid){ // deletes document depending on the actual context
-        $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
+        var r = confirm("This will remove the document permanently.");
+        if (r == true) {
+            $http.delete('//aleph.inesc-id.pt/vre/api/delete/' + $scope.type + '/' + docid)
             .success(function () {
                 location.reload();
             })
             .error(function () {
                 console.log("Error: Could not remove document");
             });
+        }
     };
 }]);
