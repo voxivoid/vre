@@ -1,0 +1,53 @@
+<div ng-controller="DocumentsController as documentCtrl">
+    <div class="container" style="width: 70%;">
+        <h2>Insert a new Protocol</h2>
+        <form name="newbaseForm" ng-submit="newbaseForm.$valid && documentCtrl.addDoc()" >
+            <!--  var schema = new Schema({
+              name: String,
+              description: String,
+              link: String,
+              website: String,
+              image: String,
+              author: String,
+              domainSpecific: Boolean,-->
+            <!--  Review Form -->
+            <fieldset class="form-group">
+                <h4>Acronym (max. 10 chars)</h4>
+                <textarea ng-model="documentCtrl.doc.acronym" class="form-control" placeholder="Protocol Acronym" title="Name" maxlength="10" ></textarea>
+            </fieldset>
+            <fieldset class="form-group">
+                <h4>Name (max. 50 chars) * </h4>
+                <textarea ng-model="documentCtrl.doc.name" class="form-control" placeholder="Protocol Name" title="Name" maxlength="50" required></textarea>
+            </fieldset>
+            <fieldset class="form-group">
+                <h4>Description (max. 50 chars) * </h4>
+                <textarea ng-model="documentCtrl.doc.description" class="form-control" placeholder="Description to be placed in protocols gallery" title="Description" maxlength="250" required></textarea>
+            </fieldset>
+            <fieldset class="form-group">
+                <h4>Website * </h4>
+                <textarea ng-model="documentCtrl.doc.website" class="form-control" placeholder="www.protocol.com" title="Website" required></textarea>
+            </fieldset>
+            <fieldset class="form-group">
+                <h4>Image URL</h4>
+                <textarea ng-model="documentCtrl.doc.image" class="form-control" placeholder="http://example-server.com/example-image.jpg" title="Image" ></textarea>
+            </fieldset>
+            <!-- <fieldset class="form-group">
+                 <h4>Oil & Gas Domain Specific</h4>
+                 <label>
+                     <input ng-model="baseCtrl.nbase.domainSpecific" type="radio" value="true" class="form-control" title="Domain Specific" required/>
+                     Yes
+                 </label>
+                 <label>
+                     <input ng-model="baseCtrl.nbase.domainSpecific" type="radio" value="false" class="form-control" title="Domain Specific" required/>
+                     No
+                 </label>
+             </fieldset>-->
+            <fieldset class="form-group">
+                <h4>* Required fields</h4>
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="submit" class="form-control btn btn-primary pull-right" value="Submit Protocol" />
+            </fieldset>
+        </form>
+    </div>
+</div>

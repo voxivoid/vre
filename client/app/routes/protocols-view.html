@@ -1,0 +1,88 @@
+<div>
+    <div class="container" style="width: 99%;">
+        <sidebar ng-show="isAuthenticated"></sidebar>
+        <div class="container" style="width: 70%;">
+            <div id="protocols">
+                <div ng-hide="protocolsCtrl.protocols.length"><h1>There are no items to show.</h1></div>
+                <div ng-controller="DocumentsController as documentsCtrl" ng-repeat="protocol in protocolsCtrl.protocols">
+                    <div ng-controller="ReviewsController as reviewsCtrl" class="row">
+                        <div class="col-md-4">
+                            <a id="anchor{{protocol.acronym}}" class="anchor"></a>
+                            <a href="{{protocol.website}}"><img class="img-responsive" ng-src="{{protocol.image}}" alt=""></a>
+                        </div> <!-- col -->
+                        <div class="col-md-1"></div>
+                        <div class="col-md-6">
+                            <h3> {{protocol.acronym}} </h3>
+                            <p><strong><em>{{protocol.name}}</em></strong></p>
+                            <div ng-show="protocol.hasPermissions">
+                                <a ng-click="documentsCtrl.delDoc(protocol._id)" class="btn btn-danger" role="button">Delete Protocol</a>
+                            </div>
+                            </br>
+                            <section ng-init="tab = 1 ">
+                                <ul class="nav nav-pills">
+                                    <li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1">Description</a></li>
+                                    <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2">View Reviews</a></li>
+                                    <li ng-class="{ active:tab === 3 }"><a href ng-click="tab = 3">Add Review</a></li>
+                                    <li ng-class="{ active:tab === 4 }"><a href="{{protocol.website}}">Website</a></li>
+                                </ul>
+                            </section>
+                            </br>
+                            <div class="panel" ng-show="tab == 1">
+                                <p> {{protocol.description}} </p>
+                            </div>
+                            <div class="panel" ng-show="tab == 2">
+                                <div ng-repeat="review in protocol.reviews">
+                                    <blockquote>
+                                        <b> {{review.stars}} Stars</b>
+                                        <p>{{review.body}}</p>
+                                        <cite>{{review.author}}</cite>
+                                        <p></p>
+                                        <p ng-show="review.hasPermissions"><a ng-click="reviewsCtrl.delRev(review._id,protocol._id)" class="btn btn-warning" role="button">Delete Review</a></p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="panel" ng-show="tab == 3">
+                                <!--  Review Form -->
+                                <form name="reviewForm" ng-submit="reviewForm.$valid && reviewsCtrl.addReview(protocol._id)" >
+                                    <blockquote >
+                                        <strong>{{reviewsCtrl.review.stars}} Stars</strong>
+                                        {{reviewsCtrl.review.body}}
+                                        <cite class="clearfix">-{{reviewsCtrl.review.author}}</cite>
+                                    </blockquote>
+                                    <!--  Review Form -->
+                                    <h4>Submit a Review</h4>
+                                    <fieldset class="form-group">
+                                        <select ng-model="reviewsCtrl.review.stars" class="form-control" ng-options="stars for stars in ['5','4','3','2','1']" title="Stars" required>
+                                            <option value>Rate the Product</option>
+                                        </select>
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <textarea ng-model="reviewsCtrl.review.body" class="form-control" placeholder="Describe your feelings to us..." title="Review" required></textarea>
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <input ng-model="reviewsCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                        </br>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .ng-invalid.ng-dirty {
+        border-color: #FA787E;
+    }
+    .ng-valid.ng-dirty {
+        border-color: #78FA89;
+    }
+</style>
+
