@@ -8,6 +8,7 @@ var ObjectId = Schema.Types.ObjectId;
 var schema = new Schema({
     name: String,
     description: String,
+    longDescription: String,
     reference: String,
     image: { type: String, default: 'images/workflow.png' },
     domainSpecific: Boolean,

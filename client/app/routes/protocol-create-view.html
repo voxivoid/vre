@@ -16,8 +16,12 @@
                 <textarea ng-model="documentCtrl.doc.name" class="form-control" placeholder="Protocol Name" title="Name" maxlength="50" required></textarea>
             </fieldset>
             <fieldset class="form-group">
-                <h4>Description (max. 5000 chars) * </h4>
-                <textarea ng-model="documentCtrl.doc.description" class="form-control" placeholder="Description to be placed in protocols gallery" title="Description" maxlength="5000" required></textarea>
+                <h4>Short Description (max. 100 chars) * </h4>
+                <textarea ng-model="documentCtrl.doc.description" class="form-control" placeholder="Description to be placed in protocols gallery" title="Short Description" maxlength="100" required></textarea>
+            </fieldset>
+            <fieldset class="form-group">
+                <h4>Long Description (max. 5000 chars) * </h4>
+                <textarea ng-model="documentCtrl.doc.longDescription" class="form-control" placeholder="This will be the information available in the workflow dedicated page" title="Long Description" maxlength="5000" required></textarea>
             </fieldset>
             <fieldset class="form-group">
                 <h4>Reference(s) (max. 100 chars) </h4>
@@ -45,5 +49,4 @@
                 <input type="submit" class="form-control btn btn-primary pull-right" value="Submit Protocol" />
             </fieldset>
         </form>
-    </div>
-</div>
+  

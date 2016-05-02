@@ -29,6 +29,7 @@ handlers.push(function (req, res, next) { // input validation
             body: {
                 name:	        joi.string().required,
                 description:	joi.string().required,
+                longDescription:joi.string().required,
                 reference:		joi.string(),
                 image:			joi.string().default("images/workflow.png"),
                 domainSpecific: joi.boolean().default(false)

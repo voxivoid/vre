@@ -27,10 +27,10 @@ handlers.push(function (req, res, next) { // input validation
 
         handlers.push(validate({
             body: {
-                acronym:        joi.string(),
                 name:	        joi.string(),
                 description:	joi.string(),
-                website:		joi.string(),
+                longDescription:joi.string(),
+                reference:		joi.string(),
                 image:			joi.string(),
                 domainSpecific: joi.boolean()
             }

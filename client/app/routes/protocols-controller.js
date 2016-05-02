@@ -1,5 +1,5 @@
 // Protocols pages module and controllers
-angular.module("protocols", ["ngRoute", "sidebar", "documents", "reviews"]);
+angular.module("protocols", ["ngRoute", "sidebar", "protocol-detail" ,"documents", "reviews"]);
 
 angular.module("protocols").config(["$routeProvider", function ($routeProvider) {
     $routeProvider
@@ -40,6 +40,35 @@ angular.module("protocols").controller("ProtocolsController", ['$location', '$sc
     });
 }]);
 
-angular.module("protocols").controller("NewProtocolController", ["$scope", function($scope) {
+angular.module("protocols").controller("NewProtocolsController", ["$scope", function($scope) {
     $scope.type = "protocols";
+}]);
+
+angular.module("protocol-detail", ["ngRoute"]);
+
+angular.module("protocol-detail").config(["$routeProvider", function ($routeProvider) {
+    $routeProvider
+        .when("/protocol/detail/:id", {
+            templateUrl: "app/routes/protocol-detail-view.html",
+            controller: "ProtocolDetailController"
+        });
+}]);
+
+angular.module("protocol-detail").controller("ProtocolDetailController", ["$scope", "$routeParams" ,"$http", function($scope, $routeParams ,$http) {
+    $scope.detailCtrl = this;
+    $scope.type = "detail";
+
+    this.detail = {};
+
+    $http.get('//aleph.inesc-id.pt/vre/api/protocols/' + $routeParams.id)
+        .success(function (data) {
+            if(data.success) {
+                //what to put here?
+                $scope.detailCtrl.detail = data.success;
+                $scope.$broadcast('detailsReady', $scope.detailsCtrl.detail);
+            }
+        })
+        .error(function () {
+            console.log("Error: Could not insert");
+        });
 }]);
