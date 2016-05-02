@@ -9,6 +9,9 @@ handlers.push(function(req, res, next) { // delete document from collection
     if (collection === 'workflows') {
         var Document = req.app.db.models.Workflow;
     }
+    else if (collection === 'protocols') {
+        var Document = req.app.db.models.Protocol;
+    }
     else if (collection === 'databases') {
         var Document = req.app.db.models.Database;
     }

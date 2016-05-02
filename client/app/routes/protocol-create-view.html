@@ -12,20 +12,16 @@
               domainSpecific: Boolean,-->
             <!--  Review Form -->
             <fieldset class="form-group">
-                <h4>Acronym (max. 10 chars)</h4>
-                <textarea ng-model="documentCtrl.doc.acronym" class="form-control" placeholder="Protocol Acronym" title="Name" maxlength="10" ></textarea>
-            </fieldset>
-            <fieldset class="form-group">
-                <h4>Name (max. 50 chars) * </h4>
+                <h4>Name / Objective (max. 50 chars) * </h4>
                 <textarea ng-model="documentCtrl.doc.name" class="form-control" placeholder="Protocol Name" title="Name" maxlength="50" required></textarea>
             </fieldset>
             <fieldset class="form-group">
-                <h4>Description (max. 50 chars) * </h4>
-                <textarea ng-model="documentCtrl.doc.description" class="form-control" placeholder="Description to be placed in protocols gallery" title="Description" maxlength="250" required></textarea>
+                <h4>Description (max. 5000 chars) * </h4>
+                <textarea ng-model="documentCtrl.doc.description" class="form-control" placeholder="Description to be placed in protocols gallery" title="Description" maxlength="5000" required></textarea>
             </fieldset>
             <fieldset class="form-group">
-                <h4>Website * </h4>
-                <textarea ng-model="documentCtrl.doc.website" class="form-control" placeholder="www.protocol.com" title="Website" required></textarea>
+                <h4>Reference(s) (max. 100 chars) </h4>
+                <textarea ng-model="documentCtrl.doc.reference" class="form-control" placeholder="Protocol reference(s), if exist" title="Reference" maxlength="100" ></textarea>
             </fieldset>
             <fieldset class="form-group">
                 <h4>Image URL</h4>

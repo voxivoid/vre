@@ -36,6 +36,17 @@ angular.module("sidebar").controller("SidebarController", ['$anchorScroll', '$lo
             }
         });
     }
+    else if (this.type === "protocols"){
+        this.buttons = ["Add Protocol","My Protocols"];
+        this.links = ["#/protocols/new","#/protocols/self"];
+        this.index = [];
+
+        $scope.$on('protocolsReady', function(event, databases) {
+            for (i = 0; i < protocols.length; i++) {
+                $scope.sidebarCtrl.index.push(protocols[i].name);
+            }
+        });
+    }
     else if (this.type === "news"){
         this.buttons = ["Add News","My News"];
         this.links = ["#/news/new","#/news/self"];

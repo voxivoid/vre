@@ -22,6 +22,19 @@ handlers.push(function (req, res, next) { // input validation
             }
         }));
     }
+    else if (collection === 'protocols') {
+        var Document = req.app.db.models.Protocol;
+
+        handlers.push(validate({
+            body: {
+                name:	        joi.string().required,
+                description:	joi.string().required,
+                reference:		joi.string(),
+                image:			joi.string().default("images/workflow.png"),
+                domainSpecific: joi.boolean().default(false)
+            }
+        }));
+    }
     else if (collection === 'databases') {
         var Document = req.app.db.models.Database;
 
