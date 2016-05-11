@@ -9,7 +9,8 @@ angular.module("vre").controller("vreController", ["$scope" ,"$http", "$location
 		.success(function (data) {
 			if(data.success) {
 				$scope.isAuthenticated = true;
-			}
+
+                           }
 			else{
 				$scope.isAuthenticated = false;
 			}

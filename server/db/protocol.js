@@ -11,6 +11,7 @@ var schema = new Schema({
     longDescription: String,
     reference: String,
     image: { type: String, default: 'images/workflow.png' },
+    author: String,
     domainSpecific: Boolean,
     reviews: [{type: ObjectId, ref: "Review"}],
     users: [{type: ObjectId, ref: "User"}]

@@ -40,7 +40,7 @@ angular.module("news").controller("NewsController", ['$location', '$scope', '$ht
     });
 }]);
 
-angular.module("news").controller("NewsNewsController", ["$scope", function($scope) {
+angular.module("news").controller("NewNewsController", ["$scope", function($scope) {
     $scope.type = "news";
 }]);
 

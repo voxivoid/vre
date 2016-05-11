@@ -32,6 +32,7 @@ handlers.push(function (req, res, next) { // input validation
                 longDescription:joi.string().required,
                 reference:		joi.string(),
                 image:			joi.string().default("images/workflow.png"),
+                author:	joi.string().required,
                 domainSpecific: joi.boolean().default(false)
             }
         }));
@@ -46,6 +47,7 @@ handlers.push(function (req, res, next) { // input validation
                 description:	joi.string().required,
                 website:		joi.string().required,
                 image:			joi.string().default("images/database.png"),
+                author:	joi.string().required,
                 domainSpecific: joi.boolean().default(false)
             }
         }));
@@ -59,6 +61,7 @@ handlers.push(function (req, res, next) { // input validation
                 description:	joi.string().required,
                 website:		joi.string().required,
                 image:			joi.string().default("images/database.png"),
+                author:	joi.string().required,
                 domainSpecific: joi.boolean().default(false)
             }
         }));
@@ -72,6 +75,7 @@ handlers.push(function (req, res, next) { // input validation
                 description:	joi.string().required,
                 website:		joi.string().required,
                 image:			joi.string().default("images/news.ico"),
+                author:	joi.string().required,
                 domainSpecific: joi.boolean().default(false)
             }
         }));
@@ -86,6 +90,7 @@ handlers.push(function (req, res, next) { // input validation
                 description:	joi.string().required,
                 website:		joi.string().required,
                 image:			joi.string().default("images/tool.ico"),
+                author:	joi.string().required,
                 domainSpecific: joi.boolean().default(false)
             }
         }));

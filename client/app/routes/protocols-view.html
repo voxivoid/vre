@@ -12,8 +12,8 @@
                         </div> <!-- col -->
                         <div class="col-md-1"></div>
                         <div class="col-md-6">
-                            <h3> {{protocol.acronym}} </h3>
-                            <p><strong><em>{{protocol.name}}</em></strong></p>
+                            <h3> {{protocol.name}} </h3>
+                            <p><strong><em>{{protocol.author}}</em></strong></p>
                             <div ng-show="protocol.hasPermissions">
                                 <a ng-click="documentsCtrl.delDoc(protocol._id)" class="btn btn-danger" role="button">Delete Protocol</a>
                             </div>
@@ -42,6 +42,13 @@
                                 </div>
                             </div>
                             <div class="panel" ng-show="tab == 3">
+                                <div ng-hide="isAuthenticated">
+                                    <h3>You must sign in to add a review</h3>
+                                    <h4>Sign In with Google </h4>
+                                    <a href="http://aleph.inesc-id.pt/vre/api/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</a>
+                                    <br>
+                                </div>
+                                <div ng-show="isAuthenticated">
                                 <!--  Review Form -->
                                 <form name="reviewForm" ng-submit="reviewForm.$valid && reviewsCtrl.addReview(protocol._id)" >
                                     <blockquote >
@@ -58,9 +65,6 @@
                                     </fieldset>
                                     <fieldset class="form-group">
                                         <textarea ng-model="reviewsCtrl.review.body" class="form-control" placeholder="Describe your feelings to us..." title="Review" required></textarea>
-                                    </fieldset>
-                                    <fieldset class="form-group">
-                                        <input ng-model="reviewsCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
                                     </fieldset>
                                     <fieldset class="form-group">
                                         <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />

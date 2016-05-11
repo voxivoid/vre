@@ -5,7 +5,7 @@ angular.module("protocols").config(["$routeProvider", function ($routeProvider) 
     $routeProvider
         .when("/protocols", {templateUrl: "app/routes/protocols-view.html", controller: "ProtocolsController"})
         .when("/protocols/self", {templateUrl: "app/routes/protocols-view.html", controller: "ProtocolsController"})
-        .when("/protocols/new", {templateUrl: "app/routes/protocol-create-view.html", controller: "NewProtocolController"});
+        .when("/protocols/new", {templateUrl: "app/routes/protocol-create-view.html", controller: "NewProtocolsController"});
 }]);
 
 angular.module("protocols").controller("ProtocolsController", ['$location', '$scope', '$http', function($location, $scope, $http){
@@ -65,7 +65,7 @@ angular.module("protocol-detail").controller("ProtocolDetailController", ["$scop
             if(data.success) {
                 //what to put here?
                 $scope.detailCtrl.detail = data.success;
-                $scope.$broadcast('detailsReady', $scope.detailsCtrl.detail);
+                $scope.$broadcast('detailsReady', $scope.detailCtrl.detail);
             }
         })
         .error(function () {

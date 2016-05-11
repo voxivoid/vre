@@ -3,9 +3,25 @@ angular.module("reviews", []);
 
 angular.module("reviews").controller("ReviewsController", ['$scope', '$http', function($scope, $http) {
 
-        this.review = {};
+    $scope.reviewsCtrl = this;
+
+    this.review = {};
+
+    $http.get('//aleph.inesc-id.pt/vre/api/userinfo')
+        .success(function (data) {
+            if(data.success) {
+                $scope.reviewsCtrl.review.author = data.success.email;
+                $scope.$broadcast('emailReady', $scope.reviewsCtrl.review.author);
+            }
+        })
+        .error(function () {
+            console.log("Error: Could not get info");
+        });
 
         this.addReview = function(docid){ // adds review to the document depending on the actual context
+
+            this.review.author = $scope.reviewsCtrl.review.author;
+
             $http.put('//aleph.inesc-id.pt/vre/api/reviews/' + $scope.type + "/" + docid, this.review)
                 .success(function () {
                     location.reload();

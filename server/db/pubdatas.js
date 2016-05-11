@@ -10,6 +10,7 @@ var schema = new Schema({
     description: String,
     website: String,
     image: { type: String, default: 'images/database.png' },
+    author: String,
     domainSpecific: Boolean,
     reviews: [{type: ObjectId, ref: "Review"}],
     users: [{type: ObjectId, ref: "User"}]

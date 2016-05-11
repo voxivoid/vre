@@ -1,21 +1,22 @@
-<div id="fb-root"></div>
+<div id="fb-root" ng-controller="ProfileController as profileCtrl"></div>
 <div class="row>">
     <div class="container-fluid">
         <div class="col-sm-3 col-md-2 sidebar">
             <h4>My Documents</h4>
             <ul class="nav nav-sidebar">
-                <li><a href="#">Workflows</a></li>
-                <li><a href="#">Databses</a></li>
-                <li><a href="#">Public Data</a></li>
-                <li><a href="#">Tools</a></li>
-                <li><a href="#">News</a></li>
+                <li><a href="#/workflows/self">Workflows</a></li>
+                <li><a href="#/protocols/self">Protocols</a></li>
+                <li><a href="#/databases/self">Databases</a></li>
+                <li><a href="#/publicdata/self">Public Data</a></li>
+                <li><a href="#/tools/self">Tools</a></li>
+                <li><a href="#/news/self">News</a></li>
             </ul>
         </div>
         <div class="col-sm-8 col-md-7 main">
             <div class="jumbotron">
                 <div class="container">
-                    <h1>Welcome {{user}}!</h1>
-                    <p>This is your profile page, here you can manage your documentos and reviews and check how the other users ate interacting with it.</p>
+                    <h1>Welcome {{profileCtrl.user}}!</h1>
+                    <p>This is your profile page, here you can manage your documents and reviews and check how the other users are interacting with it.</p>
                     <p><a class="btn btn-primary btn-lg" href="#/tutorials" role="button">Take the guided tour »</a></p>
                 </div>
             </div>
@@ -37,7 +38,7 @@
                 </div>
                 <div class="col-xs-6 col-sm-2 placeholder">
                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    <h4>Groups <span class="badge">1</span></a></li></h4>
+                    <h4>Users <span class="badge"> {{profileCtrl.users}} </span></a></li></h4>
                     <span class="text-muted"></span>
                 </div>
             </div>

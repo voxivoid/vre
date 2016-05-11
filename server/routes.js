@@ -5,10 +5,12 @@ module.exports = function (app) {
 	var handlers = require("require-dir")("./handlers");
 	var homeUrl = "http://aleph.inesc-id.pt/vre/";
 	app.get('/vre/api/auth/google/callback', app.passport.authenticate('google', {
-		successRedirect : homeUrl,
+		successRedirect : homeUrl + '#/profile',
 		failureRedirect : homeUrl + '#/signin'
 	}));
-	app.get('/vre/api/auth/google', app.passport.authenticate('google', { scope : ['profile', 'email'] }));
+	app.get('/vre/api/auth/google', app.passport.authenticate('google', {
+		scope : ['profile', 'email']
+	}));
 	app.get('/vre/api/auth/google/logout', function(req, res) {
 		req.logout();
 		res.redirect(homeUrl);
@@ -18,7 +20,8 @@ module.exports = function (app) {
 		else res.send({error: "User isn't logged in."});
 	});
 
-    app.get('/vre/api/reviews/', handlers["api-get-reviews"]);
+	app.get('/vre/api/userinfo/', handlers["api-user-info"]);
+	app.get('/vre/api/reviews/', handlers["api-get-reviews"]);
     app.put('/vre/api/reviews/:collection/:id', isAuthenticated, handlers["api-reviews-put"]);
     app.delete('/vre/api/reviews/:collection/:docid/:revid', isAuthenticated, handlers["api-reviews-delete"]);
 

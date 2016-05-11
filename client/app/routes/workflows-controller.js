@@ -66,7 +66,7 @@ angular.module("workflow-detail").controller("WorkflowDetailController", ["$scop
             if(data.success) {
                 //what to put here?
                 $scope.detailCtrl.detail = data.success;
-                $scope.$broadcast('detailsReady', $scope.detailsCtrl.detail);
+                $scope.$broadcast('detailsReady', $scope.detailCtrl.detail);
             }
         })
         .error(function () {
